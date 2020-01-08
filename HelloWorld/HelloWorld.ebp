@@ -92,6 +92,7 @@
 		<Unit filename="inc\30010_io.h" />
 		<Unit filename="inc\ansi.h" />
 		<Unit filename="inc\BallBounce.h" />
+		<Unit filename="inc\Joystick.h" />
 		<Unit filename="inc\printing.h" />
 		<Unit filename="inc\SINexport.h" />
 		<Unit filename="inc\stm32f30x.h" />
@@ -195,6 +196,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\BallBounce.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\Joystick.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\main.c">

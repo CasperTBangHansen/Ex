@@ -17,7 +17,7 @@
 #include "vectorRot.h"
 #include "window.h"
 #include "BallBounce.h"
-
+#include "Joystick.h"
 
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
@@ -26,16 +26,23 @@
 
 
 
-
 int main(void)
 {
     uart_init( 9600 ); // Initialize USB serial emulation at 9600 baud
-    struct windowSize win;
+    while(1){
+        readJoystick();
+    }
+
+
+
+
+    //Ball Game:
+    /*struct windowSize win;
     struct ball ballstruct;
-    initalizerWindow(&win, 1 , 1, 20, 20, "BALL GAME", 1);
+    initalizerWindow(&win, 1 , 1, 100, 5, "BALL GAME", 2);
     initalizerBallBounce(&win);
-    InitBallPosition(&ballstruct, 10, 10, -1 , 1);
-    update(&win ,&ballstruct);
+    InitBallPosition(&ballstruct, 50, 3, -1 , 1);
+    update(&win ,&ballstruct);*/
 
     /*struct vector_t v;
     initVector(&v,1,0);

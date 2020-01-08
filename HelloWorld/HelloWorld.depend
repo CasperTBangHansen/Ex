@@ -502,11 +502,20 @@
 	<stdint.h>
 	<stdio.h>
 
-1578484152 source:c:\users\caspe\documents\github\ex\helloworld\src\main.c
+1578488561 source:c:\users\caspe\documents\github\ex\helloworld\src\main.c
 	"stm32f30x_conf.h"
 	"30010_io.h"
 	"SINexport.h"
 	"vectorRot.h"
 	"window.h"
 	"BallBounce.h"
+	"Joystick.h"
+
+1578488271 c:\users\caspe\documents\github\ex\helloworld\inc\joystick.h
+	<stdint.h>
+	<stdio.h>
+
+1578488307 source:c:\users\caspe\documents\github\ex\helloworld\src\joystick.c
+	"Joystick.h"
+	"stm32f30x_conf.h"
 
