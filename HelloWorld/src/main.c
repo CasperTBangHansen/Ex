@@ -32,11 +32,11 @@ int main(void)
     uart_init( 9600 ); // Initialize USB serial emulation at 9600 baud
     struct windowSize win;
     struct ball ballstruct;
-    initalizerWindow(&win, 7 , 5, 20, 30, "BALL GAME", 1);
-    initalizerBallBounce(win);
-    initalizerBall(&ballstruct);
-    colider(win,&ballstruct, ballstruct);
-    printf("\n--->(%d,%d)\n",ballstruct.Xdir,ballstruct.Ydir);
+    initalizerWindow(&win, 1 , 1, 20, 20, "BALL GAME", 1);
+    initalizerBallBounce(&win);
+    InitBallPosition(&ballstruct, 10, 10, -1 , 1);
+    update(&win ,&ballstruct);
+
     /*struct vector_t v;
     initVector(&v,1,0);
 
