@@ -1,8 +1,19 @@
-/* #include "Joystick.h"
+#include "Joystick.h"
 #include "stm32f30x_conf.h"
 #include <stdio.h>
+#include "timer.h"
 
-char readJoystick(){
+void initscreen(){
+    clearscr();
+        gotoxy(3,3);
+        printf("Time since start  %01d:%02d:%02d.--\n",counter.hour, counter.minute ,counter.second);
+        gotoxy(3,5);
+        printf("1. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute,counter.second,counter.centisecond);
+        gotoxy(3,7);
+        printf("2. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute ,counter.second,counter.centisecond);
+        }
+
+char readTimerJoystick(){
 
     RCC->AHBENR |= RCC_AHBPeriph_GPIOA; // Enable clock for GPIO Port A
 
@@ -53,7 +64,14 @@ char readJoystick(){
     if(up>0){ // If up is larger than 0 and up is pressed and storage is not equal to 0x01, storage bit 1 is flipped.
         if(storage != 0x01){
             storage |= 1 << 0;
-            printf("Up\n");
+            gotoxy(14,20);
+            printf("Casper\n");
+            gotoxy(15,21);
+            printf("senpai\n");
+            gotoxy(16,22);
+            printf("i made a big fuky wucky\n");
+            gotoxy(17,23);
+            printf("uWu");
         }
     }
     else{
@@ -62,7 +80,17 @@ char readJoystick(){
     if(down>0){ // If down is larger than 0 and down is pressed and storage bit 2 is not equal to 0x02, storage bit 2 is flipped by first
         if(storage != 0x02){
             storage |= 1 << 1;
-            printf("Down\n");
+            TIM2->CR1 &= ~(0x01 << 0); // Turn off timer 2
+            init(&counter);
+            clearscr();
+            gotoxy(3,3);
+            printf("Time since start  %01d:%02d:%02d.--\n",counter.hour, counter.minute ,counter.second);
+            gotoxy(3,7);
+            printf("2. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute ,counter.second,counter.centisecond);
+            gotoxy(3,5);
+            printf("1. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute,counter.second,counter.centisecond);
+            gotoxy(3,9);
+            printf("Stop watch has been reset. \n");
         }
     }
     else{
@@ -71,7 +99,10 @@ char readJoystick(){
     if(left>0){ // If left is larger than 0 and left is pressed and storage bit 3 is not equal to 0x03, storage bit 3 is flipped by first
         if(storage != 0x04){
             storage |= 1 << 2;
-            printf("Left\n");
+            __disable_irq();
+            gotoxy(3,5);
+            printf("1. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute,counter.second,counter.centisecond);
+            __enable_irq();
         }
     }
     else{
@@ -80,7 +111,10 @@ char readJoystick(){
     if(right>0){ // If right is larger than 0 and right is pressed and storage bit 3 is not equal to 0x04, storage bit 3 is flipped by first
         if(storage != 0x08){
             storage |= 1 << 3;
-            printf("Right\n");
+            __disable_irq();
+            gotoxy(3,7);
+            printf("2. Split time     %01d:%02d:%02d.%02d\n",counter.hour, counter.minute ,counter.second,counter.centisecond);
+            __enable_irq();
         }
     }
     else{
@@ -89,7 +123,15 @@ char readJoystick(){
     if(center>0){ // If center is larger than 0 and center is pressed and storage bit 4 is not equal to 0x05, storage bit 4 is flipped by first
         if(storage != 0x10){
             storage |= 1 << 4;
-            printf("Center\n");
+            uint8_t bit = TIM2->CR1 & (0x01 << 0);
+            if (bit == 1) {
+                TIM2->CR1 &= ~(0x01 << 0); // Turn off timer 2
+            }
+            if (bit == 0) {
+                setTimer();
+                gotoxy(3,9);
+                clreol();
+            }
         }
     }
     else{
@@ -97,10 +139,10 @@ char readJoystick(){
     }
     /* if(storage == 0){
         printf("No direction pressed");
-    }
+    } */
     //printf("%d\n",storage);
     return storage;
 
 }
-*/
+
 
