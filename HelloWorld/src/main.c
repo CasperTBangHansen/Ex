@@ -17,20 +17,28 @@
 #include "vectorRot.h"
 #include "window.h"
 #include "BallBounce.h"
-#include "Joystick.h"
+// #include "Joystick.h"
+#include "LED.h"
+#include "timer.h"
+#include "timerJoystick.h"
 
 #define FIX14_SHIFT 14
 #define FIX14_MULT(a, b) ( (a)*(b) >> FIX14_SHIFT )
 #define FIX14_DIV(a, b) ( ((a) << FIX14_SHIFT) / b )
 
 
-
-
 int main(void)
 {
+    init(&counter);
     uart_init( 9600 ); // Initialize USB serial emulation at 9600 baud
+    initscreen();
     while(1){
-        readJoystick();
+        readTimerJoystick();
+            if(counter.centisecond == 0 && counter.runOnce == 0){
+            counter.runOnce = 1;
+            gotoxy(3,3);
+            printf("Time since start  %01d:%02d:%02d.--\n",counter.hour, counter.minute ,counter.second);
+        }
     }
 
 
