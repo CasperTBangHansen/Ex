@@ -26,14 +26,21 @@ while(1){}
 
     output: currentPos  (uint16_t 0-999)
 */
-static uint16_t SetPos(uint8_t reset){
+uint16_t SetPos(uint8_t status){
+    //Starts counting at -1 (since it is a uint16_t this value is 65535, but it gets add by 1 and therefor it is 0)
     static uint16_t currentPos = -1;
-    if(reset == 0){
+    //Checks if this function should reset or not
+    if(status == 0){
+        //updates currentPos by adding one
         currentPos++;
-    } else if(reset == 1){
+        return currentPos;
+    } else if(status == 1){
+        //reset currentPos
         currentPos = -1;
+        return currentPos;
+    } else if(status == 2){
+        return currentPos;
     }
-    return currentPos;
 }
 
 /*
@@ -49,7 +56,9 @@ static uint16_t SetPos(uint8_t reset){
     output: void
 */
 void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t yPosStart, uint16_t xPosSlut, uint8_t yPosSlut, char character){
+    //gets current position
     uint16_t position = SetPos(0);
+    //sets array at current position to input values
     drawValues[position].xStart = xPosStart;
     drawValues[position].yStart = yPosStart;
     drawValues[position].xSlut = xPosSlut;
@@ -64,8 +73,9 @@ void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t 
 
     output: void
 */
-static void gotoxy(uint16_t x, uint8_t y){
-        printf("%c[%u;%u%c",0x1B,y,x,0x48);
+void gotoxy(uint16_t x, uint8_t y){
+    //goes to (x,y)
+    printf("%c[%u;%u%c",0x1B,y,x,0x48);
 }
 
 /*
@@ -76,18 +86,26 @@ static void gotoxy(uint16_t x, uint8_t y){
 */
 
 void DrawEverything(struct drawItems *drawValues){
+    //Gets current position + 1
     uint16_t maxPos = SetPos(0);
+    //loops through the hole struct array
     for(uint16_t i = 0; i < maxPos; i++){
+        //checks if there only should be drawn one character
         if((drawValues[i].xStart == drawValues[i].xSlut) &&(drawValues[i].yStart == drawValues[i].ySlut)){
+            //Goes to a postion and drawns the one character
             gotoxy(drawValues[i].xStart,drawValues[i].yStart);
             printf("%c",drawValues[i].text);
+        //check if there should be drawn a vertical line of characters
         } else if(drawValues[i].xStart == drawValues[i].xSlut){
+            //loops through a column and draws all the characters
             for(uint16_t j = drawValues[i].yStart; j <= drawValues[i].ySlut; j++){
                 gotoxy(drawValues[i].xStart, j);
                 printf("%c",drawValues[i].text);
             }
+        //check if there should be drawn a horizontal line of characters
         } else if(drawValues[i].yStart == drawValues[i].ySlut){
             gotoxy(drawValues[i].xStart, drawValues[i].yStart);
+            //loops through a row and draws all the characters
             for(uint16_t j = drawValues[i].xStart; j <= drawValues[i].xSlut; j++){
                 printf("%c",drawValues[i].text);
             }
@@ -95,3 +113,4 @@ void DrawEverything(struct drawItems *drawValues){
     }
     SetPos(1);
 }
+
