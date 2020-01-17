@@ -15,8 +15,8 @@ uint8_t yPosition;
 
 void gotoxy(uint16_t x, uint8_t y);
 void InitPosition(uint16_t xPos, uint8_t yPos, struct playerPos *here);
-void userInput(struct playerPos *here);
-
+uint8_t UserInput();
+void Controller(int8_t moveDir, struct playerPos *there);
 
 #endif _CONTROLSYSTEM_H_
 
