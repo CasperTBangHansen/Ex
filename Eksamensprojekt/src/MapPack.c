@@ -3,6 +3,30 @@
 #include "30010_io.h"
 #include "Drawing.h"
 #include "MapPack.h"
+#define WALL = "0xDB"
+
+/*
+void MapSelection() {
+    struct drawItems drawValues[1000];
+    uint16_t Xbegin[] = {30,30,30,70};
+    uint16_t Xstop[] = {30,70,70,70};
+    uint8_t Ybegin[] = {30,30,70,30};
+    uint8_t Ystop[] = {70,30,70,70};
+    char charType[] = {0xDB,0xDB,0xDB,0xDB};
+
+    for(uint8_t i = 0; i<(sizeof(charType)); i++){
+            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+    }
+    DrawEverything(&drawValues);
+}
+
+*/
+
+#include <stdio.h>
+#include "stm32f30x_conf.h"
+#include "30010_io.h"
+#include "Drawing.h"
+#include "MapPack.h"
 
 void MapSelection() {
     struct drawItems drawValues[1000];
@@ -14,117 +38,241 @@ void MapSelection() {
      // top right 0xBB
      // bottom right 0xBC
      // bottom left 0xC8
-     // Outline for middle box ( X = 51 -> 119, Y = 16 -> 43 )
+     // Outline for middle box ( X = 15 -> 165, Y = 15 -> 115 )
+
+
     uint16_t Xbegin[] = {
-    11,12,158,159, // Left side entrance, right side exit
-    11,11,16,16,16,16,17,17,17,17,18,18, // Left side tunnel
-    120,120,153,153,153,153,154,154,154,154,155,155, // right side tunnel
-    51,51,51,51,51,51,52,52,119,119,119,119,119,119, //outline for middle "map area"
-    53,53,53,65, //  Top left box
-    67,67,67,80, // Box to the right of the above
-    67,67,67,90, // Box below the above
-    53,53,53,65, // box to the left of the above
-    53,53,53,94, // long right box below entrance
-    53,53,53,66, // lower left corner box
-    68,68,68,82, // to the right of above
-    84,84,84,94, // to the right of above
-    67,67,67,94, // Small long box above long long box
-    92,92,92,94, // Vertical long box
-    96,96,96,97 // Vertical line
+    16,17,164,163, // Entrance and exit
+    16,16,20,20,24,24,28,28,32,32,36,36, // Left tunnel
+    160,160,156,156,152,152,148,148,144,144,141,141, // Right tunnel
+    40,40,40,141,40,141,// Game maze window
+    46,46,46,50,50,60, //top left structure, then move to the right
+    66,66,70, // Little 2 field long top left
+    76,76,100,96,76,96, // Long to the right of above
+    81,81,81,86,90,86, // Below to the left of the above
+    71,71,71,75, // Square to the left of above
+    56,61,65,56,61,46,50,46,60,46,50, // Weird thing to the left of square
+    46,46,46,50, // Line below weird thing
+    41,41,41,45, // Square below line left wall
+    56,56,56,66,66,70, // Mirrored vertical L to the right of entrance
+    56,56,56,60, // ??  cant remember
+    76,76,76,80, // ?? Cant remember by now
+    56,70,56,56,  // long line
+    76,90,76,76,86,86, // i forgot everything from here and down
+    96,96,96,100,
+    96,96,96,100,
+    96,96,96,110,100,100,
+    116,116,116,120,
+    110,106,106,110,120,106,
+    106,106,106,125,
+    106,106,110,115,110,106,110,115,
+    121,121,125,
+    116,116,116,120,
+    131,131,131,135,
+    126,126,126,135,
+    126,121,126,135,121,121,
+    131,131,131,135,
+    116,116,116,125,
+    131,131,126,135,126,126,
+    126,126,
+    51,51,51,75,
+    81,81,81,90,86,86,
+    86,86,90,
+    66,66,66,80,
+    76,76,76,80,
+    56,56,56,70,
+    46,46,46,50,
+    56,56,56,60
+
+
     };
     uint16_t Xstop[] = {
-    11,12,158,159,
-    15,15,16,16,16,16,17,17,17,17,50,50,
-    152,152,153,153,153,153,154,154,154,154,159,159,
-    51,51,51,51,51,51,118,118,119,119,119,119,119,119,
-    65,65,53,65,
-    80,80,67,80,
-    90,90,67,90,
-    65,65,53,65,
-    94,94,53,94,
-    66,66,53,66,
-    82,82,68,82,
-    94,94,84,94,
-    94,94,67,94,
-    94,94,92,94,
-    97,97,96,97
+    16,17,164,163,
+    20,20,24,24,28,28,32,32,36,36,40,40,
+    164,164,160,160,156,156,152,152,148,148,144,144,
+    40,40,141,141,141,141,
+    60,46,50,50,60,60,
+    66,70,70,
+    76,100,100,96,96,100,
+    81,90,85,86,90,90,
+    75,75,71,75,
+    65,65,65,56,60,56,60,46,60,50,50,
+    46,50,50,50,
+    41,45,45,45,
+    66,56,70,66,70,70,
+    56,60,60,60,
+    76,80,80,80,
+    56,70,70,70,
+    76,90,85,90,86,90,
+    96,100,100,100,
+    96,100,100,100,
+    96,100,110,110,100,110,
+    116,120,120,120,
+    120,120,106,110,120,110,
+    106,125,125,125,
+    115,106,115,115,110,115,115,115,
+    121,125,125,
+    116,120,120,120,
+    131,135,135,135,
+    126,135,135,135, // THIS ONE
+    126,135,135,135,121,125,
+    131,135,135,135,
+    116,125,125,125,
+    131,135,135,135,126,131,
+    126,140,
+    51,75,75,75,
+    81,90,86,90,86,90,
+    86,90,90,
+    66,80,80,80,
+    76,80,80,80,
+    56,70,70,70,
+    46,50,50,50,
+    56,60,60,60
+
+
+
     };
     uint8_t Ybegin[] = {
-    27,27,27,27,
-    26,32,26,32,27,31,27,31,28,30,28,30,
-    28,30,28,30,27,31,27,31,26,32,26,32,
-    28,30,16,31,15,43,15,43,15,43,16,31,28,30,
-    17,22,17,17,
-    17,19,17,17,
-    21,28,21,21,
-    24,32,24,24,
-    34,36,34,34,
-    38,41,38,38,
-    38,41,38,38,
-    38,41,38,38,
-    30,32,30,30,
-    17,28,17,17,
-    17,41,17,17
+    56,56,56,56,
+    55,75,56,74,57,73,58,72,59,71,60,70,
+    55,75,56,74,57,73,58,72,59,71,60,70,
+    20,70,20,20,111,70,
+    26,26,35,30,30,26,
+    20,30,20,
+    26,26,26,31,30,45,
+    36,36,40,40,36,55,
+    36,40,36,36,
+    36,40,36,36,40,41,45,41,40,55,46,
+    61,61,75,61,
+    81,81,85,81,
+    61,61,65,46,46,46,
+    51,51,55,51,
+    46,46,60,46,
+    71,71,71,75,
+    66,61,66,75,61,61,
+    51,70,51,51,
+    76,85,76,76,
+    91,91,105,101,91,101,
+    101,101,105,101,
+    91,95,71,71,91,71,
+    61,61,65,61,
+    55,26,51,51,30,26,30,26,
+    21,30,21,
+    36,36,45,36,
+    26,26,30,26,
+    36,36,40,36,
+    46,55,46,46,50,50,
+    61,61,70,61,
+    71,71,85,71,
+    76,76,95,76,91,91,
+    101,101,
+    81,81,85,81,
+    81,81,85,81,86,95,
+    101,101,101,
+    101,101,105,101,
+    91,91,95,91,
+    91,91,95,91,
+    91,91,105,91,
+    101,101,105,101
+
+
+
+
+
     };
     uint8_t Ystop[] = {
-    31,31,31,31,
-    26,32,26,32,27,31,27,31,28,30,28,30,
-    28,30,28,30,27,31,27,31,26,32,26,32,
-    28,30,27,42,15,43,15,43,15,43,27,42,28,30,
-    17,22,22,22,
-    17,19,19,19,
-    21,28,28,28,
-    24,32,32,32,
-    34,36,36,36,
-    38,41,41,41,
-    38,41,41,41,
-    38,41,41,41,
-    30,32,32,32,
-    17,28,28,28,
-    17,41,41,41
+    74,74,74,74,
+    55,75,56,74,57,73,58,72,59,71,60,70,
+    55,75,56,74,57,73,58,72,59,71,60,70,
+    60,110,20,60,111,111,
+    26,35,35,35,30,30,
+    30,30,30,
+    30,26,45,45,30,45,
+    40,36,40,55,55,55,
+    36,40,40,40,
+    36,40,40,40,45,41,45,55,45,55,55,
+    75,61,75,75,
+    85,81,85,85,
+    61,65,65,61,46,65,
+    55,51,55,55,
+    60,46,60,60,
+    75,75,71,75,
+    75,75,66,75,66,61,
+    70,70,51,70,
+    85,85,76,85,
+    105,91,105,105,101,101,
+    105,101,105,105,
+    91,95,95,91,95,71,
+    65,61,65,65,
+    55,55,51,55,51,26,30,30,
+    30,30,30,
+    45,36,45,45,
+    30,26,30,30,
+    40,36,40,40,
+    50,55,46,55,55,50,
+    70,61,70,70,
+    85,71,85,85,
+    90,76,95,95,95,91,
+    110,101,
+    85,81,85,85,
+    85,81,85,95,95,95,
+    110,101,110,
+    105,101,105,105,
+    95,91,95,95,
+    95,91,95,95,
+    105,91,105,105,
+    105,101,105,105
+
+
+
     };
     char charType[] = {
     0xAF,0xAF,0xAF,0xAF,
-    0xBCD,0xCD,0xBB,0xBC,0xC8,0xC9,0xBB,0xBC,0xC8,0xC9,0xCD,0xCD,
-    0xCD,0xCD,0xBC,0xBB,0xC9,0xC8,0xBC,0xBB,0xC9,0xC8,0xCD,0xCD,
-    0xBC,0xBB,0xBA,0xBA,0xC9,0xC8,0xCD,0xCD,0xBB,0xBC,0xBA,0xBA,0xC8,0xC9,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB,
-    0xDB,0xDB,0xDB,0xDB
-    };
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2
 
+
+    };
     for(uint8_t i = 0; i<(sizeof(charType)); i++){
             DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
     DrawEverything(&drawValues);
 }
-/* case level_2 {
-    struct drawItems drawValues[1000];
-     // Arrays for maps. First 4 are game window outline in order (Top,left,right,bottom).
-     // Next 4 are the different game window corners, in the order (Top left, Top right, Bottom left, Bottom Right)
-     // Next 3 are are the lines for the high score window (Top, Right, Bottom)
-     // Next 2 are the top right corner and then bottom right corner
-    uint16_t Xbegin[] = {};
-    uint16_t Xstop[] = {};
-
-    uint8_t Ybegin[] = {};
-    uint8_t Ystop[] = {};
-
-
-    char charType[] = {};
-
-    for(uint8_t i = 0; i<(sizeof(CharType)); i++){
-            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
-    }
-    DrawEverything(&drawValues);
-}*/
-
-
