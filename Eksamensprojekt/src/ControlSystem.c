@@ -9,7 +9,7 @@
 #define SPACE 0x20
 
 
-// Function from the assignments that lets us jump to whereever on the prompt
+// Function from the assignments that lets us jump to whereever on the prompt.
 void gotoxy(uint16_t x, uint8_t y){
         printf("%c[%u;%u%c",ESC,y,x,0x48);
 }
