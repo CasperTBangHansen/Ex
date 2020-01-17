@@ -13,6 +13,8 @@ struct drawItems{
     char text;
 };
 
+
 void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t yPosStart, uint16_t xPosSlut, uint8_t yPosslut, char character);
 void DrawEverything(struct drawItems *drawValues);
+uint16_t SetPos(uint8_t status);
 #endif
