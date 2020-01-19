@@ -1,59 +1,57 @@
 /*
-    Input mapChoice: The map number of choice; which map the player is currently on
-    Input initMap: Boolean value from mapPackage, if true this initializes the level
-    Struct mapPackage: Structure containing map choice and boolean true/false value to initialize level
-*/
+**
+**                           ManageLevels.c
+**
+**
+**********************************************************************/
+/*
+   Primary editor  :    Mathias Jensen
+   Secondary editor:
+   Last changed by :    19/01 - 2020
+
+   Functions       :    void LevelManager(struct mapPackage *maps, struct drawItems *drawValues);
+
+**********************************************************************/
+
+//include .h file
 #include "ManageLevels.h"
 
-void MapInit(struct mapPackage *initMaps){
-    initMaps->mapChoice = 2; // Map number of choice
-    initMaps->initMap = 1; // Boolean value to know if the current level has been completed
-}
 
 
+/**********************************************************************
 
-// The function that resets the map of choice the first time you enter and then loads the map.
-void LevelManager(struct mapPackage *maps){
-switch ((*maps).mapChoice) // Loads map of choice
-{
-case 1: // Map 1
-    {
-        if ((*maps).initMap == 1){ // First time you enter it loads and builds the entire map
-            printf("map 1 has been reset!\n");
-            //MapSetup();
-            (*maps).initMap = 0;
-            }
-        else{
-            printf("map 1 test\n");
+   Description     :    LevelManager keeps track of the levels and sets the levels up.
+
+   Input           :    struct mapPackage *maps
+                        struct drawItems *drawValues
+
+   Output          :    void
+
+**********************************************************************/
+
+void LevelManager(struct mapPackage *maps, struct drawItems *drawValues){
+    // Loads map of choice
+    switch ((*maps).mapChoice){
+        // Map 1
+        case 1:{
+            //Draws first map
+            firstMapSetup(drawValues);
+            break;
         }
-    }
-    break;
-case 2: // Map 2
-    {
-        if ((*maps).initMap == 1){ // First time you enter it loads and builds the entire map
+        // Map 2
+        case 2:{
             printf("map 2 has been reset!\n");
-            //MapSetup();
-            maps->initMap = 0;
+            break;
         }
-        else{
-            printf("map 2 test\n");
-        }
-    }
-    break;
-case 3: // Map 3
-    {
-        if ((*maps).initMap == 1){ // First time you enter it loads and builds the entire map
+        // Map 3
+        case 3:{
             printf("map 3 has been reset!\n");
-            //MapSetup();
-            (*maps).initMap = 0;
-            }
-        else{
-            printf("map 1 test\n");
+            break;
+        }
+        //default (wrong input)
+        default:{
+            break;
         }
     }
-    break;
-default:
-    break;
-}
 }
 

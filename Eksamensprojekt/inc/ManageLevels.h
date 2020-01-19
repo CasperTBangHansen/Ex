@@ -2,20 +2,19 @@
 Control.h
 */
 
-#ifndef _LEVELMANAGER_H_
-#define _LEVELMANAGER_H_
+#ifndef _MANAGELEVELS_H_
+#define _MANAGELEVELS_H_
 
 #include <stdint.h>
 #include <stdio.h>
+#include "MapPack.h"
 
 struct mapPackage {
-uint8_t mapChoice;
-uint8_t initMap;
+    uint8_t mapChoice;
 };
 
-void MapInit(struct mapPackage *initMaps);
-void LevelManager(struct mapPackage *maps);
+void LevelManager(struct mapPackage *maps, struct drawItems *drawValues);
 
 
-#endif _LEVELMANAGER_H_
+#endif
 

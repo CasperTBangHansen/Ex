@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include "stm32f30x_conf.h"
-
 #ifndef _MAINMENU_H_
 #define _MAINMENU_H_
 
-void ConstructWindow();
+#include "Update.h"
+
+
+void ConstructWindow(struct drawItems *drawValues);
 void clearscr();
-void ConstructIntroMenu();
+void ConstructIntroMenu(struct drawItems *drawValues);
 
 #endif

@@ -1,33 +1,29 @@
-#include "30010_io.h"
-#include "stm32f30x_conf.h"
+/*
+**
+**                           MainMenu.c
+**
+**
+**********************************************************************/
+/*
+   Primary editor  :    Martin Kolster
+   Secondary editor:    Mathias Jensen
+   Last changed by :    19/01 - 2020
+
+   Functions       :    ConstructWindow(struct drawItems *drawValues);
+                        ConstructIntroMenu(struct drawItems *drawValues);
+                        void clearscr();
+
+**********************************************************************/
+//include .h file
 #include "MainMenu.h"
-#include <stdio.h>
-#include "Drawing.h"
+
+//defines
+//Symbols
 #define ESC 0x1B
 
-/*
-@@@@@@@@@@@@@@@@@@@@@@ MAIN @@@@@@@@@@@@@@@@@@@@@@@
-#include "stm32f30x_conf.h"
-#include "30010_io.h"
-#include "Timer.h"
-#include <stdio.h>
-#include "Drawing.h"
-#include "MainMenu.h"
-
-int main(void)
-{
-    uart_init( 115200 );
-    clearscr();
-    ConstructWindow();
-    ConstructIntroMenu();
-    while(1){}
-}
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-*/
 
 
-void ConstructWindow(){
-    struct drawItems drawValues[1000];
+void ConstructWindow(struct drawItems *drawValues){
     uint16_t Xbegin[] = {
     15,15,15,205, // Outer window
     15,15,205,205, //Corners outer window
@@ -87,8 +83,7 @@ void ConstructWindow(){
 
 }
 
-void ConstructIntroMenu(){
-     struct drawItems drawValues[1000];
+void ConstructIntroMenu(struct drawItems *drawValues){
      uint8_t Xbegin[] = {};
      uint8_t Xstop[] = {};
      uint8_t Ybegin[] = {};

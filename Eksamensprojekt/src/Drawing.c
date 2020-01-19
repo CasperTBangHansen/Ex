@@ -1,33 +1,45 @@
+/*
+**
+**                           Drawing.c
+**
+**
+**********************************************************************/
+/*
+   Primary editor  :    Casper Bang-Hansen
+   Secondary editor:
+   Last changed by :    19/01 - 2020
 
+   Functions       :    uint16_t SetPos(uint8_t status);
+                        void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t yPosStart, uint16_t xPosSlut, uint8_t yPosSlut, char character);
+                        void gotoxy(uint16_t x, uint8_t y);
+                        void DrawEverything(struct drawItems *drawValues);
+
+**********************************************************************/
+
+//include .h file
 #include "Drawing.h"
 
-/*------------------------------HOW TO------------------------------
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\EXAMPLE MAIN////////////////////////////
 
-struct drawItems drawValues[1000];
-for(int i = 0; i<64; i++){
-    DrawingSetValues(&drawValues, 1, i, 10, i, '-');
-}
-for(int i = 0; i<10; i++){
-    DrawingSetValues(&drawValues, 11+i, 1, 11+i, 10, '|');
-}
-DrawEverything(&drawValues);
-while(1){}
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\EXAMPLE MAIN////////////////////////////
---------------------------------HOW TO------------------------------
-*/
+//defines
+//Symbols
+#define ESC 0x1B
 
 
+/**********************************************************************
 
-/*
-    SetPos is a function the keeps track of the length of the drawValues array (DONT CALL THIS FUNCTION)
+   Description     :    SetPos keeps track of the length of drawValues
+                        Depending on the input SetPos will add one to the length, reset or return current length
 
-    Input:  reset       (uint8_t 0/1)
+   Input           :    uint8_t status      0   =   add currentPos by one
+                                            1   =   resets currentPos
+                                            2   =   current length
 
-    output: currentPos  (uint16_t 0-999)
-*/
+   Output          :    uint16_t currentPos
+
+**********************************************************************/
+
 uint16_t SetPos(uint8_t status){
-    //Starts counting at -1 (since it is a uint16_t this value is 65535, but it gets add by 1 and therefor it is 0)
+    //Starts counting at -1 (since it is a uint16_t this value is 65535, but it gets added by 1 and therefor it is 0)
     static uint16_t currentPos = -1;
     //Checks if this function should reset or not
     if(status == 0){
@@ -39,24 +51,28 @@ uint16_t SetPos(uint8_t status){
         currentPos = -1;
         return currentPos;
     } else if(status == 2){
+        //returns currentPos
         return currentPos;
     }
 }
 
-/*
-    DrawingSetValues is a funktion that takes postion (xStart,yStart) and (xSlut,ySlut) and a character. Then a struct array to these values
+/**********************************************************************
 
-    Input:  *drawValyes (struct drawItems adresse)
-            xPosStart   (uint16_t 1-271)
-            yPosStart   (uint8_t  1-65 )
-            xPosSlut    (uint16_t 1-271)
-            yPosSlut    (uint8_t  1-65 )
-            character   (char     'X'  )
+   Description     :    DrawingSetValues takes a coordinate set and a character and saves it in a struct.
 
-    output: void
-*/
+   Input           :    struct drawItems *drawValues
+                        uint16_t xPosStart
+                        uint8_t yPosStart
+                        uint16_t xPosSlut
+                        uint8_t yPosSlut
+                        char character
+
+   Output          :    void
+
+**********************************************************************/
+
 void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t yPosStart, uint16_t xPosSlut, uint8_t yPosSlut, char character){
-    //gets current position
+    //adds current position by one and gets current position
     uint16_t position = SetPos(0);
     //sets array at current position to input values
     drawValues[position].xStart = xPosStart;
@@ -66,25 +82,31 @@ void DrawingSetValues(struct drawItems *drawValues, uint16_t xPosStart, uint8_t 
     drawValues[position].text = character;
 }
 
-/*
-    gotoxy is a function that moves the curser to a (x,y) postion
-    Input:  x       (uint16_t 1-271)
-            y       (uint8_t  1-65 )
+/**********************************************************************
 
-    output: void
-*/
+   Description     :    gotoxy takes a coordinate set and goes to that position in the terminal
+
+   Input           :    uint16_t x
+                        uint8_t y
+
+   Output          :    void
+
+**********************************************************************/
 void gotoxy(uint16_t x, uint8_t y){
     //goes to (x,y)
-    printf("%c[%u;%u%c",0x1B,y,x,0x48);
+    printf("%c[%u;%u%c",ESC,y,x,0x48);
 }
 
-/*
-    DrawEverything draws the hole struct array
-    Input:  *drawValyes (struct drawItems adresse)
+/**********************************************************************
 
-    output: void
-*/
+   Description     :    DrawEverything takes a struct array were a coordinate set and a character is saved and draws this.
+                        After this the function 'cleans' the struct by reseting the SetPos function
 
+   Input           :    struct drawItems *drawValues
+
+   Output          :    void
+
+**********************************************************************/
 void DrawEverything(struct drawItems *drawValues){
     //Gets current position + 1
     uint16_t maxPos = SetPos(0);

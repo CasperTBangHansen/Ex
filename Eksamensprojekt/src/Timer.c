@@ -1,29 +1,24 @@
+/*
+**
+**                           Timer.c
+**
+**
+**********************************************************************/
+/*
+   Primary editor  :    Martin Kolster
+   Secondary editor:
+   Last changed by :    19/01 - 2020
+
+   Functions       :
+
+**********************************************************************/
+
+//include .h file
 #include "Timer.h"
 #include <stdio.h>
 #include "stm32f30x_conf.h"
 #include "30010_io.h"
 #include <stdlib.h>
-
-// @@@@@@@@@ EXAMPLE MAIN @@@@@@@@@@
-
-
-/*
-int main(void)
-{
-    uart_init( 9600 );
-    InitTimerStruct(&counter);
-    SetTimer();
-    uint8_t initMap = 1;
-    char currentSplitTime[11];
-    Split_Time_Function(&counter, &currentSplitTime);
-    printf("splitTime : %s \n",currentSplitTime);
-    while(1){
-            Split_Time_Function(&counter, &currentSplitTime);
-            printf("splitTime : %s \n",currentSplitTime);
-    }
-}
-*/
-
 
 
 void SetTimer(){ //Enables the clock, and starts the timer.
@@ -76,35 +71,3 @@ void Split_Time_Function(struct time *counter, char *splitTime){ //Take the stru
 sprintf((splitTime),"%02d:%02d:%02d:%02d",counter->hour,counter->minute,counter->second,counter->centisecond);
 }
 
-
-// No idea if the code below works. Idea was to store a static char everytime we get new data on
-/*
-void LoadSplitTimes(uint8_t initMap, uint8_t mapChoice){
-    if (initMap == 1 && mapChoice == 2){
-            Split_Time_Function(&counter, &currentSplitTime);
-            static char *map1 = currentSplitTime;
-            printf("splitTime : %s \n",map1);
-    }
-    if (initMap == 1 && mapChoice == 3){
-            Split_Time_Function(&counter, &currentSplitTime);
-            static char *map2 = currentSplitTime;
-            printf("splitTime : %s \n",map2);
-    }
-    if (initMap == 1 && mapChoice == 4){
-            Split_Time_Function(&counter, &currentSplitTime);
-            static char *map3 = currentSplitTime;
-            printf("splitTime : %s \n",map3);
-    }
-    if (initMap == 1 && mapChoice == 5){
-            Split_Time_Function(&counter, &currentSplitTime);
-            static char *map4 = currentSplitTime;
-            printf("splitTime : %s \n",map4);
-    }
-    if (initMap == 1 && mapChoice == 6){
-            Split_Time_Function(&counter, &currentSplitTime);
-            static char *map5 = currentSplitTime;
-            printf("splitTime : %s \n",map5);
-}
-return;
-}
-*/

@@ -1,64 +1,53 @@
-#include <stdio.h>
-#include "stm32f30x_conf.h"
-#include "30010_io.h"
-#include "Drawing.h"
-#include "MapPack.h"
-#define WALL = "0xDB"
-
 /*
-void MapSelection() {
-    struct drawItems drawValues[1000];
-    uint16_t Xbegin[] = {30,30,30,70};
-    uint16_t Xstop[] = {30,70,70,70};
-    uint8_t Ybegin[] = {30,30,70,30};
-    uint8_t Ystop[] = {70,30,70,70};
-    char charType[] = {0xDB,0xDB,0xDB,0xDB};
+**
+**                           MapPack.c
+**
+**
+**********************************************************************/
+/*
+   Primary editor  :    Martin Kolster
+   Secondary editor:
+   Last changed by :    19/01 - 2020
 
-    for(uint8_t i = 0; i<(sizeof(charType)); i++){
-            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
-    }
-    DrawEverything(&drawValues);
-}
+   Functions       :    void firstMapSetup(struct drawItems *drawValues);
 
-*/
+**********************************************************************/
 
-#include <stdio.h>
-#include "stm32f30x_conf.h"
-#include "30010_io.h"
-#include "Drawing.h"
+//include .h file
 #include "MapPack.h"
 
-void MapSelection() {
-    struct drawItems drawValues[1000];
-     // Begrænsninginger for window (X : 10 -> 160, Y : 5 -> 55)
-     // HEX CODES FOR WALLS IN GAME
-     // Horizontal 0xCD
-     // Vertical 0xBA
-     // top left 0xC9
-     // top right 0xBB
-     // bottom right 0xBC
-     // bottom left 0xC8
-     // Outline for middle box ( X = 15 -> 165, Y = 15 -> 115 )
+/**********************************************************************
+
+   Description     :    firstMapSetup draws the all the walls and gives the walls hitbox to the collider
+
+   Input           :    struct drawItems *drawValues
+
+   Output          :    void
+
+**********************************************************************/
+
+void firstMapSetup(struct drawItems *drawValues) {
 
 
-    uint16_t Xbegin[] = {
-    16,17,164,163, // Entrance and exit
-    16,16,20,20,24,24,28,28,32,32,36,36, // Left tunnel
-    160,160,156,156,152,152,148,148,144,144,141,141, // Right tunnel
-    40,40,40,141,40,141,// Game maze window
-    46,46,46,50,50,60, //top left structure, then move to the right
-    66,66,70, // Little 2 field long top left
-    76,76,100,96,76,96, // Long to the right of above
-    81,81,81,86,90,86, // Below to the left of the above
-    71,71,71,75, // Square to the left of above
-    56,61,65,56,61,46,50,46,60,46,50, // Weird thing to the left of square
-    46,46,46,50, // Line below weird thing
-    41,41,41,45, // Square below line left wall
-    56,56,56,66,66,70, // Mirrored vertical L to the right of entrance
-    56,56,56,60, // ??  cant remember
-    76,76,76,80, // ?? Cant remember by now
-    56,70,56,56,  // long line
-    76,90,76,76,86,86, // i forgot everything from here and down
+//Coordinates for all the walls in the first maps maze
+    const uint8_t Xbegin[] = {
+    16,17,164,163,
+    16,16,
+    141,141,
+    40,40,40,141,40,141,
+    46,46,46,50,50,60,
+    66,66,70,
+    76,76,100,96,76,96,
+    81,81,81,86,90,86,
+    71,71,71,75,
+    56,61,65,56,61,46,50,46,60,46,50,
+    46,46,46,50,
+    41,41,41,45,
+    56,56,56,66,66,70,
+    56,56,56,60,
+    76,76,76,80,
+    56,70,56,56,
+    76,90,76,76,86,86,
     96,96,96,100,
     96,96,96,100,
     96,96,96,110,100,100,
@@ -83,13 +72,11 @@ void MapSelection() {
     56,56,56,70,
     46,46,46,50,
     56,56,56,60
-
-
     };
-    uint16_t Xstop[] = {
+    const uint8_t Xstop[] = {
     16,17,164,163,
-    20,20,24,24,28,28,32,32,36,36,40,40,
-    164,164,160,160,156,156,152,152,148,148,144,144,
+    40,40,
+    164,164,
     40,40,141,141,141,141,
     60,46,50,50,60,60,
     66,70,70,
@@ -114,7 +101,7 @@ void MapSelection() {
     121,125,125,
     116,120,120,120,
     131,135,135,135,
-    126,135,135,135, // THIS ONE
+    126,135,135,135,
     126,135,135,135,121,125,
     131,135,135,135,
     116,125,125,125,
@@ -127,15 +114,11 @@ void MapSelection() {
     76,80,80,80,
     56,70,70,70,
     46,50,50,50,
-    56,60,60,60
-
-
-
-    };
-    uint8_t Ybegin[] = {
-    56,56,56,56,
-    55,75,56,74,57,73,58,72,59,71,60,70,
-    55,75,56,74,57,73,58,72,59,71,60,70,
+    56,60,60,60};
+    const uint8_t Ybegin[] = {
+    61,61,61,61,
+    60,70,
+    60,70,
     20,70,20,20,111,70,
     26,26,35,30,30,26,
     20,30,20,
@@ -173,17 +156,11 @@ void MapSelection() {
     91,91,95,91,
     91,91,95,91,
     91,91,105,91,
-    101,101,105,101
-
-
-
-
-
-    };
-    uint8_t Ystop[] = {
-    74,74,74,74,
-    55,75,56,74,57,73,58,72,59,71,60,70,
-    55,75,56,74,57,73,58,72,59,71,60,70,
+    101,101,105,101};
+    const uint8_t Ystop[] = {
+    69,69,69,69,
+    60,70,
+    60,70,
     60,110,20,60,111,111,
     26,35,35,35,30,30,
     30,30,30,
@@ -222,14 +199,11 @@ void MapSelection() {
     95,91,95,95,
     105,91,105,105,
     105,101,105,105
-
-
-
     };
     char charType[] = {
     0xAF,0xAF,0xAF,0xAF,
-    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
-    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,
@@ -268,11 +242,19 @@ void MapSelection() {
     0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2
-
-
     };
-    for(uint8_t i = 0; i<(sizeof(charType)); i++){
-            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+
+    //Sets all the walls drawing in the drawing buffer
+    for(uint8_t i = 0; i<(sizeof(Ystop)); i++){
+        DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
-    DrawEverything(&drawValues);
+    //frees up Xbegin, Ystop, Xstop
+    free(&Xbegin);
+    free(&Ybegin);
+    free(&Xstop);
+
+    //Gives the collider the hitbox of the walls
+    setWallHitBox(drawValues,SetPos(2));
+    //Draws the entire maze
+    DrawEverything(drawValues);
 }

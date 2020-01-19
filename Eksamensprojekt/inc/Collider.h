@@ -35,13 +35,19 @@ struct player{
     int8_t xVelocity;
     int8_t yVelocity;
     uint8_t lives;
+    uint8_t direction;
     struct bullet shots[3];
 };
 
-void initEverything(struct player *player, struct enemy *enemy);
+struct drawItems{
+    uint16_t xStart;
+    uint16_t xSlut;
+    uint8_t yStart;
+    uint8_t ySlut;
+    char text;
+};
+
 void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize);
-int16_t getWallHitBoxSize();
-void getWallHitBox(struct mapHitBox *mapCollider);
 void checkCollider(struct player *playerHitBox, struct enemy *enemies);
 static uint16_t checkColliderLeftToRight(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
 static uint16_t checkColliderRightToLeft(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
