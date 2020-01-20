@@ -77,10 +77,45 @@ void ConstructWindow(struct drawItems *drawValues){
 
     };
     for(uint8_t i = 0; i<(sizeof(charType)); i++){
-            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+            DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
-    DrawEverything(&drawValues);
+    DrawEverything(drawValues);
 
+    gotoxy(168,19);
+        printf(" __  __ ___ ___ ___ ___ ___  _  _ ");
+    gotoxy(168,20);
+        printf("|  \\/  |_ _/ __/ __|_ _/ _ \\| \\| |");
+    gotoxy(168,21);
+        printf("| |\\/| || |\\__ \\__ \\| | (_) | .` |");
+    gotoxy(168,22);
+        printf("|_|  |_|___|___|___|___\\___/|_|\\_|");
+    gotoxy(168,29);
+        printf("CURRENT MAP LEVEL: ");
+    gotoxy(168,32);
+        printf("TIME ELAPSED: ");
+    gotoxy(168,35);
+        printf("MAP 1 TIME: ");
+    gotoxy(168,38);
+        printf("MAP 2 TIME: ");
+    gotoxy(168,41);
+        printf("SCORE: ");
+    gotoxy(168,44);
+        printf("");
+
+    gotoxy(170,71);
+        printf(" _____ _____ _____ _____ _____");
+    gotoxy(170,72);
+        printf("|   __|_   _|  _  |_   _|   __|");
+    gotoxy(170,73);
+        printf("|__   | | | |     | | | |__   |");
+    gotoxy(170,74);
+        printf("|_____| |_| |__|__| |_| |_____|");
+    gotoxy(168,81);
+        printf("HEALTH: ");
+    gotoxy(168,84);
+        printf("AMMO: ");
+    gotoxy(168,87);
+        printf("WEAPON: ");
 }
 
 void ConstructIntroMenu(struct drawItems *drawValues){
@@ -90,9 +125,9 @@ void ConstructIntroMenu(struct drawItems *drawValues){
      uint8_t Ystop[] = {};
      char charType[] = {};
      for(uint8_t i = 0; i<(sizeof(charType)); i++){
-            DrawingSetValues(&drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+            DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
-    DrawEverything(&drawValues);
+    DrawEverything(drawValues);
 }
 
 
