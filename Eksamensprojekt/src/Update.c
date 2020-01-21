@@ -23,6 +23,28 @@
 #define enemySize 21
 #define drawValuesSize 300
 
+/***********************************
+Interrupt settings
+
+***********************************/
+void InterruptSet(){
+RCC->APB1ENR |= RCC_APB1Periph_TIM2; // Enable clock line to timer 2;
+TIM2->CR1 = 0x00; // Configure timer 2
+TIM2->CR1 &= ~(0x0001 << (11 * 2));
+TIM2->CR1 &= ~(0x0001 << (9 * 2));
+TIM2->CR1 &= ~(0x0001 << (8 * 2));
+TIM2->CR1 &= ~(0x0001 << (7 * 2));
+TIM2->CR1 &= ~(0x0001 << (6 * 2));
+TIM2->CR1 &= ~(0x0001 << (5 * 2));
+TIM2->CR1 &= ~(0x0001 << (4 * 2));
+TIM2->CR1 &= ~(0x0001 << (3 * 2));
+TIM2->CR1 &= ~(0x0001 << (2 * 2));
+TIM2->CR1 &= ~(0x0001 << (1 * 2));
+TIM2->CR1 |= (0x0001 << (0 * 2));
+TIM2->ARR = 0x2C; // Set reload value
+TIM2->PSC = 0x28; // Set prescale value
+}
+
 
 /**********************************************************************
 
