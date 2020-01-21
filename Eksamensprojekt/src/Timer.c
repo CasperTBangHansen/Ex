@@ -44,8 +44,13 @@ void SetTimer(){ //Enables the clock, and starts the timer.
 
 void TIM2_IRQHandler(void) {
     counter.centisecond++;
-    counter.runProgram = 1;
-    if(counter.centisecond % 10 == 0){
+    if(counter.centisecond % counter.speedPlayer == 0){
+        counter.runPlayer = 1;
+    }
+    if(counter.centisecond % counter.speedBullet == 0){
+        counter.runBullet = 1;
+    }
+    if(counter.centisecond % counter.speedEnemies == 0){
         counter.runEnemies = 1;
     }
     if(counter.centisecond >= 100){
