@@ -15,6 +15,9 @@ struct enemy{
     int8_t xVelocity;
     int8_t yVelocity;
     uint8_t show;
+    uint16_t xPath[10];
+    uint8_t yPath[10];
+    uint8_t arrayPathSize;
 };
 
 struct bullet{
@@ -34,7 +37,7 @@ struct player{
     uint8_t yPosPrevious;
     int8_t xVelocity;
     int8_t yVelocity;
-    uint8_t lives;
+    int8_t lives;
     uint8_t direction;
     struct bullet shots[3];
 };

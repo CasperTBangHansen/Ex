@@ -43,7 +43,7 @@ uint8_t userInput(struct player *player){
 
     //player and shots max velocities in a given direction
     int8_t playerMaxVelocity = 1;
-    int8_t shotsMaxVelocity = 1;
+    int8_t shotsMaxVelocity = 3;
 
     //Bullet movement
     for(int8_t i = 0; i < 3; i++){

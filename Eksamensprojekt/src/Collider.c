@@ -18,8 +18,6 @@
                         static uint8_t checkColliderXEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos);
                         static uint8_t checkColliderYEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos);
 
-
-
 **********************************************************************/
 
 //Includes
@@ -149,17 +147,46 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies){
     for(int8_t w = 0; w < 20; w++){
         //checks if the enemy exist
         if(enemies[w].show == 1){
+
             //checks if the player hit an enemy in the x-direction and if the player was previously hit this tick.
-            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)){
-                //sets the players live counter one lower then it was before
-                playerHitBox->lives = (*playerHitBox).lives - 1;
-                hit = 1;
-            }
+
+            //under spaceship
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos,     (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+            //over spaceship
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos,     (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+            //middel of spaceship
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos,     (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderXEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+
             //checks if the player hit an enemy in the y-direction and if the player was previously hit this tick.
-            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)){
-                //sets the players live counter one lower then it was before
+
+            //right of spaceship
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos + 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+            //left of spaceship
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos - 1, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+            //center of spaceship
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos + 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+            if (hit == 0 && checkColliderYEnemy((*playerHitBox).xPos, (*playerHitBox).xPosPrevious, (*playerHitBox).yPos - 1, (*playerHitBox).yPosPrevious, (*playerHitBox).xVelocity, (*playerHitBox).yVelocity, enemies[w].xPos, enemies[w].yPos)) hit = 1;
+
+
+
+            if(hit == 1){
                 playerHitBox->lives = (*playerHitBox).lives - 1;
-                hit = 1;
             }
         }
     }
@@ -185,7 +212,7 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies){
 
 static uint8_t checkColliderXEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos){
     if((yPosPrevious <= enemiesYPos && yPos >= enemiesYPos) || (yPosPrevious >= enemiesYPos && yPos <= enemiesYPos)){
-        if(xVelocity > 0){
+        if(xVelocity >= 0){
             if(xPosPrevious <= enemiesXPos && xPos >= enemiesXPos){
                 //player hit the enemy
                 return 1;
@@ -221,7 +248,7 @@ static uint8_t checkColliderXEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t
 
 static uint8_t checkColliderYEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos){
     if((xPosPrevious <= enemiesXPos && xPos >= enemiesXPos) || (xPosPrevious >= enemiesXPos && xPos <= enemiesXPos)){
-        if(yVelocity > 0){
+        if(yVelocity >= 0){
             if(yPosPrevious <= enemiesYPos && yPos >= enemiesYPos){
                 //player hit the enemy
                 return 1;
