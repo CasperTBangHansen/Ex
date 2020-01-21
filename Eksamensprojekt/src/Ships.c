@@ -112,7 +112,7 @@ void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct 
             }
         }
         //checks if the player skins exists
-        if(skin >= 0 && skin <= 3){
+        if(skin > 0 && skin <= 3){
             //sets the players previous position (3x3) to 0xFF (empty) in the drawer que
             for(uint8_t i = 0; i<=(8); i++){
                 DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
@@ -124,6 +124,14 @@ void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct 
             //draws both 'player models' right after each other
             DrawEverything(drawValues);
         }
+        if(skin == 0){
+            //sets the players previous position (3x3) to 0xFF (empty) in the drawer que
+            for(uint8_t i = 0; i<=(8); i++){
+                DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
+            }
+            DrawEverything(drawValues);
+        }
+
     }
 
 }

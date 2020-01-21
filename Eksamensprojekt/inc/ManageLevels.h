@@ -13,7 +13,7 @@ struct mapPackage {
     uint8_t mapChoice;
 };
 
-void LevelManager(struct mapPackage *maps, struct drawItems *drawValues);
+void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap);
 
 
 #endif

@@ -1,17 +1,19 @@
+#ifndef _TIMER_H_
+#define _TIMER_H_
+
 #include "stm32f30x_conf.h"
 #include "30010_io.h"
 #include <stdio.h>
 
 
-#ifndef _TIMER_H_
-#define _TIMER_H_
-
 struct time {
-int8_t centisecond;
-int8_t second;
-int8_t minute;
-int8_t hour;
-int8_t currentMap;
+    uint8_t centisecond;
+    uint8_t second;
+    uint8_t minute;
+    uint8_t hour;
+    uint8_t currentMap;
+    uint8_t runProgram;
+    uint8_t runEnemies;
 }counter;
 
 

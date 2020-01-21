@@ -42,8 +42,12 @@ void SetTimer(){ //Enables the clock, and starts the timer.
     TIM2->CR1 |= (0x01 << 0); // Turn on timer 2
 }
 
-void TIM2_IRQHandler(void) { //Makes sure that there's only 100 centiseconds on a second, and 60 seconds on a minute etc.
+void TIM2_IRQHandler(void) {
     counter.centisecond++;
+    counter.runProgram = 1;
+    if(counter.centisecond % 10 == 0){
+        counter.runEnemies = 1;
+    }
     if(counter.centisecond >= 100){
         counter.centisecond -= 100;
         counter.second++;
@@ -60,14 +64,9 @@ void TIM2_IRQHandler(void) { //Makes sure that there's only 100 centiseconds on 
     TIM2->SR &= ~0x0001; //clear interrupt bit
 }
 
-void InitTimerStruct(struct time *counter){ //Initialize the struct
-    counter->centisecond = 0;
-    counter->second = 0;
-    counter->minute = 0;
-    counter->hour = 0;
-    }
+
 
 void Split_Time_Function(struct time *counter, char *splitTime){ //Take the struct, and the address for a char, then prints the current time to that char address, so it can be used later on.
-sprintf((splitTime),"%02d:%02d:%02d:%02d",counter->hour,counter->minute,counter->second,counter->centisecond);
+    sprintf((splitTime),"%02d:%02d:%02d:%02d",counter->hour,counter->minute,counter->second,counter->centisecond);
 }
 
