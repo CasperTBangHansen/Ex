@@ -47,23 +47,6 @@ int main(void)
                     shipValue = temp;
                 }
             }else {
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
-                printf("---------------->%d<--------------------\n",shipValue);
                 initStructs(&drawValues, shipValue);
                 MenuSelection.MainMenu = 1;
                 break;

@@ -132,10 +132,14 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
     uint8_t moveDirection;
     uint8_t drawMap = 1;
     //Checks if the player is alive
-    while((*player).lives >= 0){
+    while((*player).lives > 0){
         int8_t preLives = (*player).lives;
         //init map and Draw Map and SetWallHitBox
         LevelManager(maps, drawValues, player, enemy, drawMap);
+
+        //Set health bar
+        upDateHealth((*player).lives);
+        //SetMapDraw to false
         drawMap = 0;
 
         //sets player direction to look right
@@ -168,14 +172,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                 counter.runEnemies = 0;
                 upDatePosition(enemy);
             }
-
-            //For TESTING
-            gotoxy(1,1);
-            printf("(%d,%d,%d)\n",(*player).xPos,(*player).yPos,(*player).lives);
-            printf("(%d,%d,%d)\n",(*player).shots[0].xPos,(*player).shots[0].yPos,(*player).shots[0].show);
-            printf("(%d,%d,%d)\n",(*player).shots[1].xPos,(*player).shots[1].yPos,(*player).shots[1].show);
-            printf("(%d,%d,%d)\n",(*player).shots[2].xPos,(*player).shots[2].yPos,(*player).shots[2].show);
-            printf("%d",counter.speedEnemies);
 
             //running collider
             checkCollider(player, enemy);
