@@ -90,9 +90,21 @@
 		<Unit filename="cmsis\core_cmFunc.h" />
 		<Unit filename="cmsis\core_cmInstr.h" />
 		<Unit filename="inc\30010_io.h" />
+		<Unit filename="inc\Collider.h" />
+		<Unit filename="inc\ControlSystem.h" />
+		<Unit filename="inc\Drawing.h" />
+		<Unit filename="inc\DrawObjects.h" />
+		<Unit filename="inc\EnemyController.h" />
+		<Unit filename="inc\MainMenu.h" />
+		<Unit filename="inc\ManageLevels.h" />
+		<Unit filename="inc\MapPack.h" />
+		<Unit filename="inc\MenuControls.h" />
+		<Unit filename="inc\Ships.h" />
 		<Unit filename="inc\stm32f30x.h" />
 		<Unit filename="inc\stm32f30x_conf.h" />
 		<Unit filename="inc\system_stm32f30x.h" />
+		<Unit filename="inc\Timer.h" />
+		<Unit filename="inc\Update.h" />
 		<Unit filename="readme.txt" />
 		<Unit filename="SPL\inc\stm32f30x_adc.h" />
 		<Unit filename="SPL\inc\stm32f30x_can.h" />
@@ -185,14 +197,50 @@
 		<Unit filename="src\30010_io.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src\Collider.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\ControlSystem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\Drawing.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\DrawObjects.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\EnemyController.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src\MainMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\ManageLevels.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\MapPack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\MenuControls.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src\printing" />
+		<Unit filename="src\Ships.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="src\startup_stm32f30x.S">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\system_stm32f30x.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\Timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\Update.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="stm32f302r8_flash.ld" />
@@ -200,21 +248,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
-				<target_debugging_settings target="Debug" active_interface="OpenOCD">
-					<debug_interface interface_id="OpenOCD" ip_address="localhost" ip_port="3333" path="C:\Users\caspe\Desktop\Debugger_openocd-0.10.0\bin-x64" executable="openocd.exe" description="" dont_start_server="false" backoff_time="100" options="0" reg_filter="0" active_family="All" gdb_before_conn="" gdb_after_conn="">
-						<family_options family_id="All">
-							<option opt_id="ID_BOARD_CH" opt_value="" />
-							<option opt_id="ID_INTERFACE_CH" opt_value="stlink-v2-1" />
-							<option opt_id="ID_TARGET_CH" opt_value="stm32f3x_stlink" />
-							<option opt_id="ID_TEXTCTRL1" opt_value="4" />
-							<option opt_id="ID_HW_BKP_LIMIT" opt_value="1" />
-							<option opt_id="ID_RESET_CH" opt_value="halt" />
-							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
-							<option opt_id="ID_SEMIHOST_CHECK" opt_value="0" />
-							<option opt_id="ID_ADD_COMMANDS" opt_value="" />
-							<option opt_id="ID_ADD_CMNDS" opt_value="" />
-						</family_options>
-					</debug_interface>
+				<target_debugging_settings target="Release" active_interface="ST-link">
 					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBITZ}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics" gdb_before_conn="" gdb_after_conn="">
 						<family_options family_id="STMicroelectronics">
 							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
@@ -231,7 +265,21 @@
 						</family_options>
 					</debug_interface>
 				</target_debugging_settings>
-				<target_debugging_settings target="Release" active_interface="ST-link">
+				<target_debugging_settings target="Debug" active_interface="OpenOCD">
+					<debug_interface interface_id="OpenOCD" ip_address="localhost" ip_port="3333" path="C:\Users\caspe\Desktop\Debugger_openocd-0.10.0\bin-x64" executable="openocd.exe" description="" dont_start_server="false" backoff_time="100" options="0" reg_filter="0" active_family="All" gdb_before_conn="" gdb_after_conn="">
+						<family_options family_id="All">
+							<option opt_id="ID_BOARD_CH" opt_value="" />
+							<option opt_id="ID_INTERFACE_CH" opt_value="stlink-v2-1" />
+							<option opt_id="ID_TARGET_CH" opt_value="stm32f3x_stlink" />
+							<option opt_id="ID_TEXTCTRL1" opt_value="4" />
+							<option opt_id="ID_HW_BKP_LIMIT" opt_value="1" />
+							<option opt_id="ID_RESET_CH" opt_value="halt" />
+							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
+							<option opt_id="ID_SEMIHOST_CHECK" opt_value="0" />
+							<option opt_id="ID_ADD_COMMANDS" opt_value="" />
+							<option opt_id="ID_ADD_CMNDS" opt_value="" />
+						</family_options>
+					</debug_interface>
 					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBITZ}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics" gdb_before_conn="" gdb_after_conn="">
 						<family_options family_id="STMicroelectronics">
 							<option opt_id="ID_JTAG_SWD" opt_value="swd" />

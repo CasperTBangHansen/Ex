@@ -519,37 +519,37 @@
 	"Joystick.h"
 	"stm32f30x_conf.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_adc.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_adc.c
 	"stm32f30x_adc.h"
 	"stm32f30x_rcc.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_adc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_adc.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\stm32f30x.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\stm32f30x.h
 	"core_cm4.h"
 	"system_stm32f30x.h"
 	<stdint.h>
 	"stm32f30x_conf.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cm4.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cm4.h
 	<stdint.h>
 	<core_cmInstr.h>
 	<core_cmFunc.h>
 	<core_cm4_simd.h>
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cminstr.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cminstr.h
 	<cmsis_iar.h>
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cmfunc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cmfunc.h
 	<cmsis_iar.h>
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cm4_simd.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\cmsis\core_cm4_simd.h
 	<cmsis_iar.h>
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\system_stm32f30x.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\system_stm32f30x.h
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\stm32f30x_conf.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\stm32f30x_conf.h
 	"stm32f30x_adc.h"
 	"stm32f30x_can.h"
 	"stm32f30x_crc.h"
@@ -573,151 +573,203 @@
 	"stm32f30x_wwdg.h"
 	"stm32f30x_misc.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_can.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_can.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_crc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_crc.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_comp.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_comp.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dac.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dac.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dbgmcu.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dbgmcu.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dma.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_dma.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_exti.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_exti.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_flash.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_flash.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_gpio.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_gpio.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_syscfg.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_syscfg.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_i2c.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_i2c.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_iwdg.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_iwdg.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_opamp.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_opamp.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_pwr.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_pwr.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_rcc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_rcc.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_rtc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_rtc.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_spi.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_spi.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_tim.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_tim.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_usart.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_usart.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_wwdg.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_wwdg.h
 	"stm32f30x.h"
 
-1578306193 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_misc.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\spl\inc\stm32f30x_misc.h
 	"stm32f30x.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_can.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_can.c
 	"stm32f30x_can.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_comp.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_comp.c
 	"stm32f30x_comp.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_crc.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_crc.c
 	"stm32f30x_crc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dac.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dac.c
 	"stm32f30x_dac.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dbgmcu.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dbgmcu.c
 	"stm32f30x_dbgmcu.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dma.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_dma.c
 	"stm32f30x_dma.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_exti.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_exti.c
 	"stm32f30x_exti.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_flash.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_flash.c
 	"stm32f30x_flash.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_gpio.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_gpio.c
 	"stm32f30x_gpio.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_i2c.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_i2c.c
 	"stm32f30x_i2c.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_iwdg.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_iwdg.c
 	"stm32f30x_iwdg.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_misc.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_misc.c
 	"stm32f30x_misc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_opamp.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_opamp.c
 	"stm32f30x_opamp.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_pwr.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_pwr.c
 	"stm32f30x_pwr.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_rcc.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_rcc.c
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_rtc.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_rtc.c
 	"stm32f30x_rtc.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_spi.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_spi.c
 	"stm32f30x_spi.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_syscfg.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_syscfg.c
 	"stm32f30x_syscfg.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_tim.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_tim.c
 	"stm32f30x_tim.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_usart.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_usart.c
 	"stm32f30x_usart.h"
 	"stm32f30x_rcc.h"
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_wwdg.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\spl\src\stm32f30x_wwdg.c
 	"stm32f30x_wwdg.h"
 	"stm32f30x_rcc.h"
 
-1578306482 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\30010_io.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\30010_io.c
 	"30010_io.h"
 
-1578306481 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\30010_io.h
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\30010_io.h
 	"stm32f30x_conf.h"
 	<stdio.h>
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\startup_stm32f30x.s
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\startup_stm32f30x.s
 
-1578306193 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\system_stm32f30x.c
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\system_stm32f30x.c
 	"stm32f30x.h"
+
+1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\main.c
+	"stm32f30x_conf.h"
+	"30010_io.h"
+	"Update.h"
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
+	"ManageLevels.h"
+	"Drawing.h"
+	"Collider.h"
+	"ControlSystem.h"
+	"EnemyController.h"
+	"Timer.h"
+	"DrawObjects.h"
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\managelevels.h
+	<stdint.h>
+	<stdio.h>
+	"MapPack.h"
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\mappack.h
+	"Drawing.h"
+	"Collider.h"
+	<stdio.h>
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\drawing.h
+	"Collider.h"
+	"Update.h"
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\collider.h
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	"Drawing.h"
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\controlsystem.h
+	"Collider.h"
+	"Update.h"
+	<stdint.h>
+	<stdio.h>
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\enemycontroller.h
+	<stdint.h>
+	"Collider.h"
+
+1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\timer.h
+	"stm32f30x_conf.h"
+	"30010_io.h"
+	<stdio.h>
 
