@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-
+void GameLED(uint8_t tal);
 
 
 #endif _LED_H_
