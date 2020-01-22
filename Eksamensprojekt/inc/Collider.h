@@ -33,6 +33,8 @@ struct player{
     uint16_t xPosPrevious;
     uint8_t yPos;
     uint8_t yPosPrevious;
+    int8_t xVelocity;
+    int8_t yVelocity;
     int8_t lives;
     uint8_t direction;
     struct bullet shots[3];
@@ -48,8 +50,12 @@ struct drawItems{
 
 void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize);
 void checkCollider(struct player *playerHitBox, struct enemy *enemies);
-uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i);
-uint8_t enemyCollider(uint16_t objectXPos, uint8_t objectYPos, uint16_t enemyXPos, uint8_t enemyYPos);
+static uint16_t checkColliderLeftToRight(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
+static uint16_t checkColliderRightToLeft(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
+static uint16_t checkColliderTopToBottom(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
+static uint16_t checkColliderBottomToTop(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t i);
+static uint8_t checkColliderXEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos);
+static uint8_t checkColliderYEnemy(uint16_t xPos, uint16_t xPosPrevious, uint8_t yPos, uint8_t yPosPrevious, int8_t xVelocity, int8_t yVelocity, uint16_t enemiesXPos, uint8_t enemiesYPos);
 
 
 
