@@ -37,6 +37,7 @@ struct player{
     uint8_t yPosPrevious;
     int8_t lives;
     uint8_t direction;
+    uint8_t bulletType;
     struct bullet shots[3];
 };
 

@@ -8,6 +8,7 @@
 #include "EnemyController.h"
 #include "Timer.h"
 #include "DrawObjects.h"
+#include "upDateUI.h"
 
 void initStructs(struct drawItems *drawValues, uint8_t ship);
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);

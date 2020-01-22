@@ -13,5 +13,5 @@ obj\debug\src\main.o: src\main.c inc/stm32f30x_conf.h \
  SPL\inc/stm32f30x_wwdg.h SPL\inc/stm32f30x_misc.h inc/30010_io.h \
  inc/Update.h inc/ManageLevels.h inc/MapPack.h inc/Drawing.h \
  inc/Collider.h inc/ControlSystem.h inc/Update.h inc/EnemyController.h \
- inc/Timer.h inc/30010_io.h inc/DrawObjects.h inc/MainMenu.h \
- inc/MainMenu.h inc/MenuControls.h inc/MenuControls.h
+ inc/Timer.h inc/30010_io.h inc/DrawObjects.h inc/upDateUI.h \
+ inc/MainMenu.h inc/MainMenu.h inc/MenuControls.h inc/MenuControls.h
