@@ -70,6 +70,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     player->lives = 3;
     player->direction = 4;
     player->bulletType = 2;
+    player->score = 0;
 
     //Timer initialization
     counter.centisecond = 0;
@@ -160,9 +161,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                     }
                 }
             }
-            //draw weapontype
-            upDateWeapon((*player).bulletType);
-
             //Player movement
             if(counter.runPlayer == 1){
                 counter.runPlayer = 0;
@@ -181,6 +179,11 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             //Draw every moving object
             drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy, ship);
 
+            //draw weapontype
+            upDateWeapon((*player).bulletType);
+            //draw Score
+            upDateScore((*player).score);
+
         }
         for(uint8_t i = 0; i < enemySize; i++){
             drawEnemy(0,enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
@@ -188,6 +191,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         //clear player position
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
+
 
     }
 }

@@ -75,6 +75,7 @@ uint8_t userInput(struct player *player){
     } else if(buttonPress == 0x20){
 
         if((*player).bulletType == 1){
+        player->score -= 50;
         //runs through all the bullets
             for(int8_t i = 0; i < 3; i++){
                 //checks if there is a bullet that doesn't exist
@@ -102,6 +103,7 @@ uint8_t userInput(struct player *player){
                 }
             }
             if(shootAllBullets == 0){
+                player->score -= 150;
                 (*player).shots[0].show = 1;
                 (*player).shots[1].show = 1;
                 (*player).shots[2].show = 1;

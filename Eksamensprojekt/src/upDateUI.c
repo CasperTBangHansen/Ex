@@ -47,5 +47,16 @@ void upDateWeapon(uint8_t activeWeapon){
     }
 }
 
+void upDateScore(int16_t playerScore){
+    static int16_t currentScore = 1;
+    if(playerScore != currentScore){
+        currentScore = playerScore;
+        gotoxy(175,87);
+        printf("      ");
+        gotoxy(175,87);
+        printf("%d",currentScore);
+    }
+}
+
 
 

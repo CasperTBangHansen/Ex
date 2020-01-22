@@ -138,7 +138,10 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies){
             if(enemyCollider((*playerHitBox).xPos, (*playerHitBox).yPos + 1, enemies[w].xPos, enemies[w].yPos)) hit = 1;
             if(enemyCollider((*playerHitBox).xPos + 1, (*playerHitBox).yPos + 1, enemies[w].xPos, enemies[w].yPos)) hit = 1;
 
-            if(hit == 1) playerHitBox->lives = (*playerHitBox).lives - 1;
+            if(hit == 1){
+                playerHitBox->lives = (*playerHitBox).lives - 1;
+                hit = 0;
+            }
         }
     }
 }

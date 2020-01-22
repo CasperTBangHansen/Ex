@@ -38,6 +38,7 @@ struct player{
     int8_t lives;
     uint8_t direction;
     uint8_t bulletType;
+    int16_t score;
     struct bullet shots[3];
 };
 
