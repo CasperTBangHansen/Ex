@@ -95,6 +95,7 @@
 		<Unit filename="inc\Drawing.h" />
 		<Unit filename="inc\DrawObjects.h" />
 		<Unit filename="inc\EnemyController.h" />
+		<Unit filename="inc\LED.h" />
 		<Unit filename="inc\MainMenu.h" />
 		<Unit filename="inc\ManageLevels.h" />
 		<Unit filename="inc\MapPack.h" />
@@ -211,6 +212,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\EnemyController.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\LED.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\main.c">

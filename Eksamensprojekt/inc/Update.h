@@ -10,9 +10,9 @@
 #include "DrawObjects.h"
 #include "upDateUI.h"
 
-void initStructs(struct drawItems *drawValues, uint8_t ship);
+void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore);
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship);
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int16_t *highscore);
 void InterruptSet();
 
 #endif

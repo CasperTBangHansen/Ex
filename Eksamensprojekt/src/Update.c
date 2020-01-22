@@ -20,7 +20,7 @@
 
 //defines
 //amount of enemy and draw buffer
-#define enemySize 21
+#define enemySize 20
 #define drawValuesSize 300
 
 /**********************************************************************
@@ -33,17 +33,18 @@
 
 **********************************************************************/
 
-void initStructs(struct drawItems *drawValues, uint8_t ship){
+void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
     //makes all the structs
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
     SetTimer();
+
     //sets default parameter to all the structs (resets the structs)
     initEverythingFirstTime(&player, &enemies, &maps);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, drawValues, ship);
+    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore);
 }
 
 
@@ -70,6 +71,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     player->lives = 3;
     player->direction = 4;
     player->bulletType = 2;
+    player->score = 0;
 
     //Timer initialization
     counter.centisecond = 0;
@@ -128,7 +130,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
@@ -160,9 +162,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                     }
                 }
             }
-            //draw weapontype
-            upDateWeapon((*player).bulletType);
-
             //Player movement
             if(counter.runPlayer == 1){
                 counter.runPlayer = 0;
@@ -181,6 +180,18 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             //Draw every moving object
             drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy, ship);
 
+            //draw weapontype
+            upDateWeapon((*player).bulletType);
+            //draw Score
+            upDateScore((*player).score);
+
+            //check highscore
+            if((*player).score >= (*highscore)){
+                (*highscore) = (*player).score;
+            }
+            //draw highscore
+            upDateHighScore((*highscore),0);
+
         }
         for(uint8_t i = 0; i < enemySize; i++){
             drawEnemy(0,enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
@@ -188,6 +199,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         //clear player position
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
+
 
     }
 }
