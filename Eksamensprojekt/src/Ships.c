@@ -89,9 +89,30 @@ void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct 
                     break;
             }
         //checks if the skin is equal to three and what direction the player is looking, and then changes the chartype array to the player skin in that direction
+        }else if(skin == 3){
+            switch (control){
+                case 1:{
+                    charType[0] = 0xB3; charType[1] = 0xFF; charType[2] = 0xB3; charType[3] = 0xCC; charType[4] = 0x4F; charType[5] = 0xB9; charType[6] = 0xB3; charType[7] = 0xFF; charType[8] = 0xB3;
+                    break;
+                }
+                case 2:{
+                    charType[0] = 0xC4; charType[1] = 0xCB; charType[2] = 0xC4; charType[3] = 0xFF; charType[4] = 0x4F; charType[5] = 0xFF; charType[6] = 0xC4; charType[7] = 0xCA; charType[8] = 0xC4;
+                    break;
+                }
+                case 3:{
+                    charType[0] = 0xB3; charType[1] = 0xFF; charType[2] = 0xB3; charType[3] = 0xCC; charType[4] = 0x4F; charType[5] = 0xB9; charType[6] = 0xB3; charType[7] = 0xFF; charType[8] = 0xB3;
+                    break;
+                }
+                case 4:{
+                    charType[0] = 0xC4; charType[1] = 0xCB; charType[2] = 0xC4; charType[3] = 0xFF; charType[4] = 0x4F; charType[5] = 0xFF; charType[6] = 0xC4; charType[7] = 0xCA; charType[8] = 0xC4;
+                    break;
+                }
+                default:
+                    break;
+            }
         }
         //checks if the player skins exists
-        if(skin > 0 && skin <= 2){
+        if(skin > 0 && skin <= 3){
             //sets the players previous position (3x3) to 0xFF (empty) in the drawer que
             for(uint8_t i = 0; i<=(8); i++){
                 DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
@@ -100,12 +121,15 @@ void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct 
             for(uint8_t i = 0; i<=(8); i++){
                 DrawingSetValues(drawValues, x[i], y[i], x[i], y[i], charType[i]);
             }
+            //draws both 'player models' right after each other
+            DrawEverything(drawValues);
         }
         if(skin == 0){
             //sets the players previous position (3x3) to 0xFF (empty) in the drawer que
             for(uint8_t i = 0; i<=(8); i++){
                 DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
             }
+            DrawEverything(drawValues);
         }
 
     }

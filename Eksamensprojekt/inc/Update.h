@@ -7,7 +7,6 @@
 #include "ControlSystem.h"
 #include "EnemyController.h"
 #include "Timer.h"
-#include "DrawObjects.h"
 
 void initStructs();
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);
