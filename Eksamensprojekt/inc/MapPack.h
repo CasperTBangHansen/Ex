@@ -7,5 +7,6 @@
 
 
 void firstMapSetup(struct drawItems *drawValues);
+void secondMapSetup(struct drawItems *drawValues);
 
 #endif

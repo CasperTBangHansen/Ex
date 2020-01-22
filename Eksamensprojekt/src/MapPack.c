@@ -10,6 +10,7 @@
    Last changed by :    19/01 - 2020
 
    Functions       :    void firstMapSetup(struct drawItems *drawValues);
+                        void secondMapSetup(struct drawItems *drawValues);
 
 **********************************************************************/
 
@@ -253,6 +254,166 @@ void firstMapSetup(struct drawItems *drawValues) {
     free(&Ybegin);
     free(&Xstop);
 
+    //Gives the collider the hitbox of the walls
+    setWallHitBox(drawValues,SetPos(2));
+    //Draws the entire maze
+    DrawEverything(drawValues);
+}
+
+/**********************************************************************
+
+   Description     :    secondMapSetup draws the all the walls and gives the walls hitbox to the collider
+
+   Input           :    struct drawItems *drawValues
+
+   Output          :    void
+
+**********************************************************************/
+
+void secondMapSetup(struct drawItems *drawValues) {
+
+
+//Coordinates for all the walls in the first maps maze
+    const uint8_t Xbegin[] = {
+    16,17,164,163,
+    16,16,
+    142,142,
+    40,40,40,142,40,142,
+    40,40,
+    46,46,46,55,
+    46,46,46,55,
+    46,46,46,55,
+    61,61,61,65,65,70,
+    61,61,61,65,65,70,
+    71,71,71,75,
+    71,71,71,75,
+    76,76,76,80,
+    81,81,86,86,90,81,
+    81,81,81,86,86,90,
+    96,96,96,100,
+    96,96,96,100,
+    96,96,96,100,
+    106,106,106,110,
+    116,116,116,120,
+    116,116,116,120,
+    126,126,
+    126,126,126,136,
+    126,126
+    };
+    const uint8_t Xstop[] = {
+    16,17,164,163,
+    40,40,
+    164,164,
+    40,40,142,142,142,142,
+    142,142,
+    46,55,55,55,
+    46,55,55,55,
+    46,55,55,55,
+    61,65,70,65,70,70,
+    61,70,65,65,70,70,
+    71,75,75,75,
+    71,75,75,75,
+    76,80,80,80,
+    81,85,86,90,90,90,
+    81,90,86,86,90,90,
+    96,100,100,100,
+    96,100,100,100,
+    96,100,100,100,
+    106,110,110,110,
+    116,120,120,120,
+    116,120,120,120,
+    126,141,
+    126,136,136,136,
+    126,141
+    };
+    const uint8_t Ybegin[] = {
+    61,61,61,61,
+    60,70,
+    60,70,
+    20,70,20,20,111,70,
+    47,83,
+    63,63,67,63,
+    53,53,57,53,
+    73,73,77,73,
+    48,48,62,48,58,58,
+    68,68,82,72,72,68,
+    48,48,52,48,
+    78,78,82,78,
+    58,58,72,58,
+    48,52,52,62,48,48,
+    78,82,78,68,68,68,
+    53,53,57,53,
+    63,63,67,63,
+    73,73,77,73,
+    53,53,77,53,
+    53,53,62,53,
+    68,68,77,68,
+    48,57,
+    63,63,67,63,
+    73,73
+    };
+    const uint8_t Ystop[] = {
+    69,69,69,69,
+    60,70,
+    60,70,
+    60,110,20,60,111,111,
+    47,83,
+    67,63,67,67,
+    57,53,57,57,
+    77,73,77,77,
+    62,48,62,58,58,62,
+    82,68,82,82,72,72,
+    52,48,52,52,
+    82,78,82,82,
+    72,58,72,72,
+    52,52,62,62,62,48,
+    82,82,78,77,68,82,
+    57,53,57,57,
+    67,63,67,67,
+    77,73,77,77,
+    77,53,77,77,
+    62,53,62,62,
+    77,68,77,77,
+    57,57,
+    67,63,67,67,
+    82,73
+    };
+    char charType[] = {
+    0xAF,0xAF,0xAF,0xAF,
+    0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2
+    };
+
+    //Sets all the walls drawing in the drawing buffer
+    for(uint8_t i = 0; i<(sizeof(Ystop)); i++){
+        DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+    }
+    //frees up Xbegin, Ystop, Xstop
+    /* free(&Xbegin);
+    free(&Ybegin);
+    free(&Xstop);
+ */
     //Gives the collider the hitbox of the walls
     setWallHitBox(drawValues,SetPos(2));
     //Draws the entire maze
