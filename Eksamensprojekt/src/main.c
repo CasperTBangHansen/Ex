@@ -20,6 +20,7 @@
 #include "MainMenu.h"
 #include "MenuControls.h"
 #include "upDateUI.h"
+#include "LED.h"
 
 int main(void)
 {
@@ -44,6 +45,7 @@ int main(void)
     while(1){
         upDateHighScore(highscore,1);
         BeginMenuScreen(&MenuSelection,&drawValues);
+        GameLED(1);
         while(1){
             if(MenuSelection.MainMenu != 0){
                 temp = MenuUserInput(&MenuSelection,&drawValues);

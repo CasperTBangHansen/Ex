@@ -50,6 +50,8 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
 
+            //enemy speed
+            counter.speedEnemies = 40;
             //Sets enemies position
             enemies[0].xPos = 103;
             enemies[0].yPos = 48;
@@ -92,7 +94,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         }
         // Map 2
         case 2:{
-            if(drawMap == 2){
+            if(drawMap == 1){
                 secondMapSetup(drawValues);
             }
 
@@ -104,6 +106,8 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
 
+            //enemy speed
+            counter.speedEnemies = 20;
             //Sets enemies position
             enemies[0].xPos = 58;
             enemies[0].yPos = 50;

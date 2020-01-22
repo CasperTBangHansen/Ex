@@ -70,7 +70,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     player->yPosPrevious = ySTART;
     player->lives = 3;
     player->direction = 4;
-    player->bulletType = 2;
+    player->bulletType = 1;
     player->score = 0;
 
     //Timer initialization
@@ -83,7 +83,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     counter.runBullet = 1;
 
     //update speed
-    counter.speedBullet = 2;
+    counter.speedBullet = 1;
     counter.speedPlayer = 1;
     counter.speedEnemies = 10;
 
@@ -134,24 +134,25 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
+    uint8_t ledTimer = 0;
     //Checks if the player is alive
     while((*player).lives > 0){
         int8_t preLives = (*player).lives;
         //init map and Draw Map and SetWallHitBox
         LevelManager(maps, drawValues, player, enemy, drawMap);
-
+        GameLED(2);
         //Set health bar
         upDateHealth((*player).lives);
         //SetMapDraw to false
         drawMap = 0;
         //sets player direction to look right
         moveDirection = 4;
+        player->direction = moveDirection;
         //draws the players initial position
         ShipSelection(moveDirection, ship, player, drawValues);
 
         //checks if the player has the same amount if lives as the tick before.
         while((*player).lives == preLives){
-
             //Bullet movement
             if(counter.runBullet == 1){
                 counter.runBullet = 0;
@@ -192,13 +193,34 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             //draw highscore
             upDateHighScore((*highscore),0);
 
+            //next level? 160
+            if((*player).xPos >= 160){
+                drawMap = 1;
+                maps->mapChoice = (*maps).mapChoice + 1;
+                ClearGameScreen(drawValues);
+                player->score = (*player).score + 2000;
+                break;
+            }
         }
+
         for(uint8_t i = 0; i < enemySize; i++){
-            drawEnemy(0,enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
+            drawEnemy(0,enemy, drawValues, i);
         }
         //clear player position
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
+
+        if((*player).lives != preLives){
+            if(counter.second <= 58){
+                ledTimer = counter.second + 1;
+            } else {
+                ledTimer = 1;
+            }
+
+            while(counter.second != ledTimer){
+                GameLED(3);
+            }
+        }
 
 
     }

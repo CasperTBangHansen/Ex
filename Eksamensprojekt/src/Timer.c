@@ -34,7 +34,7 @@ void SetTimer(){ //Enables the clock, and starts the timer.
     TIM2->CR1 &= ~(0x01 << 3); // OPM off
     TIM2->CR1 &= ~(0x01 << 2); // URS off
     TIM2->CR1 &= ~(0x01 << 1); // UDIS enabled
-    TIM2->ARR = 0x9C3FF; // Set reload value
+    TIM2->ARR = 0xF9FF; // Set reload value
     TIM2->PSC = 0x00; // Set prescale value
     TIM2->DIER |= (0x0001); // Enable the timer 2 interrupts
     NVIC_SetPriority(28, 0); // Set interrupt priority
@@ -43,7 +43,12 @@ void SetTimer(){ //Enables the clock, and starts the timer.
 }
 
 void TIM2_IRQHandler(void) {
-    counter.centisecond++;
+    counter.milisecond++;
+    if(counter.milisecond >= 10){
+        counter.milisecond -= 10;
+        counter.centisecond++;
+    }
+
     if(counter.centisecond % counter.speedPlayer == 0){
         counter.runPlayer = 1;
     }
@@ -53,6 +58,8 @@ void TIM2_IRQHandler(void) {
     if(counter.centisecond % counter.speedEnemies == 0){
         counter.runEnemies = 1;
     }
+
+
     if(counter.centisecond >= 100){
         counter.centisecond -= 100;
         counter.second++;

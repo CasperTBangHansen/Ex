@@ -32,9 +32,9 @@ void GameLED(uint8_t tal){
 
     // Change the color depending on where in the game/menu you are
     switch (tal) {
-        case 1: // White while in menu
-        GPIOC->ODR &= ~(0x0001 << 7); //Set pin PC7 to low
-        GPIOB->ODR &= ~(0x0001 << 4); //Set pin PB4 to low
+        case 1: // Blue while in menu
+        GPIOC->ODR |= (0x0001 << 7); //Set pin PA9 to high
+        GPIOB->ODR |= (0x0001 << 4); //Set pin PA9 to high
         GPIOA->ODR &= ~(0x0001 << 9); //Set pin PA9 to low
         break;
         case 2: // Green while in game
@@ -42,10 +42,16 @@ void GameLED(uint8_t tal){
         GPIOB->ODR |= (0x0001 << 4); //Set pin PB4 to high
         GPIOA->ODR |= (0x0001 << 9); //Set pin PA9 to high
             break;
-        case 3: // Fllashes red when life is lost
+        case 3: // red when life is lost
         GPIOC->ODR |= (0x0001 << 7); //Set pin PC7 to high
         GPIOB->ODR &= ~(0x0001 << 4); //Set pin PB4 to low
         GPIOA->ODR |= (0x0001 << 9); //Set pin PA9 to high
+            break;
+        case 4: //Yellow when loading
+        GPIOC->ODR &= ~(0x0001 << 7); //Set pin PA9 to low
+        GPIOB->ODR &= ~(0x0001 << 4); //Set pin PA9 to low
+        GPIOA->ODR |= (0x0001 << 9); //Set pin PA9 to high
+            break;
         default: // Dont change the color
             break;
     }

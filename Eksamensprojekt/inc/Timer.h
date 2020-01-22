@@ -7,6 +7,7 @@
 
 
 struct time {
+    uint8_t milisecond;
     uint8_t centisecond;
     uint8_t second;
     uint8_t minute;

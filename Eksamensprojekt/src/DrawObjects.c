@@ -8,14 +8,18 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
     for(uint8_t i = 0; i < enemySize; i++){
         if(enemy[i].show == 1){
             if(enemy[i].xVelocity != 0){
-                drawEnemy(2, enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
+                if(enemy[i].xPos != enemy[i].xPosPrevious){
+                    drawEnemy(2, enemy, drawValues, i);
+                }
             } else {
-                drawEnemy(1, enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
+                if(enemy[i].yPos != enemy[i].yPosPrevious){
+                    drawEnemy(1, enemy, drawValues, i);
+                }
             }
             enemy[i].xPosPrevious = enemy[i].xPos;
             enemy[i].yPosPrevious = enemy[i].yPos;
         } else if(enemy[i].xPos != 1 && enemy[i].yPos != 1){
-            drawEnemy(0, enemy[i].xPos, enemy[i].yPos, enemy[i].xPosPrevious, enemy[i].yPosPrevious, drawValues);
+            drawEnemy(0, enemy, drawValues, i);
             enemy[i].xPos = 1;
             enemy[i].yPos = 1;
         }
@@ -44,16 +48,9 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
 }
 
 
-void drawEnemy(uint8_t control, uint16_t xPos, uint8_t yPos, uint16_t xPPos, uint8_t yPPos, struct drawItems *drawValues){
+void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValues, uint8_t i){
     //defines chartype
     char charType[] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-
-    uint16_t x[] = {xPos - 1, xPos    , xPos + 1, xPos - 1, xPos , xPos + 1, xPos - 1, xPos    , xPos + 1};
-    uint8_t y[] =  {yPos - 1, yPos - 1, yPos - 1, yPos    , yPos , yPos    , yPos + 1, yPos + 1, yPos + 1};
-
-    //makes an array with every position around the players previous position (3x3)
-    uint16_t xP[] = {xPPos - 1, xPPos    , xPPos + 1, xPPos - 1, xPPos , xPPos + 1, xPPos - 1, xPPos    , xPPos + 1};
-    uint8_t yP[] =  {yPPos - 1, yPPos - 1, yPPos - 1, yPPos    , yPPos , yPPos    , yPPos + 1, yPPos + 1, yPPos + 1};
 
     if(control != 0){
         switch (control){
@@ -65,31 +62,29 @@ void drawEnemy(uint8_t control, uint16_t xPos, uint8_t yPos, uint16_t xPPos, uin
                 charType[0] = 0xC4; charType[1] = 0xCB; charType[2] = 0xC4; charType[3] = 0xFF; charType[4] = 0x4F; charType[5] = 0xFF; charType[6] = 0xC4; charType[7] = 0xCA; charType[8] = 0xC4;
                 break;
             }
-            case 3:{
-                charType[0] = 0xB3; charType[1] = 0xFF; charType[2] = 0xB3; charType[3] = 0xCC; charType[4] = 0x4F; charType[5] = 0xB9; charType[6] = 0xB3; charType[7] = 0xFF; charType[8] = 0xB3;
-                break;
-            }
-            case 4:{
-                charType[0] = 0xC4; charType[1] = 0xCB; charType[2] = 0xC4; charType[3] = 0xFF; charType[4] = 0x4F; charType[5] = 0xFF; charType[6] = 0xC4; charType[7] = 0xCA; charType[8] = 0xC4;
-                break;
-            }
             default:
                 break;
         }
-
         //sets the enemy previous position (3x3) to 0xFF (empty) in the drawer que
-        for(uint8_t i = 0; i<=(8); i++){
-            DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
+        if(enemy[i].xVelocity > 0){
+            printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious-1,0x48,0xFF,0x1B,enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48,0xFF);
+        } else if (enemy[i].xVelocity < 0){
+            printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious+1,0x48,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious+1,0x48,0xFF,0x1B,enemy[i].yPosPrevious+1,enemy[i].xPosPrevious+1,0x48,0xFF);
+        } else if (enemy[i].yVelocity > 0){
+            printf("%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF);
+        } else if (enemy[i].yVelocity < 0){
+            printf("%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF);
         }
+
         //sets the enemy current position (3x3) to the right character in the drawer que
-        for(uint8_t i = 0; i<=(8); i++){
-            DrawingSetValues(drawValues, x[i], y[i], x[i], y[i], charType[i]);
-        }
+        printf("%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPos-1,enemy[i].xPos-1,0x48,charType[0],charType[1],charType[2],0x1B,enemy[i].yPos,enemy[i].xPos-1,0x48,charType[3],charType[4],charType[5],0x1B, enemy[i].yPos+1,enemy[i].xPos-1,0x48, charType[6],charType[7],charType[8]);
+        //%c[%u;%u%c,ESC,y,x,0x48
+
     } else {
         //sets the enemy previous position (3x3) to 0xFF (empty) in the drawer que
-        for(uint8_t i = 0; i<=(8); i++){
-            DrawingSetValues(drawValues, xP[i], yP[i], xP[i], yP[i], 0xFF);
-        }
+        printf("%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B, enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48, 0xFF,0xFF,0xFF);
+        printf("%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B, enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48, 0xFF,0xFF,0xFF);
+
     }
 }
 

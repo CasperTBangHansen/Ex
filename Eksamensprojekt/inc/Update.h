@@ -9,6 +9,8 @@
 #include "Timer.h"
 #include "DrawObjects.h"
 #include "upDateUI.h"
+#include "MainMenu.h"
+#include "LED.h"
 
 void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore);
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);

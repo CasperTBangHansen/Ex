@@ -9,6 +9,6 @@
 
 
 void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t ship);
-void drawEnemy(uint8_t control, uint16_t xPos, uint8_t yPos, uint16_t xPPos, uint8_t yPPos, struct drawItems *drawValues);
+void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValues, uint8_t i);
 
 #endif

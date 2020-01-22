@@ -1,7 +1,6 @@
 obj\debug\src\mainmenu.o: src\MainMenu.c inc/MainMenu.h inc/Update.h \
  inc/ManageLevels.h inc/MapPack.h inc/Drawing.h inc/Collider.h \
- inc/ControlSystem.h inc/EnemyController.h inc/Timer.h \
- inc/stm32f30x_conf.h SPL\inc/stm32f30x_adc.h inc/stm32f30x.h \
+ inc/Timer.h inc/stm32f30x_conf.h SPL\inc/stm32f30x_adc.h inc/stm32f30x.h \
  cmsis/core_cm4.h cmsis/core_cmInstr.h cmsis/core_cmFunc.h \
  cmsis/core_cm4_simd.h inc/system_stm32f30x.h SPL\inc/stm32f30x_can.h \
  SPL\inc/stm32f30x_crc.h SPL\inc/stm32f30x_comp.h SPL\inc/stm32f30x_dac.h \
@@ -13,4 +12,5 @@ obj\debug\src\mainmenu.o: src\MainMenu.c inc/MainMenu.h inc/Update.h \
  SPL\inc/stm32f30x_rcc.h SPL\inc/stm32f30x_rtc.h SPL\inc/stm32f30x_spi.h \
  SPL\inc/stm32f30x_tim.h SPL\inc/stm32f30x_usart.h \
  SPL\inc/stm32f30x_wwdg.h SPL\inc/stm32f30x_misc.h inc/30010_io.h \
- inc/DrawObjects.h inc/upDateUI.h inc/MainMenu.h inc/MenuControls.h
+ inc/ControlSystem.h inc/EnemyController.h inc/DrawObjects.h \
+ inc/upDateUI.h inc/MainMenu.h inc/LED.h inc/MenuControls.h

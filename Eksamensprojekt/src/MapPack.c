@@ -410,10 +410,7 @@ void secondMapSetup(struct drawItems *drawValues) {
         DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
     //frees up Xbegin, Ystop, Xstop
-    /* free(&Xbegin);
-    free(&Ybegin);
-    free(&Xstop);
- */
+
     //Gives the collider the hitbox of the walls
     setWallHitBox(drawValues,SetPos(2));
     //Draws the entire maze

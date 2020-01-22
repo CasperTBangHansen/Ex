@@ -448,6 +448,7 @@ void clearscr() {
 
 void ClearGameScreen(struct drawItems *drawValues){
     // 16->164 i X, 16-114 i Y
+     GameLED(4);
      uint8_t Xbegin[99];
      uint8_t Xstop[99];
      uint8_t Ybegin[99];

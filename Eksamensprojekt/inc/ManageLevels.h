@@ -8,6 +8,7 @@ Control.h
 #include <stdint.h>
 #include <stdio.h>
 #include "MapPack.h"
+#include "Timer.h"
 
 struct mapPackage {
     uint8_t mapChoice;
