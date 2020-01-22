@@ -1041,7 +1041,7 @@
 1579684055 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\collider.c
 	"Collider.h"
 
-1579684055 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\collider.h
+1579690949 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\collider.h
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
@@ -1054,7 +1054,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579684055 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\update.h
+1579690949 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\update.h
 	"ManageLevels.h"
 	"Drawing.h"
 	"Collider.h"
@@ -1062,6 +1062,7 @@
 	"EnemyController.h"
 	"Timer.h"
 	"DrawObjects.h"
+	"upDateUI.h"
 
 1579682765 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\managelevels.h
 	<stdint.h>
@@ -1095,7 +1096,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579684055 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\controlsystem.c
+1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579682766 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\drawing.c
@@ -1128,7 +1129,7 @@
 	"stm32f30x_conf.h"
 	"30010_io.h"
 
-1579684055 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\mainmenu.c
+1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\mainmenu.c
 	"MainMenu.h"
 
 1579682766 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\managelevels.c
@@ -1137,7 +1138,7 @@
 1579682766 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\mappack.c
 	"MapPack.h"
 
-1579690240 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\menucontrols.c
+1579691704 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\menucontrols.c
 	"MenuControls.h"
 
 1579684055 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\ships.c
@@ -1162,6 +1163,14 @@
 	"30010_io.h"
 	<stdlib.h>
 
-1579684975 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\update.c
+1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\update.c
 	"Update.h"
+
+1579690949 c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\inc\updateui.h
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+
+1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\updateui.c
+	"upDateUI.h"
 

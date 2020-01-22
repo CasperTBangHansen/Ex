@@ -5,12 +5,12 @@
 **
 **********************************************************************/
 /*
-   Primary editor  :    Martin Kolster
-   Secondary editor:    Casper Bang-Hansen & Mathias Jensen
-   Last changed by :    19/01 - 2020
+   Primary editor  :    Martin Kolster & Mathias Jensen
+   Secondary editor:
+   Last changed by :    22/01 - 2020
 
-   Functions       :    uint8_t userInput(struct player *player);
-                        static void setupBullet(struct player *player, int8_t xPosOffSet, int8_t yPosOffSet, int8_t xShotsMaxVelocity, int8_t yShotsMaxVelocity, uint8_t i);
+   Functions       :    uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *drawValues)
+
 
 **********************************************************************/
 
@@ -65,9 +65,10 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
     //return value
     uint8_t returnValue = 0;
 
+    char buttonPress = uart_get_char();
 
-    // If and only if the pressed button is "w", the players moves up
-    if (up>0) {
+    // If up is pressed on the joystick, the players moves up
+    if (up>0 || buttonPress == 'w') {
         if (storage != 1){
             if ((*MenuSelection).MainMenu == 1) {
                 if ((*MenuSelection).Hover == 1) {
@@ -116,7 +117,7 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
     }
 
     // If and only if the pressed button is "s", the players moves down
-    if(down > 0){
+    if(down > 0 || buttonPress == 's'){
         if (storage != 2){
             if ((*MenuSelection).MainMenu == 1) {
                 if ((*MenuSelection).Hover == 3) {
@@ -163,7 +164,7 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
         }
     }
     // If and only if the pressed button is 0x20 (space), the players shoots (if the player can shoot)
-    if(center > 0){
+    if(center > 0 || buttonPress == 0x20){
         if (storage != 3){
             if (((*MenuSelection).MainMenu == 1) && ((*MenuSelection).Hover) == 1) {
                 BeginGame(drawValues);
@@ -229,9 +230,9 @@ if (up == 0 && down == 0 && center == 0){
 }
 
 
-
-
-    return returnValue;
     //returns the players direction
+    return returnValue;
+    // clears the input
+    uart_clear();
 }
 
