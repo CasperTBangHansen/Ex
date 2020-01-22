@@ -10,6 +10,8 @@ MenuControl.h
 #include <stdint.h>
 #include <stdio.h>
 #include "MainMenu.h"
+#include "stm32f30x_conf.h"
+#include "30010_io.h"
 
 struct MenuSelection{
     uint8_t Hover;

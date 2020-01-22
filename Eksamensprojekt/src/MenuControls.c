@@ -16,7 +16,6 @@
 
 //include .h file
 #include "MenuControls.h"
-
 //defines
 //Symbols
 #define ESC 0x1B
@@ -36,121 +35,136 @@
 
 
 uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *drawValues) {
-    // Adds a variable to use for registering the pressed button
-    char buttonPress;
+        RCC->AHBENR |= RCC_AHBPeriph_GPIOA; // Enable clock for GPIO Port A
+
+    // Set pin PA4 to input
+    GPIOA->MODER &= ~(0x00000003 << (4 * 2)); // Clear mode register
+    GPIOA->MODER |=  (0x00000000 << (4 * 2)); // Set mode register (0x00 – Input, 0x01 - Output, 0x02 - Alternate Function, 0x03 - Analog in/out)
+    GPIOA->PUPDR &= ~(0x00000003 << (4 * 2)); // Clear push/pull register
+    GPIOA->PUPDR |=  (0x00000002 << (4 * 2)); // Set push/pull register (0x00 - No pull, 0x01 - Pull-up, 0x02 - Pull-down)
+
+    RCC->AHBENR |= RCC_AHBPeriph_GPIOB; // Enable clock for GPIO Port B
+    // Set pin PB5 to input
+    GPIOB->MODER &= ~(0x00000003 << (5 * 2)); // Clear mode register
+    GPIOB->MODER |=  (0x00000000 << (5 * 2)); // Set mode register (0x00 – Input, 0x01 - Output, 0x02 - Alternate Function, 0x03 - Analog in/out)
+    GPIOB->PUPDR &= ~(0x00000003 << (5 * 2)); // Clear push/pull register
+    GPIOB->PUPDR |=  (0x00000002 << (5 * 2)); // Set push/pull register (0x00 - No pull, 0x01 - Pull-up, 0x02 - Pull-down)
+
+    // Set pin PB0 to input
+    GPIOB->MODER &= ~(0x00000003 << (0 * 2)); // Clear mode register
+    GPIOB->MODER |=  (0x00000000 << (0 * 2)); // Set mode register (0x00 – Input, 0x01 - Output, 0x02 - Alternate Function, 0x03 - Analog in/out)
+    GPIOB->PUPDR &= ~(0x00000003 << (0 * 2)); // Clear push/pull register
+    GPIOB->PUPDR |=  (0x00000002 << (0 * 2)); // Set push/pull register (0x00 - No pull, 0x01 - Pull-up, 0x02 - Pull-down)
+
+    uint16_t up = GPIOA->IDR & (0x0001 << 4); //Read from pin PA4
+    uint16_t center = GPIOB->IDR & (0x0001 << 5); //Read from pin PB5
+    uint16_t down = GPIOB->IDR & (0x0001 << 0); //Read from pin PB0
+
+    static int8_t storage = 0; // Static storage variabel.
 
     //return value
-    uint8_t retunValue = 0;
+    uint8_t returnValue = 0;
 
-    //Sets the variable to the button the person has pressed
-    buttonPress = uart_get_char();
-
-
-    //returns 0 if there were no button pressed (makes the function much faster)
-    if (buttonPress == '\0'){
-        return 0;
-    }
 
     // If and only if the pressed button is "w", the players moves up
-    if(buttonPress == 'w' ) {
-        if ((*MenuSelection).MainMenu == 1) {
-            if ((*MenuSelection).Hover == 1) {
-                MenuSelection->Hover = 3;
-                ClearPlayGameArrow();
-                ConstructSettingsArrow();
-            }
-            else if ((*MenuSelection).Hover == 2){
-                MenuSelection->Hover = 1;
-                ClearHowToPlayArrow();
-                ConstructPlayGameArrow();
-            }
-            else if ((*MenuSelection).Hover == 3){
-                MenuSelection->Hover = 2;
-                ClearSettingsArrow();
-                ConstructHowToPlayArrow();
-            }
-        }
-
-        else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 1)) {
-            if ((*MenuSelection).Hover == 1) {
-                MenuSelection->Hover = 2;
-                ClearSpaceshipArrow();
-                ConstructBackArrow();
-            }
-            else if ((*MenuSelection).Hover == 2) {
-                MenuSelection->Hover = 1;
-                ClearBackArrow();
-                ConstructSpaceshipArrow();
-            }
-        }
-        else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 2)) {
-            if ((*MenuSelection).Hover == 1) {
-                    MenuSelection->Hover = 2;
-                    ClearSpaceShip1Arrow();
-                    ConstructSpaceShip2Arrow();
-            }
-            else if ((*MenuSelection).Hover == 2) {
+    if (up>0) {
+        if (storage != 1){
+            if ((*MenuSelection).MainMenu == 1) {
+                if ((*MenuSelection).Hover == 1) {
+                    MenuSelection->Hover = 3;
+                    ClearPlayGameArrow();
+                    ConstructSettingsArrow();
+                }
+                else if ((*MenuSelection).Hover == 2){
                     MenuSelection->Hover = 1;
-                    ClearSpaceShip2Arrow();
-                    ConstructSpaceShip1Arrow();
+                    ClearHowToPlayArrow();
+                    ConstructPlayGameArrow();
+                }
+                else if ((*MenuSelection).Hover == 3){
+                    MenuSelection->Hover = 2;
+                    ClearSettingsArrow();
+                    ConstructHowToPlayArrow();
+                }
             }
-        }
-    }
 
-    // If and only if the pressed button is "a", the players moves left
-    if(buttonPress == 'a'){
+            else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 1)) {
+                if ((*MenuSelection).Hover == 1) {
+                    MenuSelection->Hover = 2;
+                    ClearSpaceshipArrow();
+                    ConstructBackArrow();
+                }
+                else if ((*MenuSelection).Hover == 2) {
+                    MenuSelection->Hover = 1;
+                    ClearBackArrow();
+                    ConstructSpaceshipArrow();
+                }
+            }
+            else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 2)) {
+                if ((*MenuSelection).Hover == 1) {
+                        MenuSelection->Hover = 2;
+                        ClearSpaceShip1Arrow();
+                        ConstructSpaceShip2Arrow();
+                }
+                else if ((*MenuSelection).Hover == 2) {
+                        MenuSelection->Hover = 1;
+                        ClearSpaceShip2Arrow();
+                        ConstructSpaceShip1Arrow();
+                }
+            }
+        storage = 1;
+        }
     }
 
     // If and only if the pressed button is "s", the players moves down
-    if(buttonPress == 's'){
-        if ((*MenuSelection).MainMenu == 1) {
-            if ((*MenuSelection).Hover == 3) {
-                MenuSelection->Hover = 1;
-                ClearSettingsArrow();
-                ConstructPlayGameArrow();
-            }
-            else if ((*MenuSelection).Hover == 1) {
-                MenuSelection->Hover = 2;
-                ClearPlayGameArrow();
-                ConstructHowToPlayArrow();
-            }
-            else if ((*MenuSelection).Hover == 2) {
-                MenuSelection->Hover = 3;
-                ClearHowToPlayArrow();
-                ConstructSettingsArrow();
-            }
-        }
-        else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 1)) {
-            if ((*MenuSelection).Hover == 1) {
-                MenuSelection->Hover = 2;
-                ClearSpaceshipArrow();
-                ConstructBackArrow();
-            }
-            else if ((*MenuSelection).Hover == 2) {
-                MenuSelection->Hover = 1;
-                ClearBackArrow();
-                ConstructSpaceshipArrow();
-            }
-        }
-        else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 2)) {
-            if ((*MenuSelection).Hover == 1) {
-                    MenuSelection->Hover = 2;
-                    ClearSpaceShip1Arrow();
-                    ConstructSpaceShip2Arrow();
-            }
-            else if ((*MenuSelection).Hover == 2) {
+    if(down > 0){
+        if (storage != 2){
+            if ((*MenuSelection).MainMenu == 1) {
+                if ((*MenuSelection).Hover == 3) {
                     MenuSelection->Hover = 1;
-                    ClearSpaceShip2Arrow();
-                    ConstructSpaceShip1Arrow();
+                    ClearSettingsArrow();
+                    ConstructPlayGameArrow();
+                }
+                else if ((*MenuSelection).Hover == 1) {
+                    MenuSelection->Hover = 2;
+                    ClearPlayGameArrow();
+                    ConstructHowToPlayArrow();
+                }
+                else if ((*MenuSelection).Hover == 2) {
+                    MenuSelection->Hover = 3;
+                    ClearHowToPlayArrow();
+                    ConstructSettingsArrow();
+                }
             }
+            else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 1)) {
+                if ((*MenuSelection).Hover == 1) {
+                    MenuSelection->Hover = 2;
+                    ClearSpaceshipArrow();
+                    ConstructBackArrow();
+                }
+                else if ((*MenuSelection).Hover == 2) {
+                    MenuSelection->Hover = 1;
+                    ClearBackArrow();
+                    ConstructSpaceshipArrow();
+                }
+            }
+            else if (((*MenuSelection).MainMenu == 2) && ((*MenuSelection).Setting == 2)) {
+                if ((*MenuSelection).Hover == 1) {
+                        MenuSelection->Hover = 2;
+                        ClearSpaceShip1Arrow();
+                        ConstructSpaceShip2Arrow();
+                }
+                else if ((*MenuSelection).Hover == 2) {
+                        MenuSelection->Hover = 1;
+                        ClearSpaceShip2Arrow();
+                        ConstructSpaceShip1Arrow();
+                }
+            }
+        storage = 2;
         }
-    }
-
-    // If and only if the pressed button is "d", the players moves right
-    if(buttonPress == 'd'){
     }
     // If and only if the pressed button is 0x20 (space), the players shoots (if the player can shoot)
-    if(buttonPress == 0x20){
+    if(center > 0){
+        if (storage != 3){
             if (((*MenuSelection).MainMenu == 1) && ((*MenuSelection).Hover) == 1) {
                 BeginGame(drawValues);
                 MenuSelection->MainMenu = 0;
@@ -198,25 +212,26 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
                     ClearSpaceShipMenu(drawValues);
                     MenuSelection->Setting = 1;
                     MenuSelection->Hover = 1;
-                    retunValue = 1;
+                    returnValue = 1;
                 }
                 else if ((*MenuSelection).Hover == 2){
                     ClearSpaceShipMenu(drawValues);
                     MenuSelection->Setting = 1;
                     MenuSelection->Hover = 1;
-                    retunValue = 2;
+                    returnValue = 2;
                 }
             }
-
+        storage = 3;
+        }
     }
+if (up == 0 && down == 0 && center == 0){
+    storage = 0;
+}
 
 
 
 
-
-    return retunValue;
-    //cleans the uart input
-    uart_clear();
+    return returnValue;
     //returns the players direction
 }
 
