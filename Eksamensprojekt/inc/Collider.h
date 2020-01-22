@@ -22,9 +22,7 @@ struct enemy{
 
 struct bullet{
     uint16_t xPos;
-    uint16_t xPosPrevious;
     uint8_t yPos;
-    uint8_t yPosPrevious;
     uint8_t show;
     int8_t xVelocity;
     int8_t yVelocity;
