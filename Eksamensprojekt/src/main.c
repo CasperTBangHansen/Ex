@@ -36,13 +36,34 @@ int main(void)
     MenuSelection.Ship = 0;
 
     //shipValue
+    uint8_t temp = 0;
     uint8_t shipValue = 1;
     while(1){
         BeginMenuScreen(&MenuSelection,&drawValues);
         while(1){
             if(MenuSelection.MainMenu != 0){
-                shipValue = MenuUserInput(&MenuSelection,&drawValues);
+                temp = MenuUserInput(&MenuSelection,&drawValues);
+                if(temp != 0){
+                    shipValue = temp;
+                }
             }else {
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
+                printf("---------------->%d<--------------------\n",shipValue);
                 initStructs(&drawValues, shipValue);
                 MenuSelection.MainMenu = 1;
                 break;

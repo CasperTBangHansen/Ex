@@ -40,7 +40,7 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
     char buttonPress;
 
     //return value
-    uint8_t retunValue = 1;
+    uint8_t retunValue = 0;
 
     //Sets the variable to the button the person has pressed
     buttonPress = uart_get_char();

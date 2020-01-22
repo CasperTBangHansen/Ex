@@ -141,7 +141,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         //sets player direction to look right
         moveDirection = 4;
         //draws the players initial position
-        ShipSelection(moveDirection, 1, player, drawValues);
+        ShipSelection(moveDirection, ship, player, drawValues);
 
         //checks if the player has the same amount if lives as the tick before.
         while((*player).lives == preLives){
@@ -181,7 +181,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             checkCollider(player, enemy);
 
             //Draw every moving object
-            drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy);
+            drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy, ship);
 
         }
         for(uint8_t i = 0; i < enemySize; i++){
@@ -191,9 +191,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
 
-    }
-    while(1){
-        printf("DEAD\n");
     }
 }
 

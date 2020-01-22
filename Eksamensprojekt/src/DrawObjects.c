@@ -1,8 +1,8 @@
 #include "DrawObjects.h"
 
-void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy){
+void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t ship){
     //Draw player
-    ShipSelection(moveDirection, 1, player, drawValues);
+    ShipSelection(moveDirection, ship, player, drawValues);
 
     //updates enemy position and draws enemy
     for(uint8_t i = 0; i < enemySize; i++){
