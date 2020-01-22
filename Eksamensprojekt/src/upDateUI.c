@@ -32,5 +32,20 @@ void upDateHealth(uint8_t lives){
     }
 }
 
+void upDateWeapon(uint8_t activeWeapon){
+    static uint8_t weaponType = 0;
+    if(weaponType != activeWeapon){
+        weaponType = activeWeapon;
+        gotoxy(176,84);
+        printf("             ");
+        gotoxy(176,84);
+        if(activeWeapon == 1){
+            printf("Single bullet");
+        } else if(activeWeapon == 2){
+            printf("Multi bullet");
+        }
+    }
+}
+
 
 

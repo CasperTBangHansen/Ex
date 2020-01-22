@@ -160,6 +160,8 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                     }
                 }
             }
+            //draw weapontype
+            upDateWeapon((*player).bulletType);
 
             //Player movement
             if(counter.runPlayer == 1){
