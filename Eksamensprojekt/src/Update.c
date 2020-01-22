@@ -20,8 +20,7 @@
 
 //defines
 //amount of enemy and draw buffer
-#define enemySize 21
-#define drawValuesSize 300
+#define enemySize 20
 
 /**********************************************************************
 
@@ -33,9 +32,8 @@
 
 **********************************************************************/
 
-void initStructs(){
+void initStructs(struct drawItems *drawValues, uint8_t shipValue){
     //makes all the structs
-    struct drawItems drawValues[drawValuesSize];
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
@@ -44,7 +42,7 @@ void initStructs(){
     initEverythingFirstTime(&player, &enemies, &maps);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, &drawValues);
+    upDateFunction(&player, &enemies, &maps, drawValues, shipValue);
 }
 
 
@@ -128,12 +126,12 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t shipValue){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
     //Checks if the player is alive
-    while((*player).lives >= 0){
+    while((*player).lives > 0){
         int8_t preLives = (*player).lives;
         //init map and Draw Map and SetWallHitBox
         LevelManager(maps, drawValues, player, enemy, drawMap);
@@ -142,7 +140,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         //sets player direction to look right
         moveDirection = 4;
         //draws the players initial position
-        ShipSelection(moveDirection, 1, player, drawValues);
+        ShipSelection(moveDirection, shipValue, player, drawValues);
 
         //checks if the player has the same amount if lives as the tick before.
         while((*player).lives == preLives){
@@ -192,9 +190,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
 
-    }
-    while(1){
-        printf("DEAD\n");
     }
 }
 
