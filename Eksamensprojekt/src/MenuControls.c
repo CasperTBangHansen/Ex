@@ -228,7 +228,10 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
 if (up == 0 && down == 0 && center == 0){
     storage = 0;
 }
-
+if (buttonPress == 0x1B){
+    printf("%c[%d%c",0x1B,2,0x4A");
+    while(1);
+}
 
     //returns the players direction
     return returnValue;
