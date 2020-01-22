@@ -33,9 +33,8 @@
 
 **********************************************************************/
 
-void initStructs(){
+void initStructs(struct drawItems *drawValues, uint8_t ship){
     //makes all the structs
-    struct drawItems drawValues[drawValuesSize];
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
@@ -44,7 +43,7 @@ void initStructs(){
     initEverythingFirstTime(&player, &enemies, &maps);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, &drawValues);
+    upDateFunction(&player, &enemies, &maps, drawValues, ship);
 }
 
 
@@ -128,7 +127,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;

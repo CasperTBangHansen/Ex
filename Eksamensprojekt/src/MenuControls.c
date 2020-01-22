@@ -39,6 +39,9 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
     // Adds a variable to use for registering the pressed button
     char buttonPress;
 
+    //return value
+    uint8_t retunValue = 1;
+
     //Sets the variable to the button the person has pressed
     buttonPress = uart_get_char();
 
@@ -195,11 +198,13 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
                     ClearSpaceShipMenu(drawValues);
                     MenuSelection->Setting = 1;
                     MenuSelection->Hover = 1;
+                    retunValue = 1;
                 }
                 else if ((*MenuSelection).Hover == 2){
                     ClearSpaceShipMenu(drawValues);
                     MenuSelection->Setting = 1;
                     MenuSelection->Hover = 1;
+                    retunValue = 2;
                 }
             }
 
@@ -209,7 +214,7 @@ uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *draw
 
 
 
-
+    return retunValue;
     //cleans the uart input
     uart_clear();
     //returns the players direction

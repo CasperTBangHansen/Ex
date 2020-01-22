@@ -9,9 +9,9 @@
 #include "Timer.h"
 #include "DrawObjects.h"
 
-void initStructs();
+void initStructs(struct drawItems *drawValues, uint8_t ship);
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues);
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship);
 void InterruptSet();
 
 #endif
