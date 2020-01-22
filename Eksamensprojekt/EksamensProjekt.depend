@@ -787,7 +787,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579698274 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
+1579699401 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
@@ -842,7 +842,7 @@
 	"30010_io.h"
 	<stdlib.h>
 
-1579698703 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
+1579699433 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
 	"Update.h"
 
 1579682765 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\spl\src\stm32f30x_adc.c
@@ -1183,7 +1183,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579698610 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
+1579699082 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
 
 1579696023 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\led.c

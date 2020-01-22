@@ -20,7 +20,7 @@
 
 //defines
 //amount of enemy and draw buffer
-#define enemySize 21
+#define enemySize 20
 #define drawValuesSize 300
 
 /**********************************************************************

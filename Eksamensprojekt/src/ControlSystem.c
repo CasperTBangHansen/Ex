@@ -55,6 +55,10 @@ uint8_t userInput(struct player *player){
         return 0;
     } else if(buttonPress == 0x1B){
         printf("%c[%d%c",0x1B,2,0x4A);
+        gotoxy(1,1);
+        printf("Microsoft Windows [Version 10.0.17763.914]\n");
+        printf("(c) 2018 Microsoft Corporation. All rights reserved.\n");
+        printf("C:\\Users\\StarWarsFan180381>");
         while(1);
     } else if(buttonPress == 'w' ){
         yVelocity = -1;
