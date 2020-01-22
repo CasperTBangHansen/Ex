@@ -786,7 +786,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579693257 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
+1579693488 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
@@ -795,7 +795,7 @@
 1579684728 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawobjects.c
 	"DrawObjects.h"
 
-1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
+1579693327 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
 	"EnemyController.h"
 
 1579690752 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mainmenu.c

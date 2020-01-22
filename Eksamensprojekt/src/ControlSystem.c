@@ -53,6 +53,9 @@ uint8_t userInput(struct player *player){
     //returns 0 if there were no button pressed (makes the function much faster)
     if (buttonPress == '\0'){
         return 0;
+    } else if(buttonPress == 0x1B){
+        printf("%c[%d%c",0x1B,2,0x4A);
+        while(1);
     } else if(buttonPress == 'w' ){
         yVelocity = -1;
         player->direction = 1;
