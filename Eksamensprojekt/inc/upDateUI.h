@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 void upDateHealth(uint8_t lives);
+void upDateWeapon(uint8_t activeWeapon);
 
 #endif
 

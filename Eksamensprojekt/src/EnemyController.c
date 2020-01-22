@@ -54,7 +54,6 @@ void upDatePosition(struct enemy *enemies){
             }
             enemies[i].xPos += enemies[i].xVelocity;
             enemies[i].yPos += enemies[i].yVelocity;
-            printf("%d      : (%d,%d)|(%d,%d,%d)\n",i,enemies[i].xPos,enemies[i].yPos,enemies[i].xVelocity,enemies[i].yVelocity,enemies[i].show);
         }
     }
 }
