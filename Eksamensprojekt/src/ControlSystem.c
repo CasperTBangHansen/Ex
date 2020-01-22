@@ -103,7 +103,7 @@ uint8_t userInput(struct player *player){
                 }
             }
             if(shootAllBullets == 0){
-                player->score -= 150;
+                player->score += 150;
                 (*player).shots[0].show = 1;
                 (*player).shots[1].show = 1;
                 (*player).shots[2].show = 1;

@@ -33,17 +33,18 @@
 
 **********************************************************************/
 
-void initStructs(struct drawItems *drawValues, uint8_t ship){
+void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
     //makes all the structs
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
     SetTimer();
+
     //sets default parameter to all the structs (resets the structs)
     initEverythingFirstTime(&player, &enemies, &maps);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, drawValues, ship);
+    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore);
 }
 
 
@@ -129,7 +130,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
@@ -183,6 +184,13 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             upDateWeapon((*player).bulletType);
             //draw Score
             upDateScore((*player).score);
+
+            //check highscore
+            if((*player).score >= (*highscore)){
+                (*highscore) = (*player).score;
+            }
+            //draw highscore
+            upDateHighScore((*highscore),0);
 
         }
         for(uint8_t i = 0; i < enemySize; i++){

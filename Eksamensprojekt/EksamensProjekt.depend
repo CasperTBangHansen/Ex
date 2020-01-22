@@ -721,14 +721,15 @@
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\system_stm32f30x.c
 	"stm32f30x.h"
 
-1579691865 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\main.c
+1579698820 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\main.c
 	"stm32f30x_conf.h"
 	"30010_io.h"
 	"Update.h"
 	"MainMenu.h"
 	"MenuControls.h"
+	"upDateUI.h"
 
-1579686694 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
+1579697907 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
 	"ManageLevels.h"
 	"Drawing.h"
 	"Collider.h"
@@ -755,7 +756,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579694078 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\collider.h
+1579697667 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\collider.h
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
@@ -776,7 +777,7 @@
 	"30010_io.h"
 	<stdio.h>
 
-1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\collider.c
+1579695998 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\collider.c
 	"Collider.h"
 
 1579684728 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\drawobjects.h
@@ -786,7 +787,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579695396 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
+1579698274 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
@@ -798,7 +799,7 @@
 1579693327 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
 	"EnemyController.h"
 
-1579693978 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mainmenu.c
+1579697156 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mainmenu.c
 	"MainMenu.h"
 
 1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\mainmenu.h
@@ -841,7 +842,7 @@
 	"30010_io.h"
 	<stdlib.h>
 
-1579694634 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
+1579698703 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
 	"Update.h"
 
 1579682765 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\spl\src\stm32f30x_adc.c
@@ -1177,11 +1178,20 @@
 1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
 
-1579694534 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\updateui.h
+1579698567 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\updateui.h
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
 
-1579694675 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
+1579698610 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
+
+1579696023 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\led.c
+	"LED.h"
+
+1579696023 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\led.h
+	"stm32f30x_conf.h"
+	"30010_io.h"
+	<stdint.h>
+	<stdio.h>
 
