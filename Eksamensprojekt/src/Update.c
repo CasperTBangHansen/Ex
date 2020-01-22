@@ -69,6 +69,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     player->yPosPrevious = ySTART;
     player->lives = 3;
     player->direction = 4;
+    player->bulletType = 2;
 
     //Timer initialization
     counter.centisecond = 0;
@@ -141,7 +142,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         upDateHealth((*player).lives);
         //SetMapDraw to false
         drawMap = 0;
-
         //sets player direction to look right
         moveDirection = 4;
         //draws the players initial position

@@ -721,14 +721,14 @@
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\system_stm32f30x.c
 	"stm32f30x.h"
 
-1579684617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\main.c
+1579685162 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\main.c
 	"stm32f30x_conf.h"
 	"30010_io.h"
 	"Update.h"
 	"MainMenu.h"
 	"MenuControls.h"
 
-1579683986 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
+1579686694 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
 	"ManageLevels.h"
 	"Drawing.h"
 	"Collider.h"
@@ -736,6 +736,7 @@
 	"EnemyController.h"
 	"Timer.h"
 	"DrawObjects.h"
+	"upDateUI.h"
 
 1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\managelevels.h
 	<stdint.h>
@@ -754,7 +755,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\collider.h
+1579689724 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\collider.h
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
@@ -785,7 +786,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
+1579690151 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
@@ -838,6 +839,14 @@
 	"30010_io.h"
 	<stdlib.h>
 
-1579684301 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
+1579690287 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
 	"Update.h"
+
+1579686731 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\updateui.h
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+
+1579689019 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
+	"upDateUI.h"
 

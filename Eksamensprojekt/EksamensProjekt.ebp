@@ -105,6 +105,7 @@
 		<Unit filename="inc\system_stm32f30x.h" />
 		<Unit filename="inc\Timer.h" />
 		<Unit filename="inc\Update.h" />
+		<Unit filename="inc\upDateUI.h" />
 		<Unit filename="readme.txt" />
 		<Unit filename="SPL\inc\stm32f30x_adc.h" />
 		<Unit filename="SPL\inc\stm32f30x_can.h" />
@@ -241,6 +242,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src\Update.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src\upDateUI.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="stm32f302r8_flash.ld" />

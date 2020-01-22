@@ -122,8 +122,6 @@ void ConstructWindow(struct drawItems *drawValues){
     gotoxy(168,81);
         printf("HEALTH: ");
     gotoxy(168,84);
-        printf("AMMO: ");
-    gotoxy(168,87);
         printf("WEAPON: ");
 }
 

@@ -13,4 +13,4 @@ obj\debug\src\mainmenu.o: src\MainMenu.c inc/MainMenu.h inc/Update.h \
  SPL\inc/stm32f30x_rcc.h SPL\inc/stm32f30x_rtc.h SPL\inc/stm32f30x_spi.h \
  SPL\inc/stm32f30x_tim.h SPL\inc/stm32f30x_usart.h \
  SPL\inc/stm32f30x_wwdg.h SPL\inc/stm32f30x_misc.h inc/30010_io.h \
- inc/DrawObjects.h inc/MainMenu.h inc/MenuControls.h
+ inc/DrawObjects.h inc/upDateUI.h inc/MainMenu.h inc/MenuControls.h

@@ -1,2 +1,13 @@
 
 Eksamensprojekt/bin/Debug/HelloWorld.elf
+Eksamensprojekt/EksamensProjekt.elay
+Eksamensprojekt/EksamensProjekt.ebp
+Eksamensprojekt/EksamensProjekt.depend
+Eksamensprojekt/bin/Debug/HelloWorld.map
+Eksamensprojekt/bin/Debug/HelloWorld.elf
+Eksamensprojekt/EksamensProjekt.elay
+Eksamensprojekt/obj/Debug/src/collider.o
+Eksamensprojekt/obj/Debug/src/controlsystem.o
+Eksamensprojekt/obj/Debug/src/drawing.o
+*.o
+*.d
