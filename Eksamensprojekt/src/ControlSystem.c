@@ -41,21 +41,9 @@ uint8_t userInput(struct player *player){
     //makes variable to get the players direction
     uint8_t moveDirection = 0;
 
-    //player and shots max velocities in a given direction
-    int8_t playerMaxVelocity = 1;
-    int8_t shotsMaxVelocity = 3;
-
-    //Bullet movement
-    for(int8_t i = 0; i < 3; i++){
-        if((*player).shots[i].show == 1){
-            (*player).shots[i].xPos += (*player).shots[i].xVelocity;
-            (*player).shots[i].yPos += (*player).shots[i].yVelocity;
-        }
-    }
-
     //Set the players velocities to 0
-    player->yVelocity = 0;
-    player->xVelocity = 0;
+    int8_t yVelocity = 0;
+    int8_t xVelocity = 0;
 
     //Sets the variable to the button the person has pressed
     buttonPress = uart_get_char();
@@ -63,37 +51,23 @@ uint8_t userInput(struct player *player){
     //returns 0 if there were no button pressed (makes the function much faster)
     if (buttonPress == '\0'){
         return 0;
-    }
-
-    // If and only if the pressed button is "w", the players moves up
-    if(buttonPress == 'w' ){
-        player->yVelocity = -playerMaxVelocity;
+    } else if(buttonPress == 'w' ){
+        yVelocity = -1;
         player->direction = 1;
         moveDirection = 1;
-    }
-
-    // If and only if the pressed button is "a", the players moves left
-    if(buttonPress == 'a'){
-        player->xVelocity = -playerMaxVelocity;
+    } else if(buttonPress == 'a'){
+        xVelocity = -1;
         player->direction = 2;
         moveDirection = 2;
-    }
-
-    // If and only if the pressed button is "s", the players moves down
-    if(buttonPress == 's'){
-        player->yVelocity = playerMaxVelocity;
+    } else if(buttonPress == 's'){
+        yVelocity = 1;
         player->direction = 3;
         moveDirection = 3;
-    }
-
-    // If and only if the pressed button is "d", the players moves right
-    if(buttonPress == 'd'){
-        player->xVelocity = playerMaxVelocity;
+    } else if(buttonPress == 'd'){
+        xVelocity = 1;
         player->direction = 4;
         moveDirection = 4;
-    }
-    // If and only if the pressed button is 0x20 (space), the players shoots (if the player can shoot)
-    if(buttonPress == 0x20){
+    } else if(buttonPress == 0x20){
         //runs through all the bullets
         for(int8_t i = 0; i < 3; i++){
             //checks if there is a bullet that doesn't exist
@@ -102,13 +76,13 @@ uint8_t userInput(struct player *player){
                 (*player).shots[i].show = 1;
                 //checks the player direction and depending on the direction the bullet will spawn in front of the player with a velocity in that direction
                 if((*player).direction == 1){
-                    setupBullet(player, 0, -2, 0, -shotsMaxVelocity, i);
+                    setupBullet(player, 0, -2, 0, -1,i);
                 } else if((*player).direction == 2) {
-                    setupBullet(player, -2, 0, -shotsMaxVelocity, 0, i);
+                    setupBullet(player, -2, 0, -1, 0, i);
                 } else if((*player).direction == 3){
-                    setupBullet(player, 0, 2, 0, shotsMaxVelocity, i);
+                    setupBullet(player, 0, 2, 0, 1, i);
                 } else if((*player).direction == 4){
-                    setupBullet(player, 2, 0, shotsMaxVelocity, 0, i);
+                    setupBullet(player, 2, 0, 1, 0, i);
                 }
             //when a bullet is spawned break out of the forloop (makes the function faster, because there is no need for checking for other bullets after)
             break;
@@ -116,8 +90,8 @@ uint8_t userInput(struct player *player){
         }
     }
     //updates the players position
-    player->xPos = (*player).xVelocity + (*player).xPos;
-    player->yPos = (*player).yVelocity + (*player).yPos;
+    player->xPos += xVelocity;
+    player->yPos += yVelocity;
     //cleans the uart input
     uart_clear();
     //returns the players direction
@@ -144,9 +118,7 @@ uint8_t userInput(struct player *player){
 static void setupBullet(struct player *player, int8_t xPosOffSet, int8_t yPosOffSet, int8_t xShotsMaxVelocity, int8_t yShotsMaxVelocity, uint8_t i){
     //spawns a bullet with a given position and velocity
     (*player).shots[i].xPos = (*player).xPos + xPosOffSet;
-    (*player).shots[i].xPosPrevious = (*player).xPosPrevious;
     (*player).shots[i].yPos = (*player).yPos + yPosOffSet;
-    (*player).shots[i].yPosPrevious = (*player).yPosPrevious;
     (*player).shots[i].xVelocity = xShotsMaxVelocity;
     (*player).shots[i].yVelocity = yShotsMaxVelocity;
 }

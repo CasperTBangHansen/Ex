@@ -11,9 +11,12 @@ struct time {
     uint8_t second;
     uint8_t minute;
     uint8_t hour;
-    uint8_t currentMap;
-    uint8_t runProgram;
+    uint8_t runPlayer;
+    uint8_t runBullet;
     uint8_t runEnemies;
+    uint8_t speedPlayer;
+    uint8_t speedBullet;
+    uint8_t speedEnemies;
 }counter;
 
 
