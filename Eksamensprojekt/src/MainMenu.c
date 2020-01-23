@@ -484,24 +484,6 @@ void ClearSpaceShipMenu(struct drawItems *drawValues){
     DrawEverything(drawValues);
 }
 
-void ClearSubSettingsMenu(struct drawItems *drawValues){
-     uint8_t Xbegin[26];
-     uint8_t Xstop[26];
-     uint8_t Ybegin[26];
-     uint8_t Ystop[26];
-     char charType[26];
-     for(uint8_t j = 0; j<26; j++){
-        Xbegin[j] = 81;
-        Xstop[j] = 157;
-        Ybegin[j] = 55 + j;
-        Ystop[j] = 55 + j;
-        charType[j] = 0xFF;
-     }
-     for(uint8_t i = 0; i<(sizeof(charType)); i++){
-        DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
-    }
-    DrawEverything(drawValues);
-}
 
 void ClearSubMenu(struct drawItems *drawValues){
      uint8_t Xbegin[61];
