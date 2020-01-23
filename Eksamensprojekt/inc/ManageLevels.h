@@ -15,7 +15,7 @@ struct mapPackage {
 };
 
 void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp);
-
+uint8_t setupLevel(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t drawMap, struct powerUp *powerUp, uint8_t ship);
 
 #endif
 

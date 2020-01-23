@@ -57,4 +57,22 @@ void GameLED(uint8_t tal){
     }
 }
 
-
+//setRedLED sets a timer so the red LED will turn on for longer
+void setRedLED(struct player *player, uint8_t preLives){
+    //init
+    uint8_t ledTimer;
+    //check if the player died
+    if((*player).lives != preLives){
+        //sets a timer
+        if(counter.second <= 58){
+            ledTimer = counter.second + 1;
+        } else {
+            ledTimer = 1;
+        }
+        //set the LED to red if the time hasn't chanced
+        while(counter.second != ledTimer){
+            //red led
+            GameLED(3);
+        }
+    }
+}

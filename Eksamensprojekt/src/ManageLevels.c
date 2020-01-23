@@ -34,6 +34,7 @@
 
 void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp){
     // Loads map of choice
+    player->direction = 4;
     switch ((*maps).mapChoice){
         // Map 1
         case 1:{
@@ -695,4 +696,23 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         }
     }
 }
+
+uint8_t setupLevel(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t drawMap, struct powerUp *powerUp, uint8_t ship){
+    //init map and Draw Map and SetWallHitBox
+    LevelManager(maps, drawValues, player, enemy, drawMap, powerUp);
+
+    //draws the players initial position
+    uint8_t moveDirection = (*player).direction;
+    ShipSelection(moveDirection, ship, player, drawValues);
+
+    //draw currentMapLevel
+    upDateCurrentLevel(maps);
+    //draw health
+    upDateHealth((*player).lives);
+
+    //LED
+    GameLED(2);
+    return moveDirection;
+}
+
 

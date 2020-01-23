@@ -1,6 +1,6 @@
 #include "DrawObjects.h"
 
-void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t ship){
+void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t ship, struct powerUp *powerUp){
     //Draw player
     ShipSelection(moveDirection, ship, player, drawValues);
 
@@ -42,6 +42,28 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
     player->xPosPrevious = (*player).xPos;
     player->yPosPrevious = (*player).yPos;
 
+
+    //Bullet movement
+    if(counter.runBullet == 1){
+        counter.runBullet = 0;
+        for(int8_t i = 0; i < 3; i++){
+            if((*player).shots[i].show == 1){
+                (*player).shots[i].xPos += (*player).shots[i].xVelocity;
+                (*player).shots[i].yPos += (*player).shots[i].yVelocity;
+            }
+        }
+    }
+
+    //draw powerup
+    for(uint8_t i = 0; i < 3; i++){
+        if(powerUp[i].show == 1){
+            printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xC5,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xB3,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xC4,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xC4,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xB3);
+        } else if(powerUp[i].xPos != 2 && powerUp[i].xPos != 2){
+            printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xFF,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xFF);
+            powerUp[i].yPos = 2;
+            powerUp[i].yPos = 2;
+        }
+    }
 
     //Draws everything (Enemy->Bullets->Player)
     DrawEverything(drawValues);
@@ -87,3 +109,22 @@ void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValue
     }
 }
 
+void removeEnemy(struct enemy *enemy, struct drawItems *drawValues){
+    //removes enemies
+    for(uint8_t i = 0; i < 20; i++){
+        drawEnemy(0,enemy, drawValues, i);
+        enemy[i].show = 0;
+        enemy[i].xPos = 1;
+        enemy[i].yPos = 1;
+    }
+}
+
+void playerKilled(struct enemy *enemy, struct player *player ,struct drawItems *drawValues, uint8_t preLives){
+    //removes enemies
+    removeEnemy(enemy, drawValues);
+    //clear player position
+    ShipSelection(1, 0, player, drawValues);
+    DrawEverything(drawValues);
+    //setsRedLED
+    setRedLED(player, preLives);
+}

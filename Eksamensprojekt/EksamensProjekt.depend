@@ -730,7 +730,7 @@
 	"upDateUI.h"
 	"LED.h"
 
-1579771906 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
+1579811744 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\update.h
 	"ManageLevels.h"
 	"Drawing.h"
 	"Collider.h"
@@ -742,7 +742,7 @@
 	"MainMenu.h"
 	"LED.h"
 
-1579766782 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\managelevels.h
+1579816239 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\managelevels.h
 	<stdint.h>
 	<stdio.h>
 	"MapPack.h"
@@ -781,29 +781,30 @@
 	"30010_io.h"
 	<stdio.h>
 
-1579770456 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\collider.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\collider.c
 	"Collider.h"
 
-1579704609 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\drawobjects.h
+1579816126 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\drawobjects.h
+	"Timer.h"
 	"Collider.h"
 	"Update.h"
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
 
-1579700308 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\controlsystem.c
 	"ControlSystem.h"
 
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
 	"Drawing.h"
 
-1579710057 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawobjects.c
+1579816274 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawobjects.c
 	"DrawObjects.h"
 
-1579701621 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
 	"EnemyController.h"
 
-1579774958 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mainmenu.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mainmenu.c
 	"MainMenu.h"
 
 1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\mainmenu.h
@@ -820,17 +821,16 @@
 	"stm32f30x_conf.h"
 	"30010_io.h"
 
-1579769813 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\managelevels.c
+1579816239 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\managelevels.c
 	"ManageLevels.h"
 
-1579700850 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mappack.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\mappack.c
 	"MapPack.h"
 
-1579699510 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\menucontrols.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\menucontrols.c
 	"MenuControls.h"
 
-1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\ships.c
-	<stdio.h>
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\ships.c
 	"Ships.h"
 
 1579622617 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\ships.h
@@ -839,14 +839,14 @@
 	"ControlSystem.h"
 	"Drawing.h"
 
-1579773518 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\timer.c
+1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\timer.c
 	"Timer.h"
 	<stdio.h>
 	"stm32f30x_conf.h"
 	"30010_io.h"
 	<stdlib.h>
 
-1579777385 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
+1579816451 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\update.c
 	"Update.h"
 
 1579682765 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\spl\src\stm32f30x_adc.c
@@ -1182,18 +1182,22 @@
 1579690949 source:c:\users\mathi\onedrive\dokumenter\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
 
-1579771864 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\updateui.h
+1579816489 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\updateui.h
+	"Collider.h"
+	"ManageLevels.h"
 	<stdint.h>
 	<stdio.h>
 	<stdlib.h>
 
-1579777372 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
+1579816043 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
 
-1579709429 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\led.c
+1579815563 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\led.c
 	"LED.h"
 
-1579696023 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\led.h
+1579816092 c:\users\caspe\documents\github\ex\eksamensprojekt\inc\led.h
+	"Collider.h"
+	"Timer.h"
 	"stm32f30x_conf.h"
 	"30010_io.h"
 	<stdint.h>
