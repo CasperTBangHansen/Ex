@@ -22,6 +22,7 @@
 //amount of enemy and draw buffer
 #define enemySize 20
 #define drawValuesSize 300
+#define powerUpSize 3
 
 /**********************************************************************
 
@@ -33,18 +34,19 @@
 
 **********************************************************************/
 
-void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
+void initStructs(struct drawItems *drawValues, uint8_t ship, int64_t *highscore){
     //makes all the structs
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
+    struct powerUp powerUp[powerUpSize];
     SetTimer();
 
     //sets default parameter to all the structs (resets the structs)
-    initEverythingFirstTime(&player, &enemies, &maps);
+    initEverythingFirstTime(&player, &enemies, &maps, &powerUp);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore);
+    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore, &powerUp);
 }
 
 
@@ -60,7 +62,7 @@ void initStructs(struct drawItems *drawValues, uint8_t ship, int16_t *highscore)
 
 **********************************************************************/
 
-static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps){
+static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct powerUp *powerUp){
     //Player initialization
     uint16_t xSTART = 1;
     uint16_t ySTART = 1;
@@ -86,6 +88,13 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     counter.speedBullet = 1;
     counter.speedPlayer = 1;
     counter.speedEnemies = 10;
+
+    //Powerup
+    for(uint8_t i = 0; i < powerUpSize; i++){
+        powerUp[i].xPos = 2;
+        powerUp[i].yPos = 2;
+        powerUp[i].show = 0;
+    }
 
     //Player shots initialization
     xSTART = 2;
@@ -130,7 +139,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int16_t *highscore){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int64_t *highscore,  struct powerUp *powerUp){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
@@ -139,12 +148,17 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
     while((*player).lives > 0){
         int8_t preLives = (*player).lives;
         //init map and Draw Map and SetWallHitBox
-        LevelManager(maps, drawValues, player, enemy, drawMap);
+        LevelManager(maps, drawValues, player, enemy, drawMap, powerUp);
+
+        //LED
         GameLED(2);
+
         //Set health bar
         upDateHealth((*player).lives);
+
         //SetMapDraw to false
         drawMap = 0;
+
         //sets player direction to look right
         moveDirection = 4;
         player->direction = moveDirection;
@@ -176,7 +190,18 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             }
 
             //running collider
-            checkCollider(player, enemy);
+            checkCollider(player, enemy, powerUp);
+
+            //draw powerup
+            for(uint8_t i = 0; i < powerUpSize; i++){
+                if(powerUp[i].show == 1){
+                    printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xC5,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xB3,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xC4,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xC4,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xB3);
+                } else if(powerUp[i].xPos != 2 && powerUp[i].xPos != 2){
+                    printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xFF,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xFF);
+                    powerUp[i].yPos = 2;
+                    powerUp[i].yPos = 2;
+                }
+            }
 
             //Draw every moving object
             drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy, ship);
@@ -186,12 +211,6 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             //draw Score
             upDateScore((*player).score);
 
-            //check highscore
-            if((*player).score >= (*highscore)){
-                (*highscore) = (*player).score;
-            }
-            //draw highscore
-            upDateHighScore((*highscore),0);
 
             //next level? 160
             if((*player).xPos >= 160){
@@ -202,14 +221,25 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                 break;
             }
         }
+        //check highscore
+        if((*player).score >= (*highscore)){
+            (*highscore) = (*player).score;
+        }
+        //draw highscore
+        upDateHighScore((*highscore),0);
 
+        //removes enemies
         for(uint8_t i = 0; i < enemySize; i++){
             drawEnemy(0,enemy, drawValues, i);
         }
+
+
         //clear player position
         ShipSelection(1, 0, player, drawValues);
         DrawEverything(drawValues);
 
+
+        //red LED
         if((*player).lives != preLives){
             if(counter.second <= 58){
                 ledTimer = counter.second + 1;

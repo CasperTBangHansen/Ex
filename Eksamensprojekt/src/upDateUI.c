@@ -47,28 +47,28 @@ void upDateWeapon(uint8_t activeWeapon){
     }
 }
 
-void upDateScore(int16_t playerScore){
+void upDateScore(int64_t playerScore){
     static int16_t currentScore = 1;
     if(playerScore != currentScore){
         currentScore = playerScore;
         gotoxy(175,87);
-        printf("      ");
+        printf("                  ");
         gotoxy(175,87);
-        printf("%d",currentScore);
+        printf("%18.d",currentScore);
     }
 }
 
-void upDateHighScore(int16_t highscore, uint8_t resetCurrentScore){
-    static int16_t currentScore = -32768;
+void upDateHighScore(int64_t highscore, uint8_t resetCurrentScore){
+    static int64_t currentScore = -9223372036854775807;
     if(resetCurrentScore == 1){
-        currentScore = -32768;
+        currentScore = -9223372036854775807;
     } else {
         if(highscore != currentScore){
             currentScore = highscore;
             gotoxy(180,90);
-            printf("      ");
+            printf("                  ");
             gotoxy(180,90);
-            printf("%d", highscore);
+            printf("%18.d", highscore);
         }
     }
 }

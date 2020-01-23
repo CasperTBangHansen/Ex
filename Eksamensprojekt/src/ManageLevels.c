@@ -32,7 +32,7 @@
 
 **********************************************************************/
 
-void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap){
+void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp){
     // Loads map of choice
     switch ((*maps).mapChoice){
         // Map 1
@@ -41,7 +41,6 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             if(drawMap == 1){
                 firstMapSetup(drawValues);
             }
-
             //Sets player position
             uint16_t xSTART = 19;
             uint16_t ySTART = 65;
@@ -49,6 +48,12 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->yPos = ySTART;
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
+
+            //Sets powerup position
+            powerUp[0].xPos = 98;
+            powerUp[0].yPos = 73;
+            powerUp[0].show = 1;
+
 
             //enemy speed
             counter.speedEnemies = 40;

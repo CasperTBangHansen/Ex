@@ -7,8 +7,8 @@
 
 void upDateHealth(uint8_t lives);
 void upDateWeapon(uint8_t activeWeapon);
-void upDateScore(int16_t playerScore);
-void upDateHighScore(int16_t highscore, uint8_t resetCurrentScore);
+void upDateScore(int64_t playerScore);
+void upDateHighScore(int64_t highscore, uint8_t resetCurrentScore);
 
 
 #endif

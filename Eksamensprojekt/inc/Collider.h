@@ -38,7 +38,7 @@ struct player{
     int8_t lives;
     uint8_t direction;
     uint8_t bulletType;
-    int16_t score;
+    int64_t score;
     struct bullet shots[3];
 };
 
@@ -50,10 +50,16 @@ struct drawItems{
     char text;
 };
 
+struct powerUp{
+    uint16_t xPos;
+    uint8_t yPos;
+    uint8_t show;
+};
+
 void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize);
-void checkCollider(struct player *playerHitBox, struct enemy *enemies);
+void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp);
 uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i);
-uint8_t enemyCollider(uint16_t objectXPos, uint8_t objectYPos, uint16_t enemyXPos, uint8_t enemyYPos);
+uint8_t twoObjectCollider(uint16_t objectXPos, uint8_t objectYPos, uint16_t enemyXPos, uint8_t enemyYPos);
 
 
 
