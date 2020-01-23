@@ -313,6 +313,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
 
     gotoxy(78,65);
     printf("Your score: %010d",(*player).score);
+    upDateScore((*player).score);
     gotoxy(78,67);
     printf("Highscore:  %010d",(*highscore));
 
