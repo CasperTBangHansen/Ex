@@ -112,6 +112,7 @@ void removeEnemy(struct enemy *enemy, struct drawItems *drawValues){
     //removes enemies
     for(uint8_t i = 0; i < 20; i++){
         drawEnemy(0,enemy, drawValues, i);
+        enemy[i].arrayPathSize = 0;
         enemy[i].show = 0;
         enemy[i].xPos = 1;
         enemy[i].yPos = 1;

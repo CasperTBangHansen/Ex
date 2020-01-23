@@ -549,6 +549,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
 
+            counter.speedEnemies = 20;
             //Sets enemies position
             enemies[0].xPos = 53;
             enemies[0].yPos = 75;

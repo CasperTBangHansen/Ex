@@ -798,7 +798,7 @@
 1579622617 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawing.c
 	"Drawing.h"
 
-1579816274 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawobjects.c
+1579818914 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\drawobjects.c
 	"DrawObjects.h"
 
 1579813285 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\enemycontroller.c
@@ -1189,7 +1189,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1579816043 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
+1579816806 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\updateui.c
 	"upDateUI.h"
 
 1579815563 source:c:\users\caspe\documents\github\ex\eksamensprojekt\src\led.c
