@@ -122,7 +122,7 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct po
     //player powerup
     uint8_t hit = 0;
     for(int8_t w = 0; w < 3; w++){
-        //checks if the powerup exist
+        //checks if the enemy exist
         if(powerUp[w].show == 1){
             //checks if the player hit an enemy in the x-direction and if the player was previously hit this tick.
             if(twoObjectCollider((*playerHitBox).xPos - 1, (*playerHitBox).yPos - 1, powerUp[w].xPos, powerUp[w].yPos)) hit = 1;
@@ -186,10 +186,10 @@ uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i){
 }
 
 uint8_t twoObjectCollider(uint16_t objectXPos, uint8_t objectYPos, uint16_t object2XPos, uint8_t object2YPos){
-    uint16_t object2RelativePosX[] = {object2XPos - 1, object2XPos , object2XPos + 1, object2XPos - 1, object2XPos , object2XPos + 1, object2XPos - 1, object2XPos , object2XPos + 1};
-    uint8_t object2RelativePosY[] = {object2YPos - 1, object2YPos - 1, object2YPos - 1, object2YPos, object2YPos, object2YPos, object2YPos + 1, object2YPos + 1, object2YPos +1};
+    uint16_t enemyRelativePosX[] = {object2XPos - 1, object2XPos , object2XPos + 1, object2XPos - 1, object2XPos , object2XPos + 1, object2XPos - 1, object2XPos , object2XPos + 1};
+    uint8_t enemyRelativePosY[] = {object2YPos - 1, object2YPos - 1, object2YPos - 1, object2YPos, object2YPos, object2YPos, object2YPos + 1, object2YPos + 1, object2YPos +1};
     for(uint8_t i = 0; i<8; i++){
-        if(objectXPos == object2RelativePosX[i] && objectYPos == object2RelativePosY[i]){
+        if(objectXPos == enemyRelativePosX[i] && objectYPos == enemyRelativePosY[i]){
             return 1;
         }
     }

@@ -32,6 +32,7 @@
 
 //Main Window
 
+//Constructs the game window.
 void ConstructWindow(struct drawItems *drawValues){
     uint16_t Xbegin[] = {
     15,15,15,205, // Outer window
@@ -129,8 +130,7 @@ void ConstructWindow(struct drawItems *drawValues){
 
 
 
-//Construct pure text
-
+//Constructs the title
 void ConstructTitle(){
         gotoxy(40,25);
         printf(" .oooooo..o ooooooooooooo       .o.       ooooooooo.         .oooooo.   ooooooooo.    .oooooo..o ");
@@ -167,7 +167,7 @@ void ConstructTitle(){
         gotoxy(55,44);
         printf("        88   88888888888    'Y888P'     'Y88888P'  `'Y8888P'   ");
 }
-
+// Constructs "GOOD LUCK" message
 void ConstructGoodLuck(){
     gotoxy(50,90);
     printf("  #####   #######  #######  ######       #        #     #   #####   #    # ");
@@ -189,7 +189,7 @@ void ConstructGoodLuck(){
 
 
 //Construct Menu
-
+// Constructs main menu
 void ConstructMainMenu(){
 
     gotoxy(50,60);
@@ -239,7 +239,7 @@ void ConstructMainMenu(){
     gotoxy(53,100);
     printf("  #####   #######     #        #     ###  #     #   #####    #####  ");
 }
-
+// Constructs the how to play sub menu
 void ConstructHowToPlayMenu(struct drawItems *drawValues){
      uint8_t Xbegin[] = {20,20,20,160};
      uint8_t Xstop[] = {20,160,160,160};
@@ -373,7 +373,7 @@ void ConstructHowToPlayMenu(struct drawItems *drawValues){
     gotoxy(73,104);
     printf(" ######  #     #  #####  #    # ");
 }
-
+// Constructs the settings sub menu
 void ConstructSettingsMenu(struct drawItems *drawValues){
      uint8_t Xbegin[] = {20,20,20,160};
      uint8_t Xstop[] = {20,160,160,160};
@@ -416,7 +416,7 @@ void ConstructSettingsMenu(struct drawItems *drawValues){
     gotoxy(73,104);
     printf(" ######  #     #  #####  #    # ");
 }
-
+// Constructs the spaceship selection sub menu.
 void ConstructSpaceShipMenu(struct drawItems *drawValues){
      uint8_t Xbegin[] = {130,130,130,158,150,151,152,150,151,152,150,151,152,150,151,152,150,151,152,150,151,152
      };
@@ -439,11 +439,11 @@ void ConstructSpaceShipMenu(struct drawItems *drawValues){
 
 
 // All functions that clears something
-
+//Clears the whole screen.
 void clearscr() {
         printf("%c[%d%c",ESC,2,0x4A);
 }
-
+//Clears the game screen
 void ClearGameScreen(struct drawItems *drawValues){
     // 16->164 i X, 16-114 i Y
      GameLED(4);
@@ -464,7 +464,7 @@ void ClearGameScreen(struct drawItems *drawValues){
     }
     DrawEverything(drawValues);
 }
-
+// Clears the space ship selection menu
 void ClearSpaceShipMenu(struct drawItems *drawValues){
      uint8_t Xbegin[57];
      uint8_t Xstop[57];
@@ -483,8 +483,7 @@ void ClearSpaceShipMenu(struct drawItems *drawValues){
     }
     DrawEverything(drawValues);
 }
-
-
+// Clears the main menu area
 void ClearSubMenu(struct drawItems *drawValues){
      uint8_t Xbegin[61];
      uint8_t Xstop[61];
@@ -504,6 +503,11 @@ void ClearSubMenu(struct drawItems *drawValues){
     DrawEverything(drawValues);
 }
 
+/************************************************************************************************************
+From here and until the next of this kind of line, the functions ONLY create arrows and clears the same arrows
+infront of menu selections. basically, they're alle the same and could of be done in a single function with
+X and Y input, but it has been done like this.
+************************************************************************************************************/
 
 
 
@@ -713,11 +717,16 @@ void ClearSpaceshipArrow(){
     gotoxy(42,72);
     printf(" ");
     }
+/*****************************************************************************************************************
+Here ends the functions that either constructs or clears an arrow for a menu selection.
+
+*****************************************************************************************************************/
 
 
+// Below here is draw functions which take several of the functions above and collects them in  a single function.
 
-// Below is draw functions which take several of the functions above and collects them in  a single function.
 
+// The function below initializes the first menu screen, constructs the title, main men and the first arrow
 void BeginMenuScreen(struct MenuSelection *MenuSelection, struct drawItems *drawValues){
     clearscr();
     ConstructWindow(drawValues);
@@ -726,21 +735,25 @@ void BeginMenuScreen(struct MenuSelection *MenuSelection, struct drawItems *draw
     ConstructPlayGameArrow();
 }
 
+//Below clears the sub menu, and constructs the how to play submenu.
 void BeginHowToPlayMenu(struct drawItems *drawValues){
     ClearSubMenu(drawValues);
     ConstructHowToPlayMenu(drawValues);
 }
 
+//Below clears the sub menu and constructs the main menu.
 void BeginMainMenu(struct drawItems *drawValues){
     ClearSubMenu(drawValues);
     ConstructMainMenu();
 }
 
+// Below clears the submenu and constructs the settings menu.
 void BeginSettingMenu(struct drawItems *drawValues){
     ClearSubMenu(drawValues);
     ConstructSettingsMenu(drawValues);
 }
 
+// Begin begine clears the sub menu, constructs a "GOOD LUCK" text and then clears the game screen.
 void BeginGame(struct drawItems *drawValues){
     ClearSubMenu(drawValues);
     ConstructGoodLuck();

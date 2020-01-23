@@ -53,6 +53,7 @@ uint8_t userInput(struct player *player){
     //returns 0 if there were no button pressed (makes the function much faster)
     if (buttonPress == '\0'){
         return 0;
+        //Boss key below
     } else if(buttonPress == 0x1B){
         printf("%c[%d%c",0x1B,2,0x4A);
         gotoxy(1,1);
@@ -60,6 +61,7 @@ uint8_t userInput(struct player *player){
         printf("(c) 2018 Microsoft Corporation. All rights reserved.\n");
         printf("C:\\Users\\StarWarsFan180381>");
         while(1);
+        //CHanges player direciton dependant on which key is pressed
     } else if(buttonPress == 'w' ){
         yVelocity = -1;
         player->direction = 1;

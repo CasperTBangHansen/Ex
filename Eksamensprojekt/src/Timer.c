@@ -34,7 +34,7 @@ void SetTimer(){ //Enables the clock, and starts the timer.
     TIM2->CR1 &= ~(0x01 << 3); // OPM off
     TIM2->CR1 &= ~(0x01 << 2); // URS off
     TIM2->CR1 &= ~(0x01 << 1); // UDIS enabled
-    TIM2->ARR = 0xF9FF; // Set reload value
+    TIM2->ARR = 0xF9FF; // Set reload value (interupts er sat til et milisekund)
     TIM2->PSC = 0x00; // Set prescale value
     TIM2->DIER |= (0x0001); // Enable the timer 2 interrupts
     NVIC_SetPriority(28, 0); // Set interrupt priority
@@ -42,9 +42,16 @@ void SetTimer(){ //Enables the clock, and starts the timer.
     TIM2->CR1 |= (0x01 << 0); // Turn on timer 2
 }
 
+
+
+/*
+TIM2_IRQHANDLER decides what to happen every time an interrupt happens. this one counts every miliseconds and places
+certain if statements dependant on the miliseconds.
+
+*/
 void TIM2_IRQHandler(void) {
     counter.milisecond++;
-    if(counter.milisecond >= 10){
+    if(counter.milisecond >= 10){ //If there's 10 miliseconds, add +1 to centiseconds and remove 10 miliseconds.
         counter.milisecond -= 10;
         counter.centisecond++;
     }
@@ -59,16 +66,16 @@ void TIM2_IRQHandler(void) {
         counter.runEnemies = 1;
     }
 
-    if(counter.centisecond >= 100){
+    if(counter.centisecond >= 100){ //If threre's 100 centiseconds, add +1 to seconds and remove 100 centiseconds.
         counter.upDateSeconds = 1;
         counter.centisecond -= 100;
         counter.second++;
     }
-    if(counter.second >= 60){
+    if(counter.second >= 60){ //60 seconds to +1 minute, remove 60 seconds.
         counter.second -= 60;
         counter.minute++;
     }
-    if(counter.minute >= 60){
+    if(counter.minute >= 60){ // 60 minutes to +1 hour, remove 60 minutes.
         counter.minute -= 60;
         counter.hour++;
     }

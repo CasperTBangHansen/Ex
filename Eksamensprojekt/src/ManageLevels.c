@@ -58,13 +58,13 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             //enemy speed
             counter.speedEnemies = 40;
-            //Sets enemies position
+            //Sets enemies spawn position and earlier position
             enemies[0].xPos = 103;
             enemies[0].yPos = 48;
             enemies[0].xPosPrevious = enemies[0].xPos;
             enemies[0].yPosPrevious = enemies[0].yPos;
             enemies[0].show = 1;
-
+            // Next lines define the path it should walk.
             enemies[0].xPath[0] = 103;
             enemies[0].yPath[0] = 48;
 
@@ -78,8 +78,10 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             enemies[0].xPath[3] = 103;
             enemies[0].yPath[3] = 73;
-
+            //Amount of lines the enemy walks
             enemies[0].arrayPathSize = 4;
+
+
 
             enemies[1].xPos = 43;
             enemies[1].yPos = 54;
@@ -118,8 +120,6 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             enemies[2].yPath[3] = 33;
 
             enemies[2].arrayPathSize = 4;
-
-            // First 3 walls done, next 2 L figures
 
             enemies[3].xPos = 73;
             enemies[3].yPos = 88;

@@ -27,11 +27,14 @@
 
 **********************************************************************/
 
+//Each function
 void firstMapSetup(struct drawItems *drawValues) {
 
 
-//Coordinates for all the walls in the first maps maze
+//Coordinates for all the walls in the first map. Creates lines based on coordinates.
+// X value for the start of the line
     const uint8_t Xbegin[] = {
+// X value for the end of the line
     16,17,164,163,
     16,16,
     141,141,
@@ -75,6 +78,7 @@ void firstMapSetup(struct drawItems *drawValues) {
     56,56,56,60
     };
     const uint8_t Xstop[] = {
+// Y value for the start of the line
     16,17,164,163,
     40,40,
     164,164,
@@ -117,6 +121,7 @@ void firstMapSetup(struct drawItems *drawValues) {
     46,50,50,50,
     56,60,60,60};
     const uint8_t Ybegin[] = {
+// X value for the end of the line
     61,61,61,61,
     60,70,
     60,70,
@@ -159,6 +164,7 @@ void firstMapSetup(struct drawItems *drawValues) {
     91,91,105,91,
     101,101,105,101};
     const uint8_t Ystop[] = {
+// What kind of Hex character to draw that specific line
     69,69,69,69,
     60,70,
     60,70,
@@ -274,7 +280,9 @@ void secondMapSetup(struct drawItems *drawValues) {
 
 
 //Coordinates for all the walls in the first maps maze
+// X value for the start of the line
     const uint8_t Xbegin[] = {
+        // X value for the end of the line
     16,17,164,163,
     16,16,
     142,142,
@@ -301,6 +309,7 @@ void secondMapSetup(struct drawItems *drawValues) {
     126,126
     };
     const uint8_t Xstop[] = {
+        // Y value for the start of the line
     16,17,164,163,
     40,40,
     164,164,
@@ -327,6 +336,7 @@ void secondMapSetup(struct drawItems *drawValues) {
     126,141
     };
     const uint8_t Ybegin[] = {
+        // Y value for the end of the line
     61,61,61,61,
     60,70,
     60,70,
@@ -353,6 +363,7 @@ void secondMapSetup(struct drawItems *drawValues) {
     73,73
     };
     const uint8_t Ystop[] = {
+    // what kind of Hex character to draw that specific line
     69,69,69,69,
     60,70,
     60,70,
@@ -423,7 +434,9 @@ void thirdMapSetup(struct drawItems *drawValues) {
 
 
 //Coordinates for all the walls in the first maps maze
+// X value for the start of the line
     const uint8_t Xbegin[] = {
+        // X value for the end of the line
     16,17,164,163,
     16,16,
     141,141,
@@ -432,6 +445,7 @@ void thirdMapSetup(struct drawItems *drawValues) {
     41,46,46,50,50,81,71,71,71,76,71,71,71,80,81,90,90,96,96,105,105,131,131,136,136,40,50,50,56,56,61,56,56,56,65,60,60,60,65,65,96,86,86,86,105,105,131,131,136,136,111,111,115,115,121,121,125,121,121,115,115,111
     };
     const uint8_t Xstop[] = {
+         // Y value for the start of the line
     16,17,164,163,
     40,40,
     164,164,
@@ -440,6 +454,7 @@ void thirdMapSetup(struct drawItems *drawValues) {
     46,46,50,50,81,81,81,71,76,76,76,71,80,80,90,90,96,96,105,105,131,131,136,136,140,50,50,56,56,61,61,61,56,65,65,65,60,65,65,96,96,96,86,105,105,131,131,136,136,140,111,115,115,121,121,125,125,125,121,121,115,115
     };
     const uint8_t Ybegin[] = {
+        // Y value for the end of the line
     61,61,61,61,
     60,70,
     60,70,
@@ -448,6 +463,7 @@ void thirdMapSetup(struct drawItems *drawValues) {
     56,56,66,51,51,51,57,57,61,61,67,67,76,61,61,56,56,56,61,51,51,51,61,60,60,72,72,77,67,67,61,61,57,57,57,71,71,77,77,82,76,76,67,67,67,77,66,66,67,70,57,57,57,62,57,57,57,71,66,66,66,71
     };
     const uint8_t Ystop[] = {
+        // What kind of Hex character to draw that specific line
     69,69,69,69,
     60,70,
     60,70,
