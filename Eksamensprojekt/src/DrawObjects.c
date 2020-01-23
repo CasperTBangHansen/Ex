@@ -38,11 +38,6 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
         }
     }
 
-    //updates player previous position to current position
-    player->xPosPrevious = (*player).xPos;
-    player->yPosPrevious = (*player).yPos;
-
-
     //Bullet movement
     if(counter.runBullet == 1){
         counter.runBullet = 0;
@@ -54,13 +49,17 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
         }
     }
 
+    //updates player previous position to current position
+    player->xPosPrevious = (*player).xPos;
+    player->yPosPrevious = (*player).yPos;
+
     //draw powerup
     for(uint8_t i = 0; i < 3; i++){
         if(powerUp[i].show == 1){
             printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xC5,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xB3,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xC4,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xC4,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xB3);
-        } else if(powerUp[i].xPos != 2 && powerUp[i].xPos != 2){
+        } else if(powerUp[i].xPos != 2 && powerUp[i].yPos != 2){
             printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,powerUp[i].yPos,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos-1,powerUp[i].xPos,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos-1,0x48,0xFF,0x1B,powerUp[i].yPos,powerUp[i].xPos+1,0x48,0xFF,0x1B,powerUp[i].yPos+1,powerUp[i].xPos,0x48,0xFF);
-            powerUp[i].yPos = 2;
+            powerUp[i].xPos = 2;
             powerUp[i].yPos = 2;
         }
     }
