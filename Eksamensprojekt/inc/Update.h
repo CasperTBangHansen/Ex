@@ -12,9 +12,9 @@
 #include "MainMenu.h"
 #include "LED.h"
 
-void initStructs(struct drawItems *drawValues, uint8_t ship, int64_t *highscore);
+void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore);
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct powerUp *powerUp);
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int64_t *highscore, struct powerUp *powerUp);
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int32_t *highscore, struct powerUp *powerUp);
 void InterruptSet();
 
 #endif

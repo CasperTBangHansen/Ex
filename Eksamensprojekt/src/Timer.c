@@ -59,8 +59,8 @@ void TIM2_IRQHandler(void) {
         counter.runEnemies = 1;
     }
 
-
     if(counter.centisecond >= 100){
+        counter.upDateSeconds = 1;
         counter.centisecond -= 100;
         counter.second++;
     }
@@ -78,7 +78,7 @@ void TIM2_IRQHandler(void) {
 
 
 
-void Split_Time_Function(struct time *counter, char *splitTime){ //Take the struct, and the address for a char, then prints the current time to that char address, so it can be used later on.
-    sprintf((splitTime),"%02d:%02d:%02d:%02d",counter->hour,counter->minute,counter->second,counter->centisecond);
+void Split_Time_Function(char *splitTime){ //Take the struct, and the address for a char, then prints the current time to that char address, so it can be used later on.
+    sprintf((splitTime),"%02d:%02d:%02d:%02d",counter.hour,counter.minute,counter.second,counter.centisecond);
 }
 

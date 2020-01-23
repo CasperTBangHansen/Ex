@@ -37,8 +37,8 @@ int main(void)
     MenuSelection.Ship = 0;
 
     //highscore
-    int64_t *highscore;
-    highscore = -9223372036854775807;
+    int32_t *highscore;
+    highscore = -2147483647;
     //shipValue
     uint8_t temp = 0;
     uint8_t shipValue = 1;

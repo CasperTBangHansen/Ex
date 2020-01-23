@@ -18,12 +18,12 @@ struct time {
     uint8_t speedPlayer;
     uint8_t speedBullet;
     uint8_t speedEnemies;
+    uint8_t upDateSeconds;
 }counter;
 
 
 void SetTimer();
 void TIM2_IRQHandler(void);
-void InitTimerStruct(struct time *counter);
-void Split_Time_Function(struct time *counter, char *splitTime);
+void Split_Time_Function(char *splitTime);
 
 #endif

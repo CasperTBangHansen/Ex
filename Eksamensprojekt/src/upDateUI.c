@@ -26,7 +26,7 @@ void upDateHealth(uint8_t lives){
         }
     } else if(lives == 0){
         gotoxy(healthPosX,healthPosY);
-        for(uint8_t i = healthLength - 16; i >= 0; i--){
+        for(int8_t i = healthLength - 16; i >= 0; i--){
             printf("%c",0xFF);
         }
     }
@@ -47,28 +47,28 @@ void upDateWeapon(uint8_t activeWeapon){
     }
 }
 
-void upDateScore(int64_t playerScore){
-    static int16_t currentScore = 1;
+void upDateScore(int32_t playerScore){
+    static int32_t currentScore = 1;
     if(playerScore != currentScore){
         currentScore = playerScore;
-        gotoxy(175,87);
-        printf("                  ");
-        gotoxy(175,87);
-        printf("%18.d",currentScore);
+        gotoxy(180,87);
+        printf("          ");
+        gotoxy(180,87);
+        printf("%010d",playerScore);
     }
 }
 
-void upDateHighScore(int64_t highscore, uint8_t resetCurrentScore){
-    static int64_t currentScore = -9223372036854775807;
+void upDateHighScore(int32_t highscore, uint8_t resetCurrentScore){
+    static int32_t currentScore = -2147483648;
     if(resetCurrentScore == 1){
-        currentScore = -9223372036854775807;
+        currentScore = -2147483648;
     } else {
         if(highscore != currentScore){
             currentScore = highscore;
             gotoxy(180,90);
-            printf("                  ");
+            printf("          ");
             gotoxy(180,90);
-            printf("%18.d", highscore);
+            printf("%010d", highscore);
         }
     }
 }
