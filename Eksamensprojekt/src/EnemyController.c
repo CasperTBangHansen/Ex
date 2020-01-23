@@ -20,7 +20,6 @@
 
 
 void upDatePosition(struct enemy *enemies){
-    gotoxy(1,10);
     uint8_t maxEnemyVelocity = 1;
     uint8_t position;
     for(uint8_t i = 0; i < enemySize; i++){
