@@ -55,6 +55,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             powerUp[0].show = 1;
 
 
+
             //enemy speed
             counter.speedEnemies = 40;
             //Sets enemies position
@@ -95,6 +96,142 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             enemies[1].arrayPathSize = 2;
 
+
+            enemies[2].xPos = 68;
+            enemies[2].yPos = 33;
+            enemies[2].xPosPrevious = enemies[2].xPos;
+            enemies[2].yPosPrevious = enemies[2].yPos;
+            enemies[2].show = 1;
+
+            enemies[2].xPath[0] = 68;
+            enemies[2].yPath[0] = 33;
+
+
+            enemies[2].xPath[1] = 68;
+            enemies[2].yPath[1] = 43;
+
+
+            enemies[2].xPath[2] = 78;
+            enemies[2].yPath[2] = 43;
+
+            enemies[2].xPath[3] = 78;
+            enemies[2].yPath[3] = 33;
+
+            enemies[2].arrayPathSize = 4;
+
+            // First 3 walls done, next 2 L figures
+
+            enemies[3].xPos = 73;
+            enemies[3].yPos = 88;
+            enemies[3].xPosPrevious = enemies[3].xPos;
+            enemies[3].yPosPrevious = enemies[3].yPos;
+            enemies[3].show = 1;
+
+            enemies[3].xPath[0] = 73;
+            enemies[3].yPath[0] = 88;
+
+
+            enemies[3].xPath[1] = 73;
+            enemies[3].yPath[1] = 98;
+
+
+            enemies[3].xPath[2] = 83;
+            enemies[3].yPath[2] = 98;
+
+            enemies[3].xPath[3] = 83;
+            enemies[3].yPath[3] = 88;
+
+            enemies[3].arrayPathSize = 4;
+
+
+
+            enemies[4].xPos = 53;
+            enemies[4].yPos = 48;
+            enemies[4].xPosPrevious = enemies[4].xPos;
+            enemies[4].yPosPrevious = enemies[4].yPos;
+            enemies[4].show = 1;
+
+            enemies[4].xPath[0] = 53;
+            enemies[4].yPath[0] = 48;
+
+
+            enemies[4].xPath[1] = 53;
+            enemies[4].yPath[1] = 58;
+
+
+            enemies[4].xPath[2] = 63;
+            enemies[4].yPath[2] = 58;
+
+            enemies[4].xPath[3] = 63;
+            enemies[4].yPath[3] = 48;
+
+            enemies[4].arrayPathSize = 4;
+
+            enemies[5].xPos = 128;
+            enemies[5].yPos = 58;
+            enemies[5].xPosPrevious = enemies[5].xPos;
+            enemies[5].yPosPrevious = enemies[5].yPos;
+            enemies[5].show = 1;
+
+            enemies[5].xPath[0] = 128;
+            enemies[5].yPath[0] = 58;
+
+
+            enemies[5].xPath[1] = 128;
+            enemies[5].yPath[1] = 73;
+
+
+            enemies[5].xPath[2] = 138;
+            enemies[5].yPath[2] = 73;
+
+
+            enemies[5].xPath[3] = 138;
+            enemies[5].yPath[3] = 58;
+
+            enemies[5].arrayPathSize = 4;
+
+            enemies[6].xPos = 113;
+            enemies[6].yPos = 98;
+            enemies[6].xPosPrevious = enemies[6].xPos;
+            enemies[6].yPosPrevious = enemies[6].yPos;
+            enemies[6].show = 1;
+
+            enemies[6].xPath[0] = 113;
+            enemies[6].yPath[0] = 98;
+
+
+            enemies[6].xPath[1] = 113;
+            enemies[6].yPath[1] = 108;
+
+            enemies[6].xPath[2] = 123;
+            enemies[6].yPath[2] = 108;
+
+            enemies[6].xPath[3] = 123;
+            enemies[6].yPath[3] = 98;
+
+            enemies[6].arrayPathSize = 4;
+
+            enemies[7].xPos = 113;
+            enemies[7].yPos = 33;
+            enemies[7].xPosPrevious = enemies[7].xPos;
+            enemies[7].yPosPrevious = enemies[7].yPos;
+            enemies[7].show = 1;
+
+            enemies[7].xPath[0] = 113;
+            enemies[7].yPath[0] = 33;
+
+
+            enemies[7].xPath[1] = 113;
+            enemies[7].yPath[1] = 48;
+
+            enemies[7].xPath[2] = 123;
+            enemies[7].yPath[2] = 48;
+
+            enemies[7].xPath[3] = 123;
+            enemies[7].yPath[3] = 33;
+
+            enemies[7].arrayPathSize = 4;
+
             break;
         }
         // Map 2
@@ -102,6 +239,13 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             if(drawMap == 1){
                 secondMapSetup(drawValues);
             }
+            powerUp[0].xPos = 26;
+            powerUp[0].yPos = 65;
+            powerUp[0].show = 1;
+
+            powerUp[1].xPos = 83;
+            powerUp[1].yPos = 65;
+            powerUp[1].show = 1;
 
             //Sets player position
             uint16_t xSTART = 19;
@@ -182,69 +326,36 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             // First 3 walls done, next 2 L figures
 
-            enemies[3].xPos = 68;
-            enemies[3].yPos = 50;
+            enemies[3].xPos = 78;
+            enemies[3].yPos = 55;
             enemies[3].xPosPrevious = enemies[3].xPos;
             enemies[3].yPosPrevious = enemies[3].yPos;
             enemies[3].show = 1;
 
-            enemies[3].xPath[0] = 68;
-            enemies[3].yPath[0] = 50;
+            enemies[3].xPath[0] = 78;
+            enemies[3].yPath[0] = 55;
 
+            enemies[3].xPath[1] = 78;
+            enemies[3].yPath[1] = 50;
 
-            enemies[3].xPath[1] = 68;
-            enemies[3].yPath[1] = 55;
-
-
-            enemies[3].xPath[2] = 78;
-            enemies[3].yPath[2] = 55;
-
-            enemies[3].xPath[3] = 78;
-            enemies[3].yPath[3] = 50;
-
-            enemies[3].xPath[4] = 78;
-            enemies[3].yPath[4] = 55;
-
-            enemies[3].xPath[5] = 68;
-            enemies[3].yPath[5] = 55;
-
-            enemies[3].xPath[6] = 68;
-            enemies[3].yPath[6] = 50;
-
-            enemies[3].arrayPathSize = 6;
+            enemies[3].arrayPathSize = 2;
 
 
 
-            enemies[4].xPos = 68;
-            enemies[4].yPos = 80;
+            enemies[4].xPos = 78;
+            enemies[4].yPos = 75;
             enemies[4].xPosPrevious = enemies[4].xPos;
             enemies[4].yPosPrevious = enemies[4].yPos;
             enemies[4].show = 1;
 
-            enemies[4].xPath[0] = 68;
-            enemies[4].yPath[0] = 80;
 
+            enemies[4].xPath[0] = 78;
+            enemies[4].yPath[0] = 75;
 
-            enemies[4].xPath[1] = 68;
-            enemies[4].yPath[1] = 75;
+            enemies[4].xPath[1] = 78;
+            enemies[4].yPath[1] = 80;
 
-
-            enemies[4].xPath[2] = 78;
-            enemies[4].yPath[2] = 75;
-
-            enemies[4].xPath[3] = 78;
-            enemies[4].yPath[3] = 80;
-
-            enemies[4].xPath[4] = 78;
-            enemies[4].yPath[4] = 75;
-
-            enemies[4].xPath[5] = 68;
-            enemies[4].yPath[5] = 75;
-
-            enemies[4].xPath[6] = 68;
-            enemies[4].yPath[6] = 80;
-
-            enemies[4].arrayPathSize = 6;
+            enemies[4].arrayPathSize = 2;
 
             enemies[5].xPos = 73;
             enemies[5].yPos = 75;
@@ -420,7 +531,162 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         }
         // Map 3
         case 3:{
-            printf("map 3 has been reset!\n");
+            if(drawMap == 1){
+                thirdMapSetup(drawValues);
+            }
+
+            powerUp[1].xPos = 93;
+            powerUp[1].yPos = 59;
+            powerUp[1].show = 1;
+
+
+            //Sets player position
+            uint16_t xSTART = 19;
+            uint16_t ySTART = 65;
+            player->xPos = xSTART;
+            player->yPos = ySTART;
+            player->xPosPrevious = xSTART;
+            player->yPosPrevious = ySTART;
+
+            //Sets enemies position
+            enemies[0].xPos = 53;
+            enemies[0].yPos = 75;
+            enemies[0].xPosPrevious = enemies[0].xPos;
+            enemies[0].yPosPrevious = enemies[0].yPos;
+            enemies[0].show = 1;
+
+            enemies[0].xPath[0] = 53;
+            enemies[0].yPath[0] = 75;
+
+
+            enemies[0].xPath[1] = 53;
+            enemies[0].yPath[1] = 54;
+
+            enemies[0].arrayPathSize = 2;
+
+
+            enemies[1].xPos = 63;
+            enemies[1].yPos = 54;
+            enemies[1].xPosPrevious = enemies[1].xPos;
+            enemies[1].yPosPrevious = enemies[1].yPos;
+            enemies[1].show = 1;
+
+            enemies[1].xPath[0] = 63;
+            enemies[1].yPath[0] = 54;
+
+
+            enemies[1].xPath[1] = 78;
+            enemies[1].yPath[1] = 54;
+
+            enemies[1].arrayPathSize = 2;
+
+            enemies[2].xPos = 68;
+            enemies[2].yPos = 64;
+            enemies[2].xPosPrevious = enemies[2].xPos;
+            enemies[2].yPosPrevious = enemies[2].yPos;
+            enemies[2].show = 1;
+
+            enemies[2].xPath[0] = 68;
+            enemies[2].yPath[0] = 64;
+
+
+            enemies[2].xPath[1] = 73;
+            enemies[2].yPath[1] = 64;
+
+
+            enemies[2].arrayPathSize = 2;
+
+            // First 3 walls done, next 2 L figures
+
+            enemies[3].xPos = 68;
+            enemies[3].yPos = 74;
+            enemies[3].xPosPrevious = enemies[3].xPos;
+            enemies[3].yPosPrevious = enemies[3].yPos;
+            enemies[3].show = 1;
+
+            enemies[3].xPath[0] = 68;
+            enemies[3].yPath[0] = 74;
+
+
+            enemies[3].xPath[1] = 63;
+            enemies[3].yPath[1] = 74;
+
+            enemies[3].arrayPathSize = 2;
+
+            enemies[4].xPos = 78;
+            enemies[4].yPos = 79;
+            enemies[4].xPosPrevious = enemies[4].xPos;
+            enemies[4].yPosPrevious = enemies[4].yPos;
+            enemies[4].show = 1;
+
+            enemies[4].xPath[0] = 78;
+            enemies[4].yPath[0] = 79;
+
+
+            enemies[4].xPath[1] = 93;
+            enemies[4].yPath[1] = 79;
+
+            enemies[4].arrayPathSize = 2;
+
+            enemies[5].xPos = 83;
+            enemies[5].yPos = 64;
+            enemies[5].xPosPrevious = enemies[5].xPos;
+            enemies[5].yPosPrevious = enemies[5].yPos;
+            enemies[5].show = 1;
+
+            enemies[5].xPath[0] = 83;
+            enemies[5].yPath[0] = 64;
+
+
+            enemies[5].xPath[1] = 108;
+            enemies[5].yPath[1] = 64;
+
+            enemies[5].arrayPathSize = 2;
+
+            enemies[6].xPos = 118;
+            enemies[6].yPos = 59;
+            enemies[6].xPosPrevious = enemies[6].xPos;
+            enemies[6].yPosPrevious = enemies[6].yPos;
+            enemies[6].show = 1;
+
+            enemies[6].xPath[0] = 118;
+            enemies[6].yPath[0] = 59;
+
+
+            enemies[6].xPath[1] = 118;
+            enemies[6].yPath[1] = 54;
+
+            enemies[6].arrayPathSize = 2;
+
+            enemies[7].xPos = 118;
+            enemies[7].yPos = 69;
+            enemies[7].xPosPrevious = enemies[7].xPos;
+            enemies[7].yPosPrevious = enemies[7].yPos;
+            enemies[7].show = 1;
+
+            enemies[7].xPath[0] = 118;
+            enemies[7].yPath[0] = 69;
+
+
+            enemies[7].xPath[1] = 118;
+            enemies[7].yPath[1] = 74;
+
+            enemies[7].arrayPathSize = 2;
+
+            enemies[8].xPos = 128;
+            enemies[8].yPos = 54;
+            enemies[8].xPosPrevious = enemies[8].xPos;
+            enemies[8].yPosPrevious = enemies[8].yPos;
+            enemies[8].show = 1;
+
+            enemies[8].xPath[0] = 128;
+            enemies[8].yPath[0] = 54;
+
+
+            enemies[8].xPath[1] = 128;
+            enemies[8].yPath[1] = 73;
+
+            enemies[8].arrayPathSize = 2;
             break;
         }
         //default (wrong input)

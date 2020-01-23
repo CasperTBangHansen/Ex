@@ -250,6 +250,9 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                     case 2:
                         gotoxy(182,38);
                         printf("%s",splitTimer);
+                    case 3:
+                        gotoxy(182,41);
+                        printf("%s",splitTimer);
                     default:
                         break;
                 }
@@ -260,6 +263,9 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
         //removes enemies
         for(uint8_t i = 0; i < enemySize; i++){
             drawEnemy(0,enemy, drawValues, i);
+            enemy[i].show = 0;
+            enemy[i].xPos = 1;
+            enemy[i].yPos = 1;
         }
 
 

@@ -106,6 +106,8 @@ void ConstructWindow(struct drawItems *drawValues){
         printf("MAP 1 TIME: ");
     gotoxy(168,38);
         printf("MAP 2 TIME: ");
+    gotoxy(168,41);
+        printf("MAP 3 TIME: ");
 
     gotoxy(170,71);
         printf(" _____ _____ _____ _____ _____");

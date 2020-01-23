@@ -79,11 +79,12 @@ uint8_t userInput(struct player *player){
     } else if(buttonPress == 0x20){
 
         if((*player).bulletType == 1){
-        player->score -= 50;
+
         //runs through all the bullets
             for(int8_t i = 0; i < 3; i++){
                 //checks if there is a bullet that doesn't exist
                 if((*player).shots[i].show == 0){
+                    player->score -= 50;
                     //set the bullet to exist
                     (*player).shots[i].show = 1;
                     //checks the player direction and depending on the direction the bullet will spawn in front of the player with a velocity in that direction
