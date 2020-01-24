@@ -32,7 +32,7 @@
 
 **********************************************************************/
 
-void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp){
+void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     // Loads map of choice
     player->direction = 4;
     switch ((*maps).mapChoice){
@@ -40,7 +40,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         case 1:{
             //Draws first map
             if(drawMap == 1){
-                firstMapSetup(drawValues);
+                firstMapSetup(drawValues, wallHitBox);
             }
             //Sets player position
             uint16_t xSTART = 19;
@@ -238,7 +238,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         // Map 2
         case 2:{
             if(drawMap == 1){
-                secondMapSetup(drawValues);
+                secondMapSetup(drawValues, wallHitBox);
             }
             powerUp[0].xPos = 26;
             powerUp[0].yPos = 65;
@@ -533,7 +533,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         // Map 3
         case 3:{
             if(drawMap == 1){
-                thirdMapSetup(drawValues);
+                thirdMapSetup(drawValues, wallHitBox);
             }
 
             powerUp[1].xPos = 93;
@@ -698,9 +698,9 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
     }
 }
 
-uint8_t setupLevel(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t drawMap, struct powerUp *powerUp, uint8_t ship){
+uint8_t setupLevel(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t drawMap, struct powerUp *powerUp, struct wallHitBox *wallHitBox, uint8_t ship){
     //init map and Draw Map and SetWallHitBox
-    LevelManager(maps, drawValues, player, enemy, drawMap, powerUp);
+    LevelManager(maps, drawValues, player, enemy, drawMap, powerUp, wallHitBox);
 
     //draws the players initial position
     uint8_t moveDirection = (*player).direction;

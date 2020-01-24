@@ -20,13 +20,6 @@
 //Draw buffer size
 #define arraySize 300
 
-//static variables that can be seen by all functions in this .c file
-static uint16_t xPosStart[arraySize];
-static uint8_t yPosStart[arraySize];
-static uint16_t xPosSlut[arraySize];
-static uint8_t yPosSlut[arraySize];
-static uint16_t sizeOfArrays = 0;
-
 
 /**********************************************************************
 
@@ -39,15 +32,15 @@ static uint16_t sizeOfArrays = 0;
    Output          :    void
 
 **********************************************************************/
-void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize){
+void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize, struct wallHitBox *wallHitBox){
     //sets the size of mapHitBox
-    sizeOfArrays = mapHitBoxSize;
+    wallHitBox->sizeOfArrays = mapHitBoxSize;
     //Saves all the positions in drawValues in a static uint array.
-    for(uint16_t i = 0; i <= sizeOfArrays; i++){
-        xPosStart[i] = drawValues[i].xStart;
-        yPosStart[i] = drawValues[i].yStart;
-        xPosSlut[i] = drawValues[i].xSlut;
-        yPosSlut[i] = drawValues[i].ySlut;
+    for(uint16_t i = 0; i <= (*wallHitBox).sizeOfArrays; i++){
+        (*wallHitBox).xPosStart[i] = drawValues[i].xStart;
+        (*wallHitBox).yPosStart[i] = drawValues[i].yStart;
+        (*wallHitBox).xPosSlut[i] = drawValues[i].xSlut;
+        (*wallHitBox).yPosSlut[i] = drawValues[i].ySlut;
     }
 }
 
@@ -67,22 +60,22 @@ void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize){
 
 **********************************************************************/
 
-void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp){
+void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //Runes through all the walls
-    for(int16_t i = 0; i <= sizeOfArrays; i++){
+    for(int16_t i = 0; i <= (*wallHitBox).sizeOfArrays; i++){
         //checks if the player collides with a wall
         uint8_t hitWall = 0;
-        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos,i)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos,i, wallHitBox)) hitWall = 1;
 
-        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos + 1,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos + 1,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos + 1,i)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos + 1,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos + 1,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos + 1,i, wallHitBox)) hitWall = 1;
 
-        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos - 1,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos - 1,i)) hitWall = 1;
-        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos - 1,i)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos    , (*playerHitBox).yPos - 1,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos + 1, (*playerHitBox).yPos - 1,i, wallHitBox)) hitWall = 1;
+        if(objectWallCheck((*playerHitBox).xPos - 1, (*playerHitBox).yPos - 1,i, wallHitBox)) hitWall = 1;
 
 
         if(hitWall == 1){
@@ -95,7 +88,7 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct po
             //Do the bullet exist?
             if((*playerHitBox).shots[j].show == 1){
                 //Check collision
-                if(objectWallCheck((*playerHitBox).shots[j].xPos, (*playerHitBox).shots[j].yPos,i)){
+                if(objectWallCheck((*playerHitBox).shots[j].xPos, (*playerHitBox).shots[j].yPos,i, wallHitBox)){
                     (*playerHitBox).shots[j].show = 0;
                 }
             }
@@ -177,8 +170,8 @@ void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct po
     }
 }
 
-uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i){
-    if(xPos >= xPosStart[i] && xPos <= xPosSlut[i] && yPos >= yPosStart[i] && yPos <= yPosSlut[i]){
+uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i, struct wallHitBox *wallHitBox){
+    if(xPos >= (*wallHitBox).xPosStart[i] && xPos <= (*wallHitBox).xPosSlut[i] && yPos >= (*wallHitBox).yPosStart[i] && yPos <= (*wallHitBox).yPosSlut[i]){
         return 1;
     } else {
         return 0;

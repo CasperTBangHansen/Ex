@@ -28,7 +28,7 @@
 **********************************************************************/
 
 //Each function
-void firstMapSetup(struct drawItems *drawValues) {
+void firstMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) {
 
 
 //Coordinates for all the walls in the first map. Creates lines based on coordinates.
@@ -261,7 +261,7 @@ void firstMapSetup(struct drawItems *drawValues) {
     free(&Xstop);
 
     //Gives the collider the hitbox of the walls
-    setWallHitBox(drawValues,SetPos(2));
+    setWallHitBox(drawValues,SetPos(2), wallHitBox);
     //Draws the entire maze
     DrawEverything(drawValues);
 }
@@ -276,7 +276,7 @@ void firstMapSetup(struct drawItems *drawValues) {
 
 **********************************************************************/
 
-void secondMapSetup(struct drawItems *drawValues) {
+void secondMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) {
 
 
 //Coordinates for all the walls in the first maps maze
@@ -423,15 +423,14 @@ void secondMapSetup(struct drawItems *drawValues) {
     //frees up Xbegin, Ystop, Xstop
 
     //Gives the collider the hitbox of the walls
-    setWallHitBox(drawValues,SetPos(2));
+    setWallHitBox(drawValues,SetPos(2), wallHitBox);
     //Draws the entire maze
     DrawEverything(drawValues);
 }
 
 
 
-void thirdMapSetup(struct drawItems *drawValues) {
-
+void thirdMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) {
 
 //Coordinates for all the walls in the first maps maze
 // X value for the start of the line
@@ -490,7 +489,7 @@ void thirdMapSetup(struct drawItems *drawValues) {
     free(&Xstop);
  */
     //Gives the collider the hitbox of the walls
-    setWallHitBox(drawValues,SetPos(2));
+    setWallHitBox(drawValues,SetPos(2), wallHitBox);
     //Draws the entire maze
     DrawEverything(drawValues);
 }

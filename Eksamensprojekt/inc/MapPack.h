@@ -6,7 +6,9 @@
 #include <stdio.h>
 
 
-void firstMapSetup(struct drawItems *drawValues);
-void secondMapSetup(struct drawItems *drawValues);
+void firstMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
+void secondMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
+void thirdMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
+
 
 #endif

@@ -39,14 +39,15 @@ void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore)
     struct mapPackage maps;
     struct player player;
     struct enemy enemies[enemySize];
+    struct wallHitBox wallHitBox;
     struct powerUp powerUp[powerUpSize];
     SetTimer();
 
     //sets default parameter to all the structs (resets the structs)
-    initEverythingFirstTime(&player, &enemies, &maps, &powerUp);
+    initEverythingFirstTime(&player, &enemies, &maps, &powerUp, &wallHitBox);
 
     //starts the game
-    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore, &powerUp);
+    upDateFunction(&player, &enemies, &maps, drawValues, ship, highscore, &powerUp, &wallHitBox);
 }
 
 
@@ -62,7 +63,7 @@ void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore)
 
 **********************************************************************/
 
-static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct powerUp *powerUp){
+static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //Player initialization
     uint16_t xSTART = 1;
     uint16_t ySTART = 1;
@@ -123,6 +124,8 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
     //Map initialization
     maps->mapChoice = 1; // Map number of choice
 
+    //wallHitBox
+    wallHitBox->sizeOfArrays = 0;
 }
 
 
@@ -139,7 +142,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 
 **********************************************************************/
 
-static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int32_t *highscore,  struct powerUp *powerUp){
+static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int32_t *highscore,  struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //value for saving the player direction
     uint8_t moveDirection;
     uint8_t drawMap = 1;
@@ -148,7 +151,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
     //Checks if the player isalive
     while((*player).lives > 0){
         //restart level
-        moveDirection = setupLevel(maps, drawValues, player, enemy, drawMap, powerUp, ship);
+        moveDirection = setupLevel(maps, drawValues, player, enemy, drawMap, powerUp, wallHitBox, ship);
 
         //set lives
         preLives = (*player).lives;
@@ -171,7 +174,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             }
 
             //running collider
-            checkCollider(player, enemy, powerUp);
+            checkCollider(player, enemy, powerUp,wallHitBox);
 
             //Draw every moving object
             drawMovingObjects(enemySize, moveDirection, drawValues, player, enemy, ship, powerUp);

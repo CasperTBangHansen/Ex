@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "Drawing.h"
 
+#define drawValuesSize 300
 
 struct enemy{
     uint16_t xPos;
@@ -56,9 +57,17 @@ struct powerUp{
     uint8_t show;
 };
 
-void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize);
-void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp);
-uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i);
+struct wallHitBox{
+    uint16_t xPosStart[drawValuesSize];
+    uint8_t yPosStart[drawValuesSize];
+    uint16_t xPosSlut[drawValuesSize];
+    uint8_t yPosSlut[drawValuesSize];
+    uint16_t sizeOfArrays;
+};
+
+void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize, struct wallHitBox *wallHitBox);
+void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp, struct wallHitBox *wallHitBox);
+uint8_t objectWallCheck(uint16_t xPos, uint8_t yPos, uint8_t i, struct wallHitBox *wallHitBox);
 uint8_t twoObjectCollider(uint16_t objectXPos, uint8_t objectYPos, uint16_t enemyXPos, uint8_t enemyYPos);
 
 
