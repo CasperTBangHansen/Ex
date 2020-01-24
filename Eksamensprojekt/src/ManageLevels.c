@@ -757,7 +757,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             enemies[1].arrayPathSize = 8;
 
             enemies[2].xPos = 43;
-            enemies[2].yPos = 80;
+            enemies[2].yPos = 90;
             enemies[2].xPosPrevious = enemies[2].xPos;
             enemies[2].yPosPrevious = enemies[2].yPos;
             enemies[2].show = 1;
@@ -792,6 +792,9 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             enemies[2].xPath[8] = 53;
             enemies[2].yPath[8] = 80;
+
+            enemies[2].xPath[9] = 43;
+            enemies[2].yPath[9] = 80;
 
             enemies[2].arrayPathSize = 10;
 
