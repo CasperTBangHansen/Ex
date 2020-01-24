@@ -35,6 +35,7 @@
 void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     // Loads map of choice
     player->direction = 4;
+    maps->mapChoice = 4;
     switch ((*maps).mapChoice){
         // Map 1
         case 1:{
@@ -690,6 +691,20 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             enemies[8].arrayPathSize = 2;
             break;
+        }
+        case 4:{
+        if(drawMap == 1){
+                fourthMapSetup(drawValues, wallHitBox);
+            }
+
+
+            //Sets player position
+            uint16_t xSTART = 19;
+            uint16_t ySTART = 65;
+            player->xPos = xSTART;
+            player->yPos = ySTART;
+            player->xPosPrevious = xSTART;
+            player->yPosPrevious = ySTART;
         }
         //default (wrong input)
         default:{
