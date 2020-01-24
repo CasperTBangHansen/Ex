@@ -70,7 +70,7 @@ void upDateHighScore(int32_t highscore, uint8_t resetCurrentScore){ // Updates t
 }
 
 void maxMinScore(struct player *player){
-    //check max/min score
+    //checks if the player have more or less the 2100000000/-2100000000
     if((*player).score > 2100000000){
         player->score = 2100000000;
     } else if ((*player).score < -2100000000){
@@ -132,12 +132,14 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
     //Draw highscore
     ClearGameScreen(drawValues);
 
+    //draw score under stats
     gotoxy(78,65);
     printf("Your score: %010d",(*player).score);
     upDateScore((*player).score);
     gotoxy(78,67);
     printf("Highscore:  %010d",(*highscore));
 
+    //Blinks highscore if the player sets new highscore
     if((*player).score == (*highscore)){
         printf("%c[%d%c",0x1B,05,0x6D);
         gotoxy(20,27);
@@ -159,6 +161,7 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
         printf("%c[%d%c",0x1B,25,0x6D);
     }
     uart_clear();
+    //waits for an userinput
     while(1){
         key = uart_get_char();
         if(key != '\0'){
