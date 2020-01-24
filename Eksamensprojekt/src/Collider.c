@@ -17,10 +17,6 @@
 //Includes
 #include "Collider.h"
 
-//Draw buffer size
-#define arraySize 300
-
-
 /**********************************************************************
 
    Description     :    setWallHitBox takes an input struct and saves this structs hitbox in this .c file.

@@ -16,8 +16,8 @@ struct enemy{
     int8_t xVelocity;
     int8_t yVelocity;
     uint8_t show;
-    uint16_t xPath[10];
-    uint8_t yPath[10];
+    uint16_t xPath[12];
+    uint8_t yPath[12];
     uint8_t arrayPathSize;
 };
 
