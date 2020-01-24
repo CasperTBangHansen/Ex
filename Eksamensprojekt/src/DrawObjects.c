@@ -6,19 +6,27 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
 
     //updates enemy position and draws enemy
     for(uint8_t i = 0; i < enemySize; i++){
+        //enemy exists?
         if(enemy[i].show == 1){
+            //enemy xvelocity?
             if(enemy[i].xVelocity != 0){
+                //only draws enemy if the enemy moved
                 if(enemy[i].xPos != enemy[i].xPosPrevious){
                     drawEnemy(2, enemy, drawValues, i);
                 }
+            //enemy yvelocity
             } else {
+                //only draws enemy if the enemy moved
                 if(enemy[i].yPos != enemy[i].yPosPrevious){
                     drawEnemy(1, enemy, drawValues, i);
                 }
             }
+            //updates enemies previous position
             enemy[i].xPosPrevious = enemy[i].xPos;
             enemy[i].yPosPrevious = enemy[i].yPos;
+            //if the enemy isn't at (1,1)
         } else if(enemy[i].xPos != 1 && enemy[i].yPos != 1){
+            //remove the enemy and set it's position to (1,1)
             drawEnemy(0, enemy, drawValues, i);
             enemy[i].xPos = 1;
             enemy[i].yPos = 1;
@@ -29,20 +37,28 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
     for(int8_t i = 0; i < 3; i++){
         //set draw of bullet in queue
         if((*player).shots[i].show == 1 && ((*player).shots[i].xPos - (*player).shots[i].xVelocity != (*player).xPos || (*player).shots[i].yPos - (*player).shots[i].yVelocity != (*player).yPos)){
+            //draws 0xFF at the bullets previous position
             DrawingSetValues(drawValues,(*player).shots[i].xPos - (*player).shots[i].xVelocity,(*player).shots[i].yPos - (*player).shots[i].yVelocity,(*player).shots[i].xPos - (*player).shots[i].xVelocity,(*player).shots[i].yPos - (*player).shots[i].yVelocity,0xFF);
+            //draws 0xFF at the bullets current position
             DrawingSetValues(drawValues,(*player).shots[i].xPos,(*player).shots[i].yPos,(*player).shots[i].xPos,(*player).shots[i].yPos,'o');
+            //if the bullet doesn't exists and the position isn't (2,2)
         } else if((*player).shots[i].show == 0 && (*player).shots[i].xPos != 2 && (*player).shots[i].xPos != 2){
+            //delete bullet with 0xFF
             DrawingSetValues(drawValues,(*player).shots[i].xPos - (*player).shots[i].xVelocity,(*player).shots[i].yPos - (*player).shots[i].yVelocity,(*player).shots[i].xPos - (*player).shots[i].xVelocity,(*player).shots[i].yPos - (*player).shots[i].yVelocity,0xFF);
+            //sets position for the bullet to (2,2)
             (*player).shots[i].xPos = 2;
             (*player).shots[i].yPos = 2;
         }
     }
 
-    //Bullet movement
+    //update bullet?
     if(counter.runBullet == 1){
         counter.runBullet = 0;
+        //run through all the bullets
         for(int8_t i = 0; i < 3; i++){
+            //bullet exists?
             if((*player).shots[i].show == 1){
+                //update bullet velocity
                 (*player).shots[i].xPos += (*player).shots[i].xVelocity;
                 (*player).shots[i].yPos += (*player).shots[i].yVelocity;
             }
@@ -68,12 +84,13 @@ void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItem
     DrawEverything(drawValues);
 }
 
-
 void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValues, uint8_t i){
     //defines chartype
     char charType[] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 
+    //if the enemy is alive
     if(control != 0){
+        //set the skin of the enemy 1 = y-direction, 2 = x-direction
         switch (control){
             case 1:{
                 charType[0] = 0xB3; charType[1] = 0xFF; charType[2] = 0xB3; charType[3] = 0xCC; charType[4] = 0x4F; charType[5] = 0xB9; charType[6] = 0xB3; charType[7] = 0xFF; charType[8] = 0xB3;
@@ -86,7 +103,7 @@ void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValue
             default:
                 break;
         }
-        //sets the enemy previous position (3x3) to 0xFF (empty) in the drawer que
+        //sets the enemy previous position (1x3)/(3x1) to 0xFF depending on velocity
         if(enemy[i].xVelocity > 0){
             printf("%c[%u;%u%c%c%c[%u;%u%c%c%c[%u;%u%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious-1,0x48,0xFF,0x1B,enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48,0xFF);
         } else if (enemy[i].xVelocity < 0){
@@ -97,12 +114,12 @@ void drawEnemy(uint8_t control, struct enemy *enemy, struct drawItems *drawValue
             printf("%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF);
         }
 
-        //sets the enemy current position (3x3) to the right character in the drawer que
+        //draws the enemy current position (3x3)
         printf("%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPos-1,enemy[i].xPos-1,0x48,charType[0],charType[1],charType[2],0x1B,enemy[i].yPos,enemy[i].xPos-1,0x48,charType[3],charType[4],charType[5],0x1B, enemy[i].yPos+1,enemy[i].xPos-1,0x48, charType[6],charType[7],charType[8]);
-        //%c[%u;%u%c,ESC,y,x,0x48
 
+    //if enemy is dead
     } else {
-        //sets the enemy previous position (3x3) to 0xFF (empty) in the drawer que
+        //draws the enemy previous position (3x3) with 0xFF
         printf("%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c%c[%u;%u%c%c%c%c",0x1B,enemy[i].yPosPrevious-1,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B,enemy[i].yPosPrevious,enemy[i].xPosPrevious-1,0x48,0xFF,0xFF,0xFF,0x1B, enemy[i].yPosPrevious+1,enemy[i].xPosPrevious-1,0x48, 0xFF,0xFF,0xFF);
 
     }
