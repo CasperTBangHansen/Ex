@@ -70,7 +70,7 @@ void upDateHighScore(int32_t highscore, uint8_t resetCurrentScore){ // Updates t
 }
 
 void maxMinScore(struct player *player){
-    //check max/min score
+    //checks if the player have more or less the 2100000000/-2100000000
     if((*player).score > 2100000000){
         player->score = 2100000000;
     } else if ((*player).score < -2100000000){
@@ -101,9 +101,11 @@ void upDateTimer(struct mapPackage *maps){
             case 2:
                 gotoxy(182,38);
                 printf("%s",splitTimer);
+                break;
             case 3:
                 gotoxy(182,41);
                 printf("%s",splitTimer);
+                break;
             default:
                 break;
         }
@@ -116,9 +118,8 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
     //Set health bar
     upDateHealth((*player).lives);
     //adds score depending on time
-    if(counter.minute <= 5 && counter.hour == 0 && (*player).lives != 0){
-        (*player).score += 10*60*counter.minute;
-        (*player).score += 10*counter.second;
+    if(counter.minute < 5 && counter.hour == 0 && (*player).lives != 0){
+        (*player).score += -((10*60*(counter.minute-5))+(10*counter.second));
     }
 
     //check highscore
@@ -131,12 +132,14 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
     //Draw highscore
     ClearGameScreen(drawValues);
 
+    //draw score under stats
     gotoxy(78,65);
     printf("Your score: %010d",(*player).score);
     upDateScore((*player).score);
     gotoxy(78,67);
     printf("Highscore:  %010d",(*highscore));
 
+    //Blinks highscore if the player sets new highscore
     if((*player).score == (*highscore)){
         printf("%c[%d%c",0x1B,05,0x6D);
         gotoxy(20,27);
@@ -158,6 +161,7 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
         printf("%c[%d%c",0x1B,25,0x6D);
     }
     uart_clear();
+    //waits for an userinput
     while(1){
         key = uart_get_char();
         if(key != '\0'){
