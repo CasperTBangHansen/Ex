@@ -696,8 +696,6 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
         if(drawMap == 1){
                 fourthMapSetup(drawValues, wallHitBox);
             }
-
-
             //Sets player position
             uint16_t xSTART = 19;
             uint16_t ySTART = 65;
@@ -705,6 +703,329 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->yPos = ySTART;
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
+
+
+            counter.speedEnemies = 20;
+            //Sets enemies position
+            enemies[0].xPos = 43;
+            enemies[0].yPos = 40;
+            enemies[0].xPosPrevious = enemies[0].xPos;
+            enemies[0].yPosPrevious = enemies[0].yPos;
+            enemies[0].show = 1;
+
+            enemies[0].xPath[0] = 43;
+            enemies[0].yPath[0] = 40;
+
+
+            enemies[0].xPath[1] = 63;
+            enemies[0].yPath[1] = 40;
+
+            enemies[0].arrayPathSize = 2;
+
+            enemies[1].xPos = 43;
+            enemies[1].yPos = 50;
+            enemies[1].xPosPrevious = enemies[1].xPos;
+            enemies[1].yPosPrevious = enemies[1].yPos;
+            enemies[1].show = 1;
+
+            enemies[1].xPath[0] = 43;
+            enemies[1].yPath[0] = 50;
+
+
+            enemies[1].xPath[1] = 43;
+            enemies[1].yPath[1] = 80;
+
+
+            enemies[1].xPath[2] = 53;
+            enemies[1].yPath[2] = 80;
+
+            enemies[1].xPath[3] = 53;
+            enemies[1].yPath[3] = 70;
+
+            enemies[1].xPath[4] = 63;
+            enemies[1].yPath[4] = 70;
+
+            enemies[1].xPath[5] = 63;
+            enemies[1].yPath[5] = 60;
+
+            enemies[1].xPath[6] = 53;
+            enemies[1].yPath[6] = 60;
+
+            enemies[1].xPath[7] = 53;
+            enemies[1].yPath[7] = 50;
+
+            enemies[1].arrayPathSize = 8;
+
+            enemies[2].xPos = 43;
+            enemies[2].yPos = 80;
+            enemies[2].xPosPrevious = enemies[2].xPos;
+            enemies[2].yPosPrevious = enemies[2].yPos;
+            enemies[2].show = 1;
+
+            enemies[2].xPath[0] = 43;
+            enemies[2].yPath[0] = 90;
+
+
+            enemies[2].xPath[1] = 63;
+            enemies[2].yPath[1] = 90;
+
+
+            enemies[2].xPath[2] = 63;
+            enemies[2].yPath[2] = 80;
+
+            enemies[2].xPath[3] = 73;
+            enemies[2].yPath[3] = 80;
+
+            enemies[2].xPath[4] = 73;
+            enemies[2].yPath[4] = 50;
+
+
+            enemies[2].xPath[5] = 63;
+            enemies[2].yPath[5] = 50;
+
+
+            enemies[2].xPath[6] = 63;
+            enemies[2].yPath[6] = 70;
+
+            enemies[2].xPath[7] = 53;
+            enemies[2].yPath[7] = 70;
+
+            enemies[2].xPath[8] = 53;
+            enemies[2].yPath[8] = 80;
+
+            enemies[2].arrayPathSize = 10;
+
+            // First 3 walls done, next 2 L figures
+
+            enemies[3].xPos = 113;
+            enemies[3].yPos = 40;
+            enemies[3].xPosPrevious = enemies[3].xPos;
+            enemies[3].yPosPrevious = enemies[3].yPos;
+            enemies[3].show = 1;
+
+            enemies[3].xPath[0] = 113;
+            enemies[3].yPath[0] = 40;
+
+            enemies[3].xPath[1] = 113;
+            enemies[3].yPath[1] = 30;
+
+            enemies[3].arrayPathSize = 2;
+
+
+
+            enemies[4].xPos = 73;
+            enemies[4].yPos = 30;
+            enemies[4].xPosPrevious = enemies[4].xPos;
+            enemies[4].yPosPrevious = enemies[4].yPos;
+            enemies[4].show = 1;
+
+
+            enemies[4].xPath[0] = 73;
+            enemies[4].yPath[0] = 30;
+
+            enemies[4].xPath[1] = 73;
+            enemies[4].yPath[1] = 100;
+
+            enemies[4].xPath[2] = 138;
+            enemies[4].yPath[2] = 100;
+
+            enemies[4].xPath[3] = 138;
+            enemies[4].yPath[3] = 30;
+
+            enemies[4].arrayPathSize = 4;
+
+            enemies[5].xPos = 83;
+            enemies[5].yPos = 70;
+            enemies[5].xPosPrevious = enemies[5].xPos;
+            enemies[5].yPosPrevious = enemies[5].yPos;
+            enemies[5].show = 1;
+
+            enemies[5].xPath[0] = 83;
+            enemies[5].yPath[0] = 70;
+
+
+            enemies[5].xPath[1] = 83;
+            enemies[5].yPath[1] = 80;
+
+            enemies[5].xPath[2] = 98;
+            enemies[5].yPath[2] = 80;
+
+
+            enemies[5].xPath[3] = 98;
+            enemies[5].yPath[3] = 70;
+
+            enemies[5].arrayPathSize = 4;
+
+            enemies[6].xPos = 83;
+            enemies[6].yPos = 80;
+            enemies[6].xPosPrevious = enemies[6].xPos;
+            enemies[6].yPosPrevious = enemies[6].yPos;
+            enemies[6].show = 1;
+
+            enemies[6].xPath[0] = 83;
+            enemies[6].yPath[0] = 80;
+
+
+            enemies[6].xPath[1] = 83;
+            enemies[6].yPath[1] = 90;
+
+            enemies[6].xPath[2] = 98;
+            enemies[6].yPath[2] = 90;
+
+            enemies[6].xPath[3] = 98;
+            enemies[6].yPath[3] = 80;
+
+            enemies[6].arrayPathSize = 4;
+
+            enemies[7].xPos = 118;
+            enemies[7].yPos = 70;
+            enemies[7].xPosPrevious = enemies[7].xPos;
+            enemies[7].yPosPrevious = enemies[7].yPos;
+            enemies[7].show = 1;
+
+            enemies[7].xPath[0] = 118;
+            enemies[7].yPath[0] = 70;
+
+
+            enemies[7].xPath[1] = 103;
+            enemies[7].yPath[1] = 70;
+
+            enemies[7].xPath[2] = 103;
+            enemies[7].yPath[2] = 80;
+
+            enemies[7].xPath[3] = 118;
+            enemies[7].yPath[3] = 80;
+
+            enemies[7].arrayPathSize = 4;
+
+            enemies[8].xPos = 118;
+            enemies[8].yPos = 80;
+            enemies[8].xPosPrevious = enemies[8].xPos;
+            enemies[8].yPosPrevious = enemies[8].yPos;
+            enemies[8].show = 1;
+
+            enemies[8].xPath[0] = 118;
+            enemies[8].yPath[0] = 80;
+
+
+            enemies[8].xPath[1] = 103;
+            enemies[8].yPath[1] = 80;
+
+            enemies[8].xPath[2] = 103;
+            enemies[8].yPath[2] = 90;
+
+
+            enemies[8].xPath[3] = 118;
+            enemies[8].yPath[3] = 90;
+
+            enemies[8].arrayPathSize = 4;
+
+            enemies[9].xPos = 128;
+            enemies[9].yPos = 70;
+            enemies[9].xPosPrevious = enemies[9].xPos;
+            enemies[9].yPosPrevious = enemies[9].yPos;
+            enemies[9].show = 1;
+
+            enemies[9].xPath[0] = 128;
+            enemies[9].yPath[0] = 70;
+
+
+            enemies[9].xPath[1] = 128;
+            enemies[9].yPath[1] = 80;
+
+            enemies[9].xPath[2] = 138;
+            enemies[9].yPath[2] = 80;
+
+
+            enemies[9].xPath[3] = 138;
+            enemies[9].yPath[3] = 70;
+
+            enemies[9].arrayPathSize = 4;
+
+            enemies[10].xPos = 128;
+            enemies[10].yPos = 80;
+            enemies[10].xPosPrevious = enemies[10].xPos;
+            enemies[10].yPosPrevious = enemies[10].yPos;
+            enemies[10].show = 1;
+
+            enemies[10].xPath[0] = 128;
+            enemies[10].yPath[0] = 80;
+
+            enemies[10].xPath[1] = 138;
+            enemies[10].yPath[1] = 80;
+
+            enemies[10].xPath[2] = 138;
+            enemies[10].yPath[2] = 90;
+
+            enemies[10].xPath[3] = 128;
+            enemies[10].yPath[3] = 90;
+
+            enemies[10].arrayPathSize = 4;
+
+            enemies[11].xPos = 93;
+            enemies[11].yPos = 30;
+            enemies[11].xPosPrevious = enemies[11].xPos;
+            enemies[11].yPosPrevious = enemies[11].yPos;
+            enemies[11].show = 1;
+
+            enemies[11].xPath[0] = 93;
+            enemies[11].yPath[0] = 30;
+
+            enemies[11].xPath[1] = 93;
+            enemies[11].yPath[1] = 40;
+
+            enemies[11].xPath[2] = 103;
+            enemies[11].yPath[2] = 40;
+
+            enemies[11].xPath[3] = 103;
+            enemies[11].yPath[3] = 30;
+
+            enemies[11].arrayPathSize = 4;
+
+            enemies[12].xPos = 83;
+            enemies[12].yPos = 30;
+            enemies[12].xPosPrevious = enemies[12].xPos;
+            enemies[12].yPosPrevious = enemies[12].yPos;
+            enemies[12].show = 1;
+
+            enemies[12].xPath[0] = 83;
+            enemies[12].yPath[0] = 30;
+
+            enemies[12].xPath[1] = 83;
+            enemies[12].yPath[1] = 60;
+
+            enemies[12].xPath[2] = 93;
+            enemies[12].yPath[2] = 60;
+
+            enemies[12].xPath[3] = 93;
+            enemies[12].yPath[3] = 50;
+
+            enemies[12].xPath[4] = 103;
+            enemies[12].yPath[4] = 50;
+
+            enemies[12].xPath[5] = 103;
+            enemies[12].yPath[5] = 60;
+
+            enemies[12].xPath[6] = 108;
+            enemies[12].yPath[6] = 60;
+
+            enemies[12].xPath[7] = 108;
+            enemies[12].yPath[7] = 50;
+
+            enemies[12].xPath[8] = 118;
+            enemies[12].yPath[8] = 50;
+
+            enemies[12].xPath[9] = 118;
+            enemies[12].yPath[9] = 60;
+
+            enemies[12].xPath[10] = 128;
+            enemies[12].yPath[10] = 60;
+
+            enemies[12].xPath[11] = 128;
+            enemies[12].yPath[11] = 30;
+
+            enemies[12].arrayPathSize = 12;
+            break;
         }
         //default (wrong input)
         default:{
