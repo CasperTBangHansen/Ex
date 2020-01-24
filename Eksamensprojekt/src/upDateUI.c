@@ -118,9 +118,8 @@ void endScreenScore(struct player *player, struct drawItems *drawValues, int32_t
     //Set health bar
     upDateHealth((*player).lives);
     //adds score depending on time
-    if(counter.minute <= 5 && counter.hour == 0 && (*player).lives != 0){
-        (*player).score += 10*60*counter.minute;
-        (*player).score += 10*counter.second;
+    if(counter.minute < 5 && counter.hour == 0 && (*player).lives != 0){
+        (*player).score += -((10*60*(counter.minute-5))+(10*counter.second));
     }
 
     //check highscore
