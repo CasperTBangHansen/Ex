@@ -101,9 +101,11 @@ void upDateTimer(struct mapPackage *maps){
             case 2:
                 gotoxy(182,38);
                 printf("%s",splitTimer);
+                break;
             case 3:
                 gotoxy(182,41);
                 printf("%s",splitTimer);
+                break;
             default:
                 break;
         }
