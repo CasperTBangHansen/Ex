@@ -69,7 +69,7 @@ void upDateHighScore(int32_t highscore, uint8_t resetCurrentScore){ // Updates t
     }
 }
 
-void maxMinScore(struct player *player){
+void maxMinScore(struct player *playe   r){
     //checks if the player have more or less the 2100000000/-2100000000
     if((*player).score > 2100000000){
         player->score = 2100000000;
