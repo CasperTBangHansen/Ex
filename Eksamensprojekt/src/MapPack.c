@@ -504,7 +504,18 @@ void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox)
     40,40,40,141,40,141,
     46,46,46,66,66,70,46,46,46,56,60,60,56,
     46,50,50,60,46,46,50,50,
-    46,46,
+    46,46,56,60,66,46,56,60,66,70,
+    46,46,66,46,66,70,
+    76,80,76,76,80,136,
+    76,76,80,80,96,100,111,115,131,76,80,96,100,111,115,131,135,80,126,121,125,121,
+    86,86,90,90,106,110,116,121,86,90,90,106,110,116,121,125,
+    96,96,96,100,
+    86,86,86,96,
+    86,86,86,96,
+    105,105,105,115,
+    105,105,105,115,
+    131,131,131,135,
+    131,131,131,135
     };
     const uint8_t Xstop[] = {
     16,17,164,163,
@@ -513,7 +524,18 @@ void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox)
     40,40,141,141,141,141,
     66,46,66,66,66,70,66,56,46,56,60,70,60,
     46,50,50,60,50,50,60,60,
-
+    56,60,66,70,70,46,56,60,66,70,
+    66,70,70,46,66,70,
+    80,136,136,76,80,136,
+    80,80,96,121,100,111,115,130,135,76,80,96,100,111,115,131,135,80,135,121,125,125,
+    90,90,106,121,110,116,125,125,86,90,90,106,110,116,121,125,
+    100,100,96,100,
+    96,96,86,96,
+    96,96,86,96,
+    115,115,105,115,
+    115,115,105,115,
+    135,135,131,135,
+    135,135,131,135
     };
     const uint8_t Ybegin[] = {
     61,61,61,61,
@@ -522,7 +544,18 @@ void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox)
     27,70,27,27,103,70,
     33,34,37,28,38,28,43,47,44,47,47,47,57,
     53,53,67,63,53,77,63,67,
-
+    83,87,73,77,53,83,73,77,53,53,
+    93,97,83,93,83,83,
+    78,93,97,78,78,93,
+    33,72,63,67,53,63,53,63,33,33,33,53,53,53,53,33,33,67,67,67,67,87,
+    33,57,43,47,33,43,33,57,33,33,47,33,33,33,47,33,
+    33,37,33,33,
+    73,77,73,73,
+    83,87,83,83,
+    73,77,73,73,
+    83,87,83,83,
+    73,77,73,73,
+    83,87,83,83,
     };
     const uint8_t Ystop[] = {
     69,69,69,69,
@@ -531,7 +564,18 @@ void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox)
     60,102,27,60,103,103,
     33,36,37,32,42,46,43,47,46,57,57,47,57,
     77,63,77,67,53,77,63,67,
-    ''
+    83,87,73,77,53,87,83,87,73,77,
+    93,97,83,97,93,97,
+    78,93,97,97,93,97,
+    33,72,63,67,53,63,53,63,33,72,63,63,63,63,63,63,67,72,67,87,87,87,
+    33,57,43,47,33,43,33,57,57,43,57,43,43,43,57,57,
+    33,37,37,37,
+    73,77,77,77,
+    83,87,87,87,
+    73,77,77,77,
+    83,87,87,87,
+    73,77,77,77,
+    83,87,87,87,
     };
     char charType[] = {
     0xAF,0xAF,0xAF,0xAF,
@@ -540,18 +584,26 @@ void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox)
     0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
     0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
-
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,
     };
+
      for(uint8_t i = 0; i<(sizeof(Ystop)); i++){
         DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
     }
-    //frees up Xbegin, Ystop, Xstop
-    free(&Xbegin);
-    free(&Ybegin);
-    free(&Xstop);
 
     //Gives the collider the hitbox of the walls
-    setWallHitBox(drawValues,SetPos(2), wallHitBox);
+        setWallHitBox(drawValues,SetPos(2), wallHitBox);
     //Draws the entire maze
     DrawEverything(drawValues);
 
