@@ -41,6 +41,8 @@ void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore)
     struct enemy enemies[enemySize];
     struct wallHitBox wallHitBox;
     struct powerUp powerUp[powerUpSize];
+
+    //sets timer
     SetTimer();
 
     //sets default parameter to all the structs (resets the structs)
@@ -143,31 +145,34 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 **********************************************************************/
 
 static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int32_t *highscore,  struct powerUp *powerUp, struct wallHitBox *wallHitBox){
-    //value for saving the player direction
+    //sets values
     uint8_t moveDirection;
+    //drawMap is a variable that determents if the map should be drawn
     uint8_t drawMap = 1;
+    //lives
     int8_t preLives;
 
-    //Checks if the player isalive
+    //Checks if the player is alive
     while((*player).lives > 0){
         //restart level
         moveDirection = setupLevel(maps, drawValues, player, enemy, drawMap, powerUp, wallHitBox, ship);
 
         //set lives
         preLives = (*player).lives;
+
         //SetMapDraw to false
         drawMap = 0;
 
         //checks if the player has the same amount if lives as the tick before.
         while((*player).lives == preLives){
 
-            //Player movement
+            //update player movement
             if(counter.runPlayer == 1){
                 counter.runPlayer = 0;
                 moveDirection = userInput(player);
             }
 
-            //Enemy
+            //update enemy movement
             if(counter.runEnemies == 1){
                 counter.runEnemies = 0;
                 upDatePosition(enemy);
@@ -182,7 +187,7 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
             //draws UI
             upDateUIEveryTick(player, maps);
 
-            //next level
+            //next level?
             if((*player).xPos >= 160){
                 drawMap = 1;
                 maps->mapChoice = (*maps).mapChoice + 1;
@@ -191,11 +196,12 @@ static void upDateFunction(struct player *player, struct enemy *enemy, struct ma
                 break;
             }
         }
+
         //resetsmap
         playerKilled(enemy, player, drawValues, preLives);
 
         //game won
-        if((*maps).mapChoice > 3){
+        if((*maps).mapChoice > 4){
             break;
         }
 
