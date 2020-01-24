@@ -1,5 +1,9 @@
 #include "LED.h"
+/*********************************************************************
+   Primary editor  :    Mathias Jensen
+   Secondary editor:
 
+**********************************************************************/
 void GameLED(uint8_t tal){
     RCC->AHBENR |= RCC_AHBPeriph_GPIOA; // Enable clock for GPIO Port A
     RCC->AHBENR |= RCC_AHBPeriph_GPIOB; // Enable clock for GPIO Port B

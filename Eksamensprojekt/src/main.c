@@ -4,12 +4,9 @@
 **
 **
 **********************************************************************/
-/*
-   Primary editor  :    Casper Bang - Hansen
+/*********************************************************************
+   Primary editor  :    Casper Bang - Hansen, Mathias Jensen, Martin Kolster
    Secondary editor:
-   Last changed by :    19/01 - 2020
-
-   Functions       :    int main(void);
 
 **********************************************************************/
 

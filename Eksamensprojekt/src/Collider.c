@@ -4,30 +4,15 @@
 **
 **
 **********************************************************************/
-/*
+/*********************************************************************
    Primary editor  :    Casper Bang - Hansen
    Secondary editor:
-   Last changed by :    19/01 - 2020
-
-   Functions       :    void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize);
-                        void checkCollider(struct player *playerHitBox, struct enemy *enemies);
 
 **********************************************************************/
-
 //Includes
 #include "Collider.h"
 
-/**********************************************************************
-
-   Description     :    setWallHitBox takes an input struct and saves this structs hitbox in this .c file.
-                        This means the hitbox of the walles is saved and the map hitbox size is also saved.
-
-   Input           :    struct drawItems *drawValues
-                        uint16_t mapHitBoxSize
-
-   Output          :    void
-
-**********************************************************************/
+// setWallHitBox takes an input struct and saves this structs hitbox in this .c file.
 void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize, struct wallHitBox *wallHitBox){
     //sets the size of mapHitBox
     wallHitBox->sizeOfArrays = mapHitBoxSize;
@@ -39,23 +24,7 @@ void setWallHitBox(struct drawItems *drawValues, uint16_t mapHitBoxSize, struct 
         (*wallHitBox).yPosSlut[i] = drawValues[i].ySlut;
     }
 }
-
-/**********************************************************************
-
-   Description     :    checkCollider checks collision with other objects.
-                        The check collisions are:
-                        Player - Wall
-                        Shot   - Wall
-                        Player - Enemy
-                        Enemy  - Shot
-
-   Input           :    struct drawItems *drawValues
-                        struct enemy *enemies
-
-   Output          :    void
-
-**********************************************************************/
-
+ //  checkCollider checks collision with other objects.
 void checkCollider(struct player *playerHitBox, struct enemy *enemies, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //Runes through all the walls
     for(int16_t i = 0; i <= (*wallHitBox).sizeOfArrays; i++){

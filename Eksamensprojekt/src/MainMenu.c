@@ -4,23 +4,9 @@
 **
 **
 **********************************************************************/
-/*
-   Primary editor  :    Martin Kolster
-   Secondary editor:    Mathias Jensen
-   Last changed by :    19/01 - 2020
-
-   Functions       :    Everything in here is DRAW functions. they only
-   draw various elements. There is 3 kind of draw functions.
-
-   The 3 draw functions :
-
-   1. Go to (x,y) and printf.
-
-   2. Draw lines from an array with xStart, Xend, Ystart and Yend and a
-   character Hex number.
-
-   3. A for loop which creates an array. This is ONLY used to create a
-   clear function to clear a certain area of the screen for prints.
+/*********************************************************************
+   Primary editor  :   Martin Kolster
+   Secondary editor: Mathias Jensen
 
 **********************************************************************/
 //include .h file

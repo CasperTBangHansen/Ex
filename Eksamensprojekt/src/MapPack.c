@@ -4,28 +4,15 @@
 **
 **
 **********************************************************************/
-/*
+/*********************************************************************
    Primary editor  :    Martin Kolster
-   Secondary editor:
-   Last changed by :    19/01 - 2020
-
-   Functions       :    void firstMapSetup(struct drawItems *drawValues);
-                        void secondMapSetup(struct drawItems *drawValues);
+   Secondary editor:   Mathias Jensen
 
 **********************************************************************/
 
 //include .h file
 #include "MapPack.h"
-
-/**********************************************************************
-
-   Description     :    firstMapSetup draws the all the walls and gives the walls hitbox to the collider
-
-   Input           :    struct drawItems *drawValues
-
-   Output          :    void
-
-**********************************************************************/
+// firstMapSetup draws the all the walls and gives the walls hitbox to the collider
 
 //Each function
 void firstMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) {
@@ -266,15 +253,8 @@ void firstMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) 
     DrawEverything(drawValues);
 }
 
-/**********************************************************************
+//  secondMapSetup draws the all the walls and gives the walls hitbox to the collider
 
-   Description     :    secondMapSetup draws the all the walls and gives the walls hitbox to the collider
-
-   Input           :    struct drawItems *drawValues
-
-   Output          :    void
-
-**********************************************************************/
 
 void secondMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) {
 

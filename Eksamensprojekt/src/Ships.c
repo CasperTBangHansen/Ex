@@ -4,30 +4,16 @@
 **
 **
 **********************************************************************/
-/*
-   Primary editor  :    Mathias Jensen
-   Secondary editor:    Casper Bang - Hansen
-   Last changed by :    19/01 - 2020
-
-   Functions       :    void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct drawItems *drawValues){
+/*********************************************************************
+   Primary editor  :  Mathias Jensen
+   Secondary editor: Casper Bang - Hansen
 
 **********************************************************************/
 
 //include .h file
 #include "Ships.h"
 
-/**********************************************************************
-
-   Description     :    ShipSelection draws the player model and removes the players previous position model.
-
-   Input           :    uint8_t control
-                        uint8_t skin
-                        struct player *player
-                        struct drawItems *drawValues
-
-   Output          :    void
-
-**********************************************************************/
+ //ShipSelection draws the player model and removes the players previous position model.
 
 void ShipSelection(uint8_t control, uint8_t skin, struct player *player, struct drawItems *drawValues){
     if(control != 0){

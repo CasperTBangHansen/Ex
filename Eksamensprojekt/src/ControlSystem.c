@@ -4,13 +4,9 @@
 **
 **
 **********************************************************************/
-/*
+/*********************************************************************
    Primary editor  :    Mathias Jensen
-   Secondary editor:    Casper Bang-Hansen
-   Last changed by :    19/01 - 2020
-
-   Functions       :    uint8_t userInput(struct player *player);
-                        static void setupBullet(struct player *player, int8_t xPosOffSet, int8_t yPosOffSet, int8_t xShotsMaxVelocity, int8_t yShotsMaxVelocity, uint8_t i);
+   Secondary editor: Casper Bang - Hansen
 
 **********************************************************************/
 
@@ -22,18 +18,7 @@
 #define ESC 0x1B
 #define SPACE 0x20
 
-
-/**********************************************************************
-
-   Description     :    userInput takes the users keyboard input and sets either the players position or spawns bullets
-                        depending on what key is pressed
-
-   Input           :    struct player *player
-
-   Output          :    uint8_t direction
-
-**********************************************************************/
-
+// userInput takes the users keyboard input and sets either the players position or spawns bullets
 
 uint8_t userInput(struct player *player){
     // Adds a variable to use for registering the pressed button
@@ -145,21 +130,7 @@ uint8_t userInput(struct player *player){
 }
 
 
-/**********************************************************************
-
-   Description     :    depending on the input a bullet is spawned with a given position and velocity.
-
-   Input           :    struct player *player
-                        int8_t xPosOffSet
-                        int8_t yPosOffSet
-                        int8_t xShotsMaxVelocity
-                        int8_t yShotsMaxVelocity
-                        uint8_t i
-
-
-   Output          :    void
-
-**********************************************************************/
+// depending on the input a bullet is spawned with a given position and velocity.
 
 static void setupBullet(struct player *player, int8_t xPosOffSet, int8_t yPosOffSet, int8_t xShotsMaxVelocity, int8_t yShotsMaxVelocity, uint8_t i){
     //spawns a bullet with a given position and velocity

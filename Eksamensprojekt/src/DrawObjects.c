@@ -1,5 +1,9 @@
 #include "DrawObjects.h"
+/*********************************************************************
+   Primary editor  :    Casper Bang - Hansen
+   Secondary editor:
 
+**********************************************************************/
 void drawMovingObjects(uint8_t enemySize, uint8_t moveDirection, struct drawItems *drawValues, struct player *player, struct enemy *enemy, uint8_t ship, struct powerUp *powerUp){
     //Draw player
     ShipSelection(moveDirection, ship, player, drawValues);

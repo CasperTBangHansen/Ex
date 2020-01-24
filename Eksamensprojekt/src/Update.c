@@ -4,14 +4,9 @@
 **
 **
 **********************************************************************/
-/*
-   Primary editor  :    Casper Bang-Hansen
-   Secondary editor:
-   Last changed by :    19/01 - 2020
-
-   Functions       :    void initStructs();
-                        static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps);
-                        static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues);
+/*********************************************************************
+   Primary editor  :    Casper Bang - Hansen
+   Secondary editor: Mathias Jensen & Martin Kolster
 
 **********************************************************************/
 
@@ -24,15 +19,7 @@
 #define drawValuesSize 300
 #define powerUpSize 3
 
-/**********************************************************************
-
-   Description     :    initStructs makes all the structs and starts the upDateFunction (the game)
-
-   Input           :    void
-
-   Output          :    void
-
-**********************************************************************/
+// initStructs makes all the structs and starts the upDateFunction (the game)
 
 void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore){
     //makes all the structs
@@ -53,17 +40,7 @@ void initStructs(struct drawItems *drawValues, uint8_t ship, int32_t *highscore)
 }
 
 
-/**********************************************************************
-
-   Description     :    initEverythingFirstTime sets all the default values in the structs
-
-   Input           :    struct player *player
-                        struct enemy *enemy
-                        struct mapPackage *maps
-
-   Output          :    void
-
-**********************************************************************/
+//  initEverythingFirstTime sets all the default values in the structs
 
 static void initEverythingFirstTime(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //Player initialization
@@ -131,18 +108,7 @@ static void initEverythingFirstTime(struct player *player, struct enemy *enemy, 
 }
 
 
-/**********************************************************************
-
-   Description     :    upDateFunction updates the game every 'tick' (every cycle)
-
-   Input           :    struct player *player
-                        struct enemy *enemy
-                        struct mapPackage *maps
-                        struct drawItems *drawValues
-
-   Output          :    void
-
-**********************************************************************/
+// upDateFunction updates the game every 'tick' (every cycle)
 
 static void upDateFunction(struct player *player, struct enemy *enemy, struct mapPackage *maps, struct drawItems *drawValues, uint8_t ship, int32_t *highscore,  struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     //sets values

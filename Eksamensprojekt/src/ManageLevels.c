@@ -4,12 +4,9 @@
 **
 **
 **********************************************************************/
-/*
+/*********************************************************************
    Primary editor  :    Mathias Jensen
-   Secondary editor:
-   Last changed by :    19/01 - 2020
-
-   Functions       :    void LevelManager(struct mapPackage *maps, struct drawItems *drawValues);
+   Secondary editor: Martin Kolster
 
 **********************************************************************/
 

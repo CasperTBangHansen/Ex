@@ -4,13 +4,9 @@
 **
 **
 **********************************************************************/
-/*
+/*********************************************************************
    Primary editor  :    Martin Kolster & Mathias Jensen
    Secondary editor:
-   Last changed by :    22/01 - 2020
-
-   Functions       :    uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *drawValues)
-
 
 **********************************************************************/
 
@@ -21,17 +17,7 @@
 #define ESC 0x1B
 #define SPACE 0x20
 
-
-/**********************************************************************
-
-   Description     :    userInput takes the users keyboard input and sets either the players position or spawns bullets
-                        depending on what key is pressed
-
-   Input           :    struct player *player
-
-   Output          :    uint8_t direction
-
-**********************************************************************/
+// userInput takes the users keyboard input and sets either the players position or spawns bullets
 
 
 uint8_t MenuUserInput(struct MenuSelection *MenuSelection,struct drawItems *drawValues) {
