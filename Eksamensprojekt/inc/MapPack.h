@@ -9,6 +9,6 @@
 void firstMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
 void secondMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
 void thirdMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
-
+void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox);
 
 #endif

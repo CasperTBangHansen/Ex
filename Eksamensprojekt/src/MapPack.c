@@ -493,3 +493,66 @@ void thirdMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox) 
     //Draws the entire maze
     DrawEverything(drawValues);
 }
+
+
+
+void fourthMapSetup(struct drawItems *drawValues, struct wallHitBox *wallHitBox){
+    const uint8_t Xbegin[] = {
+    16,17,164,163,
+    16,16,
+    141,141,
+    40,40,40,141,40,141,
+    46,46,46,66,66,70,46,46,46,56,60,60,56,
+    46,50,50,60,46,46,50,50,
+    46,46,
+    };
+    const uint8_t Xstop[] = {
+    16,17,164,163,
+    40,40,
+    164,164,
+    40,40,141,141,141,141,
+    66,46,66,66,66,70,66,56,46,56,60,70,60,
+    46,50,50,60,50,50,60,60,
+
+    };
+    const uint8_t Ybegin[] = {
+    61,61,61,61,
+    60,70,
+    60,70,
+    27,70,27,27,103,70,
+    33,34,37,28,38,28,43,47,44,47,47,47,57,
+    53,53,67,63,53,77,63,67,
+
+    };
+    const uint8_t Ystop[] = {
+    69,69,69,69,
+    60,70,
+    60,70,
+    60,102,27,60,103,103,
+    33,36,37,32,42,46,43,47,46,57,57,47,57,
+    77,63,77,67,53,77,63,67,
+    ''
+    };
+    char charType[] = {
+    0xAF,0xAF,0xAF,0xAF,
+    0xB2,0xB2,
+    0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+    0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,0xB2,
+
+    };
+     for(uint8_t i = 0; i<(sizeof(Ystop)); i++){
+        DrawingSetValues(drawValues, Xbegin[i], Ybegin[i], Xstop[i], Ystop[i], charType[i]);
+    }
+    //frees up Xbegin, Ystop, Xstop
+    free(&Xbegin);
+    free(&Ybegin);
+    free(&Xstop);
+
+    //Gives the collider the hitbox of the walls
+    setWallHitBox(drawValues,SetPos(2), wallHitBox);
+    //Draws the entire maze
+    DrawEverything(drawValues);
+
+}
