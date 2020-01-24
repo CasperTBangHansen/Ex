@@ -34,8 +34,14 @@
 
 void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct player *player, struct enemy *enemies, uint8_t drawMap, struct powerUp *powerUp, struct wallHitBox *wallHitBox){
     // Loads map of choice
+
+    //removes powerUps
+    for(uint8_t i = 0; i < 3; i++){
+        powerUp[i].xPos = 1;
+        powerUp[i].yPos = 1;
+        powerUp[i].show = 0;
+    }
     player->direction = 4;
-    maps->mapChoice = 4;
     switch ((*maps).mapChoice){
         // Map 1
         case 1:{
@@ -236,8 +242,8 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             break;
         }
-        // Map 2
-        case 2:{
+        // Map 3
+        case 3:{
             if(drawMap == 1){
                 secondMapSetup(drawValues, wallHitBox);
             }
@@ -531,15 +537,15 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
 
             break;
         }
-        // Map 3
-        case 3:{
+        // Map 4
+        case 4:{
             if(drawMap == 1){
                 thirdMapSetup(drawValues, wallHitBox);
             }
 
-            powerUp[1].xPos = 93;
-            powerUp[1].yPos = 59;
-            powerUp[1].show = 1;
+            powerUp[0].xPos = 93;
+            powerUp[0].yPos = 59;
+            powerUp[0].show = 1;
 
 
             //Sets player position
@@ -692,7 +698,7 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             enemies[8].arrayPathSize = 2;
             break;
         }
-        case 4:{
+        case 2:{
         if(drawMap == 1){
                 fourthMapSetup(drawValues, wallHitBox);
             }
@@ -704,8 +710,11 @@ void LevelManager(struct mapPackage *maps, struct drawItems *drawValues, struct 
             player->xPosPrevious = xSTART;
             player->yPosPrevious = ySTART;
 
+            powerUp[1].xPos = 63;
+            powerUp[1].yPos = 30;
+            powerUp[1].show = 1;
 
-            counter.speedEnemies = 20;
+            counter.speedEnemies = 30;
             //Sets enemies position
             enemies[0].xPos = 43;
             enemies[0].yPos = 40;
